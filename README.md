@@ -6,12 +6,7 @@ This project aims to create an installation that blurs the lines between the phy
 
 ## Concept
 
-- **Generated Images**: The images depict ghostly figures, and atypical buildings, inspired by the city known as "Arzamas-16".
-- **Installation**: The installation will be both physical and virtual. Visitors will sit in a chair facing a desk with various documents and objects, including a CRT television.
-- **Virtual Reality**: When the visitor puts on the VR headset, they are immersed in a space that mirrors the physical setup. The physical and virtual tables align perfectly, enhancing the immersive experience.
-- **Enhanced Experience**: The virtual environment elevates the physical installation. The virtual television displays a series of documents and the generated photos projected on a giant screen in VR.
-- **Soundscape**: Accompanying the visuals is a spatialized soundscape.
-- **Image Themes**: The images are grouped by themes such as Arzamas-16, the phantom creature, the computer team, etc.
+This project leverages GAN technology (Midjourney) to create images that depict ghostly figures and atypical buildings inspired by the city known as "Arzamas-16". The installation is both physical and virtual, where visitors sit in a chair facing a desk adorned with various documents and objects, including a CRT television. When visitors put on the VR headset, they are immersed in a space that mirrors the physical setup, with the physical and virtual tables aligning perfectly to enhance the immersive experience. The virtual environment elevates the physical installation, with the virtual television displaying a series of documents and generated photos projected on a giant screen in VR. This experience is further enriched by a spatialized soundscape, and the images are grouped by themes such as Arzamas-16, the phantom creature, the computer team, and more.
 
 ## Technical Details
 
