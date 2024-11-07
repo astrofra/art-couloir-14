@@ -1,0 +1,8 @@
+{
+	"profiles": {
+		"default": {
+			"compression": "ETC1",
+			"type": "NormalMap"
+		}
+	}
+}
