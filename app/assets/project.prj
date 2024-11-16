@@ -1,13 +1,14 @@
 {
 	"recent_files": [
-		"props/metal_desk/drawer/SM_MetalDeskDrawer.scn",
-		"props/metal_desk/SM_MetalDesk.scn",
-		"props/old-dirty-computer-pc/SM_PC_LOD2.scn",
+		"props/primitives/grid.scn",
 		"props/old-home-computer/SM_HomeComputer.scn",
 		"props/tandy_trs_80/SM_computer_01a.scn",
-		"props/commodore_64/commodore_64.scn",
-		"props/monitor/monitor.scn",
+		"props/apple_2/apple_2.scn",
 		"props/monitor_cctv/monitor_cctv.scn",
-		"props/amstrad_cpc_464/amstrad_cpc_464.scn"
+		"props/primitives/primitives.scn",
+		"props/office_chair/SM_OfficeChair02.scn",
+		"props/metal_desk/SM_MetalDesk.scn",
+		"props/cyclo/cyclo.scn",
+		"main.scn"
 	]
 }
