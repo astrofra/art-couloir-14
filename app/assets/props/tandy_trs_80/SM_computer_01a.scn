@@ -26,41 +26,29 @@
 		],
 		"fog_far": 0.0,
 		"fog_near": 0.0,
-		"irradiance_map": "core/pbr/probe.hdr.irradiance",
-		"radiance_map": "core/pbr/probe.hdr.radiance"
+		"probe": {
+			"irradiance_map": "core/pbr/probe.hdr.irradiance",
+			"parallax": 0.0,
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"radiance_map": "core/pbr/probe.hdr.radiance",
+			"rot": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"type": "sphere"
+		}
 	},
 	"key_values": null,
-	"lights": [
-		{
-			"diffuse": [
-				0,
-				171,
-				112,
-				255
-			],
-			"diffuse_intensity": 1.0,
-			"inner_angle": 0.5235987901687622,
-			"outer_angle": 0.7853981852531433,
-			"priority": 0.0,
-			"pssm_split": [
-				10.0,
-				50.0,
-				100.0,
-				500.0
-			],
-			"radius": 1.0,
-			"shadow_bias": 9.999999747378752e-06,
-			"shadow_type": "none",
-			"specular": [
-				0,
-				171,
-				112,
-				255
-			],
-			"specular_intensity": 0.0,
-			"type": "point"
-		}
-	],
 	"nodes": [
 		{
 			"components": [
@@ -73,18 +61,6 @@
 			"disabled": false,
 			"idx": 0,
 			"name": "Computer_01b"
-		},
-		{
-			"components": [
-				1,
-				4294967295,
-				4294967295,
-				0,
-				4294967295
-			],
-			"disabled": true,
-			"idx": 1,
-			"name": "Light"
 		}
 	],
 	"objects": [
@@ -156,31 +132,13 @@
 			],
 			"rot": [
 				-7.0167078561561656e-15,
-				-89.99996948242188,
+				0.0,
 				0.0
 			],
 			"scl": [
 				0.007575510069727898,
 				0.007575510069727898,
 				0.007575510069727898
-			]
-		},
-		{
-			"parent": null,
-			"pos": [
-				0.07036943733692169,
-				0.19336026906967163,
-				-0.07217717170715332
-			],
-			"rot": [
-				-0.0,
-				0.0,
-				0.0
-			],
-			"scl": [
-				1.0,
-				1.0,
-				1.0
 			]
 		}
 	]
