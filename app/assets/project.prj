@@ -1,14 +1,14 @@
 {
 	"recent_files": [
+		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn",
+		"main.scn",
+		"props/armchair/Soviet_armchair_Lisek_LOD0.scn",
 		"props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn",
 		"props/table/Soviet_Table_Variant1_LOD0.scn",
 		"props/fax/SM_FaxMachine.scn",
-		"main.scn",
 		"props/calendar/uploads_files_3187835_kalendar.scn",
 		"props/primitives/grid.scn",
 		"props/old-home-computer/SM_HomeComputer.scn",
-		"props/tandy_trs_80/SM_computer_01a.scn",
-		"props/apple_2/apple_2.scn",
-		"props/monitor_cctv/monitor_cctv.scn"
+		"props/tandy_trs_80/SM_computer_01a.scn"
 	]
 }
