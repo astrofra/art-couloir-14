@@ -3,17 +3,17 @@
 		"clear_color": true,
 		"clear_z": true,
 		"color": [
-			0,
-			0,
-			0,
+			103,
+			103,
+			103,
 			255
 		]
 	},
 	"environment": {
 		"ambient": [
-			0,
-			0,
-			0,
+			512,
+			512,
+			512,
 			255
 		],
 		"brdf_map": "core/pbr/brdf.dds",
@@ -48,6 +48,23 @@
 			"type": "sphere"
 		}
 	},
+	"instances": [
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		}
+	],
 	"key_values": null,
 	"nodes": [
 		{
@@ -59,8 +76,73 @@
 				4294967295
 			],
 			"disabled": false,
-			"idx": 2,
+			"idx": 0,
 			"name": "armchair"
+		},
+		{
+			"components": [
+				1,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 1,
+			"instance": 4,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				2,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 2,
+			"instance": 3,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				5,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 3,
+			"instance": 0,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				3,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 4,
+			"instance": 2,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				4,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 5,
+			"instance": 1,
+			"name": "round_shadow"
 		}
 	],
 	"objects": [
@@ -143,6 +225,96 @@
 			"pos": [
 				0.0,
 				0.0,
+				0.0
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.0,
+				1.0,
+				1.0
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-0.26881158351898193,
+				0.009999880567193031,
+				-0.2691490948200226
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.09999991208314896,
+				0.09999991208314896,
+				0.09999984502792358
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.27183014154434204,
+				0.009999880567193031,
+				-0.26929789781570435
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.09999991208314896,
+				0.09999991208314896,
+				0.09999984502792358
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-0.2696799039840698,
+				0.009999880567193031,
+				0.2952045500278473
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.09999991208314896,
+				0.09999991208314896,
+				0.09999984502792358
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.2751445770263672,
+				0.009999940171837807,
+				0.2940882444381714
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.09999990463256836,
+				0.09999990463256836,
+				0.09999983012676239
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.0,
+				0.009999880567193031,
 				0.0
 			],
 			"rot": [

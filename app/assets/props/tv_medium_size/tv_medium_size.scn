@@ -26,9 +26,36 @@
 		],
 		"fog_far": 0.0,
 		"fog_near": 0.0,
-		"irradiance_map": "core/pbr/probe.hdr.irradiance",
-		"radiance_map": "core/pbr/probe.hdr.radiance"
+		"probe": {
+			"irradiance_map": "core/pbr/probe.hdr.irradiance",
+			"parallax": 0.0,
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"radiance_map": "core/pbr/probe.hdr.radiance",
+			"rot": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"type": "sphere"
+		}
 	},
+	"instances": [
+		{
+			"name": "props/square_shadow/square_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		}
+	],
 	"key_values": null,
 	"nodes": [
 		{
@@ -42,6 +69,32 @@
 			"disabled": false,
 			"idx": 0,
 			"name": "SM_MediumTV_01_LOD0"
+		},
+		{
+			"components": [
+				1,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 1,
+			"instance": 0,
+			"name": "square_shadow"
+		},
+		{
+			"components": [
+				2,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 2,
+			"instance": 1,
+			"name": "round_shadow"
 		}
 	],
 	"objects": [
@@ -120,7 +173,7 @@
 	],
 	"scene_anims": [
 		{
-			"anim": null,
+			"anim": 4294967295,
 			"frame_duration": 50000000,
 			"name": "Take 001",
 			"node_anims": null,
@@ -145,6 +198,42 @@
 				0.009999999776482582,
 				0.009999999776482582,
 				0.009999999776482582
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.028851687908172607,
+				0.009999999776482582,
+				-0.21221332252025604
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.2099997997283936,
+				0.9999996423721313,
+				0.49999988079071045
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.0,
+				0.009999999776482582,
+				-0.16918019950389862
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.4999998807907104,
+				0.9999999403953552,
+				0.7999998331069946
 			]
 		}
 	]

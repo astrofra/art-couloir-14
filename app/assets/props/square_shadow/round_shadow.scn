@@ -3,20 +3,19 @@
 		"clear_color": true,
 		"clear_z": true,
 		"color": [
-			80,
-			80,
-			80,
+			86,
+			86,
+			86,
 			255
 		]
 	},
 	"environment": {
 		"ambient": [
-			0,
-			0,
-			0,
+			255,
+			254,
+			254,
 			255
 		],
-		"brdf_map": "core/pbr/brdf.dds",
 		"current_camera": null,
 		"fog_color": [
 			255,
@@ -27,14 +26,14 @@
 		"fog_far": 0.0,
 		"fog_near": 0.0,
 		"probe": {
-			"irradiance_map": "core/pbr/probe.hdr.irradiance",
+			"irradiance_map": "",
 			"parallax": 0.0,
 			"pos": [
 				0.0,
 				0.0,
 				0.0
 			],
-			"radiance_map": "core/pbr/probe.hdr.radiance",
+			"radiance_map": "",
 			"rot": [
 				0.0,
 				0.0,
@@ -48,11 +47,6 @@
 			"type": "sphere"
 		}
 	},
-	"instances": [
-		{
-			"name": "props/square_shadow/square_shadow.scn"
-		}
-	],
 	"key_values": null,
 	"nodes": [
 		{
@@ -65,20 +59,7 @@
 			],
 			"disabled": false,
 			"idx": 0,
-			"name": "HomeComputer"
-		},
-		{
-			"components": [
-				1,
-				4294967295,
-				4294967295,
-				4294967295,
-				4294967295
-			],
-			"disabled": false,
-			"idx": 1,
-			"instance": 0,
-			"name": "square_shadow"
+			"name": "round_shadow"
 		}
 	],
 	"objects": [
@@ -86,12 +67,12 @@
 			"bones": [],
 			"material_infos": [
 				{
-					"name": "M_HomeComputer"
+					"name": "square_shadow"
 				}
 			],
 			"materials": [
 				{
-					"blend_mode": "opaque",
+					"blend_mode": "alpha",
 					"depth_test": "less",
 					"face_culling": "cw",
 					"flags": [],
@@ -99,18 +80,13 @@
 					"textures": [
 						{
 							"name": "uBaseOpacityMap",
-							"path": "props/old-home-computer/T_HomeComputer_D.png",
+							"path": "props/square_shadow/round_shadow_alpha.png",
 							"stage": 0
 						},
 						{
-							"name": "uNormalMap",
-							"path": "props/old-home-computer/T_HomeComputer_N.png",
-							"stage": 2
-						},
-						{
-							"name": "uOcclusionRoughnessMetalnessMap",
-							"path": "props/old-home-computer/T_HomeComputer_ORM.png",
-							"stage": 1
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
 						}
 					],
 					"values": [
@@ -118,20 +94,30 @@
 							"name": "uBaseOpacityColor",
 							"type": "vec4",
 							"value": [
-								0.800000011920929,
-								0.800000011920929,
-								0.800000011920929,
+								0.0,
+								0.0,
+								0.0,
 								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
 							]
 						},
 						{
 							"name": "uOcclusionRoughnessMetalnessColor",
 							"type": "vec4",
 							"value": [
-								1.0,
+								0.0,
 								0.5,
-								0.25,
-								0.0
+								0.10000000149011612,
+								1.0
 							]
 						},
 						{
@@ -141,7 +127,17 @@
 								0.0,
 								0.0,
 								0.0,
-								-1.0
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
 							]
 						}
 					],
@@ -149,10 +145,10 @@
 					"write_b": true,
 					"write_g": true,
 					"write_r": true,
-					"write_z": true
+					"write_z": false
 				}
 			],
-			"name": "props/old-home-computer/HomeComputer_40.geo"
+			"name": "props/square_shadow/square_shadow.geo"
 		}
 	],
 	"transforms": [
@@ -164,32 +160,14 @@
 				0.0
 			],
 			"rot": [
-				89.99994659423828,
-				-90.0,
-				180.0
+				-7.0167078561561656e-15,
+				0.0,
+				0.0
 			],
 			"scl": [
 				1.0,
 				1.0,
 				1.0
-			]
-		},
-		{
-			"parent": null,
-			"pos": [
-				0.0,
-				0.009999999776482582,
-				0.0
-			],
-			"rot": [
-				-0.0,
-				0.0,
-				0.0
-			],
-			"scl": [
-				0.5799999833106995,
-				0.9999996423721313,
-				0.6800000071525574
 			]
 		}
 	]

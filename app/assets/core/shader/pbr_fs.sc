@@ -15,6 +15,12 @@ SAMPLER2D(uOcclusionRoughnessMetalnessMap, 1);
 SAMPLER2D(uNormalMap, 2);
 SAMPLER2D(uSelfMap, 4);
 
+float	EaseInOutQuick(float x)
+{
+	x = clamp(x, 0.0, 1.0);
+	return	(x * x * (3.0 - 2.0 * x));
+}
+
 vec3 Uncharted2ToneMapping(vec3 color, float exposure) {
 	float A = 0.15;
 	float B = 0.50;
@@ -31,6 +37,10 @@ vec3 Uncharted2ToneMapping(vec3 color, float exposure) {
 }
 
 vec3 SimpleReinhardToneMapping(vec3 color, float exposure) { // 1.5
+	color.x = mix(color.x, EaseInOutQuick(color.x), 0.5);	
+	color.y = pow(color.y, 1.25);
+	color.z = pow(color.z, 1.5);
+	color = pow(color, 0.9);
 	color *= exposure / (1. + color / exposure);
 	return color;
 }
