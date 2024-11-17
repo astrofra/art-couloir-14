@@ -6,9 +6,15 @@ hg.InputInit()
 hg.WindowSystemInit()
 
 res_x, res_y = 1280, 720
-win = hg.RenderInit("Couloir 14", res_x, res_y, hg.RF_VSync | hg.RF_MSAA4X)
+win = hg.RenderInit("Couloir 14", res_x, res_y, hg.RF_VSync) -- | hg.RF_MSAA4X)
 
 hg.AddAssetsFolder("assets_compiled")
+
+imgui_prg = hg.LoadProgramFromAssets('core/shader/imgui')
+imgui_img_prg = hg.LoadProgramFromAssets('core/shader/imgui_image')
+
+local imgui_vid = 255
+hg.ImGuiInit(imgui_vid, imgui_prg, imgui_img_prg)
 
 pipeline = hg.CreateForwardPipeline(2048, false)
 res = hg.PipelineResources()
@@ -66,15 +72,18 @@ quad_uniform_set_value_list:push_back(hg.MakeUniformSetValue("color", hg.Vec4(1,
 
 quad_uniform_set_texture_list = hg.UniformSetTextureList()
 
+local initial_head_pos = scene:GetNode("FPSCamera"):GetTransform():GetPos()
+initial_head_pos.y = 0.0
+
 -- Main loop
 while not hg.ReadKeyboard():Key(hg.K_Escape) and hg.IsWindowOpen(win) do
 	dt = hg.TickClock()
 
 	scene:Update(dt)
 
-	actor_body_mtx = hg.TransformationMat4(hg.Vec3(0.0, 0.0, 0.0), hg.Vec3(0, 0, 0))
+	actor_body_mtx = hg.TransformationMat4(initial_head_pos, hg.Vec3(0, 0, 0))
 
-	vr_state = hg.OpenVRGetState(actor_body_mtx, 0.01, 1000)
+	vr_state = hg.OpenVRGetState(actor_body_mtx, 0.05, 1000)
 	left, right = hg.OpenVRStateToViewState(vr_state)
 
 	vid = 0  -- keep track of the next free view id
@@ -106,6 +115,17 @@ while not hg.ReadKeyboard():Key(hg.K_Escape) and hg.IsWindowOpen(win) do
 	quad_uniform_set_texture_list:push_back(hg.MakeUniformSetTexture("s_tex", hg.OpenVRGetColorTexture(vr_right_fb), 0))
 	hg.SetT(quad_matrix, hg.Vec3(-eye_t_x, 0, 1))
 	hg.DrawModel(vid, quad_model, tex0_program, quad_uniform_set_value_list, quad_uniform_set_texture_list, quad_matrix, quad_render_state)
+
+	hg.ImGuiBeginFrame(res_x, res_y, hg.TickClock(), hg.ReadMouse(), hg.ReadKeyboard())
+
+	if hg.ImGuiBegin('Debug') then
+		hg.ImGuiText('Actor:')
+		hg.ImGuiInputVec3("Pos", hg.GetTranslation(vr_state.head))
+	end
+	hg.ImGuiEnd()
+
+	hg.SetView2D(imgui_vid, 0, 0, res_x, res_y, -1, 1, 0, hg.Color.Black, 1, 0)
+	hg.ImGuiEndFrame(imgui_vid)
 
 	hg.Frame()
 	hg.OpenVRSubmitFrame(vr_left_fb, vr_right_fb)
