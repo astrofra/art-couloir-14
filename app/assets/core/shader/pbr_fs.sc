@@ -14,6 +14,26 @@ SAMPLER2D(uOcclusionRoughnessMetalnessMap, 1);
 SAMPLER2D(uNormalMap, 2);
 SAMPLER2D(uSelfMap, 4);
 
+vec3 Uncharted2ToneMapping(vec3 color, float exposure) {
+	float A = 0.15;
+	float B = 0.50;
+	float C = 0.10;
+	float D = 0.20;
+	float E = 0.02;
+	float F = 0.30;
+	float W = 11.2;
+	color *= exposure;
+	color = ((color * (A * color + C * B) + D * E) / (color * (A * color + B) + D * F)) - E / F;
+	float white = ((W * (A * W + C * B) + D * E) / (W * (A * W + B) + D * F)) - E / F;
+	color /= white;
+	return color;
+}
+
+vec3 SimpleReinhardToneMapping(vec3 color, float exposure) { // 1.5
+	color *= exposure / (1. + color / exposure);
+	return color;
+}
+
 //
 float LightAttenuation(vec3 L, vec3 D, float dist, float attn, float inner_rim, float outer_rim) {
 	float k = 1.0;
@@ -180,28 +200,28 @@ void main() {
 
 	// SLOT 0: linear light
 	{
-		float k_shadow = 1.0;
-#if SLOT0_SHADOWS
-		float k_fade_split = 1.0 - jitter.z * 0.3;
+// 		float k_shadow = 1.0;
+// #if SLOT0_SHADOWS
+// 		float k_fade_split = 1.0 - jitter.z * 0.3;
 
-		if(view.z < uLinearShadowSlice.x * k_fade_split) {
-			k_shadow *= SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord0, uShadowState.y * 0.5, uShadowState.z, jitter);
-		} else if(view.z < uLinearShadowSlice.y * k_fade_split) {
-			k_shadow *= SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord1, uShadowState.y * 0.5, uShadowState.z, jitter);
-		} else if(view.z < uLinearShadowSlice.z * k_fade_split) {
-			k_shadow *= SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord2, uShadowState.y * 0.5, uShadowState.z, jitter);
-		} else if(view.z < uLinearShadowSlice.w * k_fade_split) {
-#if FORWARD_PIPELINE_AAA
-			k_shadow *= SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord3, uShadowState.y * 0.5, uShadowState.z, jitter);
-#else // FORWARD_PIPELINE_AAA
-			float pcf = SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord3, uShadowState.y * 0.5, uShadowState.z, jitter);
-			float ramp_len = (uLinearShadowSlice.w - uLinearShadowSlice.z) * 0.25;
-			float ramp_k = clamp((view.z - (uLinearShadowSlice.w - ramp_len)) / max(ramp_len, 1e-8), 0.0, 1.0);
-			k_shadow *= pcf * (1.0 - ramp_k) + ramp_k; 
-#endif // FORWARD_PIPELINE_AAA
-		}
-#endif // SLOT0_SHADOWS
-		color += GGX(V, N, NdotV, uLightDir[0].xyz, base_opacity.xyz, occ_rough_metal.g, occ_rough_metal.b, F0, uLightDiffuse[0].xyz * k_shadow, uLightSpecular[0].xyz * k_shadow);
+// 		if(view.z < uLinearShadowSlice.x * k_fade_split) {
+// 			k_shadow *= SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord0, uShadowState.y * 0.5, uShadowState.z, jitter);
+// 		} else if(view.z < uLinearShadowSlice.y * k_fade_split) {
+// 			k_shadow *= SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord1, uShadowState.y * 0.5, uShadowState.z, jitter);
+// 		} else if(view.z < uLinearShadowSlice.z * k_fade_split) {
+// 			k_shadow *= SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord2, uShadowState.y * 0.5, uShadowState.z, jitter);
+// 		} else if(view.z < uLinearShadowSlice.w * k_fade_split) {
+// #if FORWARD_PIPELINE_AAA
+// 			k_shadow *= SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord3, uShadowState.y * 0.5, uShadowState.z, jitter);
+// #else // FORWARD_PIPELINE_AAA
+// 			float pcf = SampleShadowPCF(uLinearShadowMap, vLinearShadowCoord3, uShadowState.y * 0.5, uShadowState.z, jitter);
+// 			float ramp_len = (uLinearShadowSlice.w - uLinearShadowSlice.z) * 0.25;
+// 			float ramp_k = clamp((view.z - (uLinearShadowSlice.w - ramp_len)) / max(ramp_len, 1e-8), 0.0, 1.0);
+// 			k_shadow *= pcf * (1.0 - ramp_k) + ramp_k; 
+// #endif // FORWARD_PIPELINE_AAA
+// 		}
+// #endif // SLOT0_SHADOWS
+// 		color += GGX(V, N, NdotV, uLightDir[0].xyz, base_opacity.xyz, occ_rough_metal.g, occ_rough_metal.b, F0, uLightDiffuse[0].xyz * k_shadow, uLightSpecular[0].xyz * k_shadow);
 	}
 	// SLOT 1: point/spot light (with optional shadows)
 	{
@@ -264,7 +284,7 @@ void main() {
 
 	color += kD * diffuse;
 	color += specular;
-	color += uAmbientColor.xyz;
+	// color += uAmbientColor.xyz;
 	color *= occ_rough_metal.x;
 	color += self.xyz;
 
@@ -287,8 +307,9 @@ void main() {
 #else // FORWARD_PIPELINE_AAA_PREPASS
 	// incorrectly apply gamma correction at fragment shader level in the non-AAA pipeline
 #if FORWARD_PIPELINE_AAA != 1
-	float gamma = 2.2;
+	float gamma = uAmbientColor.y;
 	color = pow(color, vec3_splat(1. / gamma));
+	color = SimpleReinhardToneMapping(color, uAmbientColor.x);
 #endif // FORWARD_PIPELINE_AAA != 1
 
 	gl_FragColor = vec4(color, opacity);
