@@ -10,7 +10,7 @@ win = hg.RenderInit("Couloir 14", res_x, res_y, hg.RF_VSync | hg.RF_MSAA4X)
 
 hg.AddAssetsFolder("assets_compiled")
 
-pipeline = hg.CreateForwardPipeline()
+pipeline = hg.CreateForwardPipeline(2048, false)
 res = hg.PipelineResources()
 
 render_data = hg.SceneForwardPipelineRenderData()  -- this object is used by the low-level scene rendering API to share view-independent data with both eyes
@@ -72,7 +72,7 @@ while not hg.ReadKeyboard():Key(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	scene:Update(dt)
 
-	actor_body_mtx = hg.TransformationMat4(hg.Vec3(-1.3, .45, -2), hg.Vec3(0, 0, 0))
+	actor_body_mtx = hg.TransformationMat4(hg.Vec3(0.0, 0.0, 0.0), hg.Vec3(0, 0, 0))
 
 	vr_state = hg.OpenVRGetState(actor_body_mtx, 0.01, 1000)
 	left, right = hg.OpenVRStateToViewState(vr_state)
