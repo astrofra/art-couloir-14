@@ -47,8 +47,8 @@
 					23,
 					18,
 					25,
-					26,
 					27,
+					26,
 					28,
 					29,
 					30
@@ -58,7 +58,7 @@
 			"show_node_uid": false
 		},
 		"grid_plugin": {
-			"enabled": true,
+			"enabled": false,
 			"grid_color_b": 1.0,
 			"grid_color_g": 1.0,
 			"grid_color_r": 1.0,
@@ -84,9 +84,9 @@
 			"tool": "move"
 		},
 		"view_plugin": {
-			"show_cameras": true,
+			"show_cameras": false,
 			"show_collisions": false,
-			"show_lights": true,
+			"show_lights": false,
 			"show_nodes": false,
 			"show_probe": false
 		},

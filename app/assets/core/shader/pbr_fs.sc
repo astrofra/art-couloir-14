@@ -7,6 +7,7 @@ $input vWorldPos, vNormal, vTangent, vBinormal, vTexCoord0, vTexCoord1, vLinearS
 uniform vec4 uBaseOpacityColor;
 uniform vec4 uOcclusionRoughnessMetalnessColor;
 uniform vec4 uSelfColor;
+uniform vec4 uCustom;
 
 // Texture slots
 SAMPLER2D(uBaseOpacityMap, 0);
@@ -286,7 +287,11 @@ void main() {
 	color += specular;
 	// color += uAmbientColor.xyz;
 	color *= occ_rough_metal.x;
-	color += self.xyz;
+
+	float self_gamma = uCustom.y;
+	vec3 self_color = pow(self.xyz, vec3_splat(1. / self_gamma));
+	self_color = SimpleReinhardToneMapping(self_color, uCustom.x);
+	color += self_color;
 
 	color = DistanceFog(view, color);
 #endif // DEPTH_ONLY != 1

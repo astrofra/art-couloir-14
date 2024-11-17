@@ -1,5 +1,6 @@
 {
 	"recent_files": [
+		"test.scn",
 		"main.scn",
 		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn",
 		"props/armchair/Soviet_armchair_Lisek_LOD0.scn",
@@ -8,7 +9,6 @@
 		"props/fax/SM_FaxMachine.scn",
 		"props/calendar/uploads_files_3187835_kalendar.scn",
 		"props/primitives/grid.scn",
-		"props/old-home-computer/SM_HomeComputer.scn",
-		"props/tandy_trs_80/SM_computer_01a.scn"
+		"props/old-home-computer/SM_HomeComputer.scn"
 	]
 }
