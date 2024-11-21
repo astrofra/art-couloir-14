@@ -6,6 +6,10 @@ function PhotoChangeCoroutine(state)
     state.current_photo = state.current_photo + 1
     if state.current_photo > #state.photo_table then
         state.current_photo = 1
+        state.current_folder = state.current_folder + 1
+        if state.current_folder > #folder_table then
+            state.current_folder = 1
+        end
     end
     state.next_tex = LoadPhotoFromTable(state.photo_table, state.current_photo, folder_table[state.current_folder])
     coroutine.yield()
