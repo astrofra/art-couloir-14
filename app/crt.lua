@@ -204,7 +204,7 @@ while not keyboard:Pressed(hg.K_Escape) do
 	hg.DrawModel(view_id, screen_mdl, screen_prg, val_uniforms, tex_uniforms, hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(math.pi / 2, math.pi, 0)))
 
 	-- text OSD
-	local osd_text = "FILE_" .. photo_state.index_photo0
+	local osd_text = "_HRZM/" .. photo_state.index_photo0
 	-- osd_text = ghostWorldAssociations[photo_state.index_photo0]
 	view_id = view_id + 1
 
