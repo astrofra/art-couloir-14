@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+		{
+			"name": "Run current file",
+			"type": "lua",
+			"request": "launch",
+			"stopOnEntry": false,
+			"program": "${file}",
+			"cwd": "${workspaceFolder}/",
+			"luaexe": "${workspaceFolder}/bin/hg_lua-win-x64/lua.exe",
+		},
+		{
+			"name": "Debug current file",
+			"type": "lua",
+			"request": "launch",
+			"stopOnEntry": true,
+			"program": "${file}",
+			"cwd": "${workspaceFolder}/",
+			"luaexe": "${workspaceFolder}/bin/hg_lua-win-x64/lua.exe",
+		},
+		{
+			"name": "Run main",
+			"type": "lua",
+			"request": "launch",
+			"stopOnEntry": false,
+			"program": "${workspaceFolder}/main.lua",
+			"cwd": "${workspaceFolder}/",
+			"arg": ["--noAAA"],
+			"luaexe": "${workspaceFolder}/bin/hg_lua-win-x64/lua.exe",
+		}
+    ]
+}
