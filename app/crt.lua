@@ -2,7 +2,6 @@
 -- Licensed under the MIT license. See LICENSE file in the project root for details.
 
 function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder)
-	_photo_folder = _photo_folder or "arzamas-16"
 	return hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp)
 end
 
@@ -96,58 +95,40 @@ local photo_state = {
 }
 
 -- photo
-photo_state.photo_table = {
-	"000",
-	"001",
-	"002",
-	"003",
-	"004",
-	"005",
-	"006",
-	"007",
-	"008",
-	"009",
-	"010",
-	"011",
-	"012",
-	"013",
-	"014",
-	"015",
-	"016",
-	"017",
-	"018",
-	"019",
-	"020",
-	"021",
-	"022",
-	"023"
-}
+local idx
 
-local ghostWorldAssociations = {
-	-- "Escape",
-	"Void",
-	"Peril",
-	"Obstacle",
-	"Exposure",
-	"Endurance",
-	"Dissolution",
-	"Stagnation",
-	-- "Exclusion",
-	"Banishment",
-	"Darkness",
-	"Anticipation",
-	"Invisibility",
-	"Departure",
-	"Hope",
-	"Descent",
-	"Entanglement",
-	"Limbo",
-	"Ethereality",
-	"Transformation",
-	"Failure",
-	"Imprisonment"
-  }
-  
+photo_tables = {}
+folder_table = {"arzamas_16", "fantomy", "hazmat", "netzwerk", "radiograf"}
+
+for idx = 1, 5 do
+	photo_tables[folder_table[idx]] = {}
+end
+
+photo_tables.arzamas_16 = {}
+photo_tables.fantomy = {}
+photo_tables.hazmat = {}
+photo_tables.netzwerk = {}
+photo_tables.radiograf = {}
+
+for idx = 0, 23 do
+	table.insert(photo_tables.arzamas_16, string.format("%03d", idx))
+end
+for idx = 0, 23 do
+	table.insert(photo_tables.fantomy, string.format("%03d", idx))
+end
+for idx = 0, 15 do
+	table.insert(photo_tables.hazmat, string.format("%03d", idx))
+end
+for idx = 0, 17 do
+	table.insert(photo_tables.netzwerk, string.format("%03d", idx))
+end
+for idx = 0, 22 do
+	table.insert(photo_tables.radiograf, string.format("%03d", idx))
+end
+
+photo_state.current_folder = 1
+
+photo_state.photo_table = photo_tables[folder_table[photo_state.current_folder]]
 
 -- audio
 -- background noise
@@ -161,7 +142,7 @@ end
 
 photo_state.current_photo = 1
 photo_state.next_tex = nil
-photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo)
+photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo, folder_table[photo_state.current_folder])
 photo_state.index_photo0 = photo_state.current_photo
 
 photo_state.noise_intensity = 0.0
@@ -204,7 +185,7 @@ while not keyboard:Pressed(hg.K_Escape) do
 	hg.DrawModel(view_id, screen_mdl, screen_prg, val_uniforms, tex_uniforms, hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(math.pi / 2, math.pi, 0)))
 
 	-- text OSD
-	local osd_text = "_HRZM/" .. photo_state.index_photo0
+	local osd_text = "_ARZM/" .. (photo_state.index_photo0 - 1)
 	-- osd_text = ghostWorldAssociations[photo_state.index_photo0]
 	view_id = view_id + 1
 
