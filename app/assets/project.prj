@@ -1,5 +1,7 @@
 {
 	"recent_files": [
+		"test.scn",
+		"main.scn",
 		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn",
 		"props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn",
 		"props/armchair/Soviet_armchair_Lisek_LOD0.scn",
@@ -7,8 +9,6 @@
 		"props/tv_medium_size/tv_medium_size.scn",
 		"props/metal_desk/SM_MetalDesk.scn",
 		"props/old-home-computer/SM_HomeComputer.scn",
-		"props/office_chair/SM_OfficeChair02.scn",
-		"props/small_chair/SM_Chair05.scn",
-		"props/tandy_trs_80/SM_computer_01a.scn"
+		"props/office_chair/SM_OfficeChair02.scn"
 	]
 }

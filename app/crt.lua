@@ -2,7 +2,6 @@
 -- Licensed under the MIT license. See LICENSE file in the project root for details.
 
 function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder)
-	_photo_folder = _photo_folder or "arzamas-16"
 	return hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp)
 end
 
@@ -52,7 +51,6 @@ res = hg.PipelineResources()
 
 -- text rendering
 -- load font and shader program
-local max_font_index = 440
 local font_size = math.floor(60 * (res_x / 960.0))
 local font_osd = hg.LoadFontFromAssets("fonts/" .. "VCR_OSD_MONO.ttf", font_size)
 
@@ -96,58 +94,41 @@ local photo_state = {
 }
 
 -- photo
-photo_state.photo_table = {
-	"000",
-	"001",
-	"002",
-	"003",
-	"004",
-	"005",
-	"006",
-	"007",
-	"008",
-	"009",
-	"010",
-	"011",
-	"012",
-	"013",
-	"014",
-	"015",
-	"016",
-	"017",
-	"018",
-	"019",
-	"020",
-	"021",
-	"022",
-	"023"
-}
+local idx
 
-local ghostWorldAssociations = {
-	-- "Escape",
-	"Void",
-	"Peril",
-	"Obstacle",
-	"Exposure",
-	"Endurance",
-	"Dissolution",
-	"Stagnation",
-	-- "Exclusion",
-	"Banishment",
-	"Darkness",
-	"Anticipation",
-	"Invisibility",
-	"Departure",
-	"Hope",
-	"Descent",
-	"Entanglement",
-	"Limbo",
-	"Ethereality",
-	"Transformation",
-	"Failure",
-	"Imprisonment"
-  }
-  
+photo_tables = {}
+folder_table = {"arzamas_16", "fantomy", "hazmat", "netzwerk", "radiograf"}
+folder_short = {"_ARZM/", "_FNTM/", "_HZMT/", "_NETW/", "_RDIO/"}
+
+for idx = 1, 5 do
+	photo_tables[folder_table[idx]] = {}
+end
+
+photo_tables.arzamas_16 = {}
+photo_tables.fantomy = {}
+photo_tables.hazmat = {}
+photo_tables.netzwerk = {}
+photo_tables.radiograf = {}
+
+for idx = 0, 23 do
+	table.insert(photo_tables.arzamas_16, string.format("%03d", idx))
+end
+for idx = 0, 23 do
+	table.insert(photo_tables.fantomy, string.format("%03d", idx))
+end
+for idx = 0, 15 do
+	table.insert(photo_tables.hazmat, string.format("%03d", idx))
+end
+for idx = 0, 17 do
+	table.insert(photo_tables.netzwerk, string.format("%03d", idx))
+end
+for idx = 0, 22 do
+	table.insert(photo_tables.radiograf, string.format("%03d", idx))
+end
+
+photo_state.current_folder = 1
+
+photo_state.photo_table = photo_tables[folder_table[photo_state.current_folder]]
 
 -- audio
 -- background noise
@@ -161,7 +142,7 @@ end
 
 photo_state.current_photo = 1
 photo_state.next_tex = nil
-photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo)
+photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo, folder_table[photo_state.current_folder])
 photo_state.index_photo0 = photo_state.current_photo
 
 photo_state.noise_intensity = 0.0
@@ -204,7 +185,7 @@ while not keyboard:Pressed(hg.K_Escape) do
 	hg.DrawModel(view_id, screen_mdl, screen_prg, val_uniforms, tex_uniforms, hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(math.pi / 2, math.pi, 0)))
 
 	-- text OSD
-	local osd_text = "_HRZM/" .. photo_state.index_photo0
+	local osd_text = folder_short[photo_state.current_folder] .. (photo_state.index_photo0 - 1)
 	-- osd_text = ghostWorldAssociations[photo_state.index_photo0]
 	view_id = view_id + 1
 
@@ -213,15 +194,7 @@ while not keyboard:Pressed(hg.K_Escape) do
 	local text_pos = hg.Vec3(res_x * 0.05, res_y * 0.05, -0.5)
 	local _osd_colors = {hg.Vec4(1.0, 0.0, 0.0, 0.8), hg.Vec4(0.0, 1.0, 0.0, 0.8), hg.Vec4(1.0, 1.0, 1.0, 1.0)}
 	local _osd_offsets = {-2.0, 1.0, 0.0}
-	if math.random(100) > 90 then 
-		font_rand_0 = math.random(math.floor(max_font_index/3) - 1) + 1
-	end
-	if math.random(100) > 95 then 
-		font_rand_1 = math.random(math.floor(max_font_index/3))
-	end
-	if math.random(100) > 98 then 
-		font_rand_2 = math.random(math.floor(max_font_index/3))
-	end
+
 	for _text_loop = 1, 3 do
 		local _text_offset = hg.Vec3(res_x * 0.001 * _osd_offsets[_text_loop] * photo_state.noise_intensity, 0.0, 0.0)
 		hg.DrawText(view_id, font_osd, osd_text, font_program, 'u_tex', 0, 
