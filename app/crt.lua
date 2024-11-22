@@ -40,7 +40,7 @@ if options.height then
 	res_y = options.height
 end
 
-local win = hg.NewWindow('Blurhaven', res_x, res_y, 32, default_window_mode) --, hg.WV_Fullscreen)
+local win = hg.NewWindow('COULOIR 14', res_x, res_y, 32, default_window_mode) --, hg.WV_Fullscreen)
 hg.RenderInit(win)
 hg.RenderReset(res_x, res_y, hg.RF_VSync | hg.RF_MSAA4X | hg.RF_MaxAnisotropy)
 
