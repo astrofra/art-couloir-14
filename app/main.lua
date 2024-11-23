@@ -281,6 +281,20 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	view_id = 0  -- keep track of the next free view id
 	passId = hg.SceneForwardPipelinePassViewId()
 
+	-- Prepare view-independent render data once
+	view_id, passId = hg.PrepareSceneForwardPipelineCommonRenderData(view_id, scene, render_data, pipeline, res, passId)
+	vr_eye_rect = hg.IntRect(0, 0, vr_state.width, vr_state.height)
+
+	-- Prepare the left eye render data then draw to its framebuffer
+	view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, left, scene, render_data, pipeline, res, passId)
+	view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, left, pipeline, render_data, res, vr_left_fb:GetHandle())
+
+	-- Prepare the right eye render data then draw to its framebuffer
+	view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, right, scene, render_data, pipeline, res, passId)
+	view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, right, pipeline, render_data, res, vr_right_fb:GetHandle())
+
+	view_id = view_id + 1
+
 	-- CRT display rendering
 
 	hg.SetViewPerspective(view_id, 0, 0, res_x, res_y, hg.TranslationMat4(hg.Vec3(0, 0, -0.68 * zoom_level)))
@@ -306,20 +320,6 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 				{}, text_render_state)
 	end
 
-	-- Prepare view-independent render data once
-	view_id, passId = hg.PrepareSceneForwardPipelineCommonRenderData(view_id, scene, render_data, pipeline, res, passId)
-	vr_eye_rect = hg.IntRect(0, 0, vr_state.width, vr_state.height)
-
-	-- Prepare the left eye render data then draw to its framebuffer
-	view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, left, scene, render_data, pipeline, res, passId)
-	view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, left, pipeline, render_data, res, vr_left_fb:GetHandle())
-
-	-- Prepare the right eye render data then draw to its framebuffer
-	view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, right, scene, render_data, pipeline, res, passId)
-	view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, right, pipeline, render_data, res, vr_right_fb:GetHandle())
-
-	view_id = view_id + 1
-
 	-- Display the VR eyes texture to the backbuffer
 	if VR_DEBUG_DISPLAY then
 		hg.SetViewRect(view_id, 0, 0, res_x, res_y)
@@ -338,16 +338,18 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	end
 
 	-- ImGUI
-	hg.ImGuiBeginFrame(res_x, res_y, hg.TickClock(), hg.ReadMouse(), hg.ReadKeyboard())
+	if VR_DEBUG_DISPLAY then
+		hg.ImGuiBeginFrame(res_x, res_y, hg.TickClock(), hg.ReadMouse(), hg.ReadKeyboard())
 
-	if hg.ImGuiBegin('Debug') then
-		hg.ImGuiText('Actor:')
-		hg.ImGuiInputVec3("Pos", hg.GetTranslation(vr_state.head))
+		if hg.ImGuiBegin('Debug') then
+			hg.ImGuiText('Actor:')
+			hg.ImGuiInputVec3("Pos", hg.GetTranslation(vr_state.head))
+		end
+		hg.ImGuiEnd()
+
+		hg.SetView2D(imgui_vid, 0, 0, res_x, res_y, -1, 1, 0, hg.Color.Black, 1, 0)
+		hg.ImGuiEndFrame(imgui_vid)
 	end
-	hg.ImGuiEnd()
-
-	hg.SetView2D(imgui_vid, 0, 0, res_x, res_y, -1, 1, 0, hg.Color.Black, 1, 0)
-	hg.ImGuiEndFrame(imgui_vid)
 
 	hg.Frame()
 	hg.OpenVRSubmitFrame(vr_left_fb, vr_right_fb)
