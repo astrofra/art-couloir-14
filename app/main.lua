@@ -225,6 +225,12 @@ initial_head_pos.y = 0.0
 local keyboard = hg.Keyboard('raw')
 local switch_clock = hg.GetClock()
 
+crt_screen_node = scene:GetNode("crt_screen")
+crt_screen_material = crt_screen_node:GetObject():GetMaterial(0)
+photo_material_texture = hg.GetMaterialTexture(crt_screen_material, "uDiffuseMap")
+video_fx_material_texture = hg.GetMaterialTexture(crt_screen_material, "uSelfMap")
+-- local texture = res:GetTexture(material_texture)
+
 -- Main loop
 while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	keyboard:Update()
