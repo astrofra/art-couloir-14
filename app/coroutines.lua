@@ -10,6 +10,7 @@ function PhotoChangeCoroutine(state)
         if state.current_folder > #folder_table then
             state.current_folder = 1
         end
+        state.photo_table = photo_tables[folder_table[state.current_folder]]
     end
     state.next_tex = LoadPhotoFromTable(state.photo_table, state.current_photo, folder_table[state.current_folder])
     coroutine.yield()
@@ -19,7 +20,7 @@ function PhotoChangeCoroutine(state)
     local clock
     while true do
         clock = hg.GetClock() - start_clock
-        clock_s = hg.time_to_sec_f(clock)
+        clock_s = hg.time_to_sec_f(clock) * SLIDE_SHOW_SPEED
         state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, 0.8, 1.0, 0.0, 1.0), 0.0, 1.0)
         if clock_s >= 1.0 then
             break
@@ -41,7 +42,7 @@ function PhotoChangeCoroutine(state)
     start_clock = hg.GetClock()
     while true do
         clock = hg.GetClock() - start_clock
-        clock_s = hg.time_to_sec_f(clock)
+        clock_s = hg.time_to_sec_f(clock) * SLIDE_SHOW_SPEED
         state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, 0.8, 1.0, 0.0, 1.0), 0.0, 1.0)
         state.noise_intensity = (2.0 - state.noise_intensity) / 2.0
         if clock_s >= 1.0 then

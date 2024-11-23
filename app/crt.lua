@@ -5,6 +5,8 @@ function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder)
 	return hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp)
 end
 
+SLIDE_SHOW_SPEED = 1.0
+
 hg = require("harfang")
 require("utils")
 require("arguments")
@@ -159,7 +161,7 @@ while not keyboard:Pressed(hg.K_Escape) do
 	keyboard:Update()
 	dt = hg.TickClock()
 
-	if photo_state.coroutine == nil and (keyboard:Released(hg.K_Space) or (hg.GetClock() - switch_clock > hg.time_from_sec_f(10.0))) then
+	if photo_state.coroutine == nil and (keyboard:Released(hg.K_Space) or (hg.GetClock() - switch_clock > hg.time_from_sec_f(10.0 / SLIDE_SHOW_SPEED))) then
 		photo_state.coroutine = coroutine.create(PhotoChangeCoroutine)
 		switch_clock = hg.GetClock()
 	elseif photo_state.coroutine and coroutine.status(photo_state.coroutine) ~= 'dead' then
