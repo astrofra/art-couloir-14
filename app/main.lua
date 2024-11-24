@@ -276,8 +276,18 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	if photo_state.update_pipeline then
 		print("Update photos !")
+		-- textures
 		hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
 		hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
+
+		-- light rig
+		for idx = 1, 4 do
+			local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo)][idx]
+			local diffuse_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
+			local spec_color = diffuse_color
+			screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
+			screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 4.0)
+		end
 		photo_state.update_pipeline = false
 	end
 
