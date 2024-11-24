@@ -5,7 +5,9 @@ function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder)
 	local texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp, res)
 	local texture = res:GetTexture(texture_ref)
 
-	return {texture_ref = texture_ref, texture = texture}
+	local slide_texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/slides/" .. _photo_table[_photo_idx] .. '_slide.png', hg.TF_UClamp, res)
+
+	return {texture_ref = texture_ref, texture = texture, slide_texture_ref = slide_texture_ref}
 end
 
 hg = require("harfang")
@@ -138,7 +140,7 @@ local idx
 
 photo_tables = {}
 folder_table = {"arzamas_16", "fantomy", "hazmat", "netzwerk", "radiograf"}
-folder_short = {"_ARZM/", "_FNTM/", "_HZMT/", "_NETW/", "_RDIO/"}
+folder_short = {"_ARZM/", "_FNTM/", "_HZMT/", "_NETW/", "_RDGF/"}
 
 for idx = 1, 5 do
 	photo_tables[folder_table[idx]] = {}
@@ -224,6 +226,9 @@ photo_material_texture = hg.GetMaterialTexture(crt_screen_material, "uDiffuseMap
 video_fx_material_texture = hg.GetMaterialTexture(crt_screen_material, "uSelfMap")
 video_fx_texture = res:GetTexture(video_fx_material_texture)
 
+slide_screen_node = scene:GetNode("slide_screen")
+slide_screen_material = slide_screen_node:GetObject():GetMaterial(0)
+
 -- video stream
 -- tex_video = hg.CreateTexture(res_x, res_y, "Video texture", 0)
 size = hg.iVec2(res_x, res_y)
@@ -278,6 +283,8 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	hg.SetMaterialValue(crt_screen_material, 'control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
 	hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
+
+	hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
 
 	-- loop noise video (ffmpeg)
 	if hg.GetClock() - video_start_clock > hg.time_from_sec_f(7.0) then
