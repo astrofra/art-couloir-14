@@ -72,24 +72,28 @@ vr_left_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
 vr_right_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
 
 -- Create models
-vtx_layout = hg.VertexLayoutPosFloatNormUInt8()
+-- vtx_layout = hg.VertexLayoutPosFloatNormUInt8()
 
-cube_mdl = hg.CreateCubeModel(vtx_layout, 1, 1, 1)
-cube_ref = res:AddModel('cube', cube_mdl)
-ground_mdl = hg.CreateCubeModel(vtx_layout, 50, 0.01, 50)
-ground_ref = res:AddModel('ground', ground_mdl)
+-- cube_mdl = hg.CreateCubeModel(vtx_layout, 1, 1, 1)
+-- cube_ref = res:AddModel('cube', cube_mdl)
+-- ground_mdl = hg.CreateCubeModel(vtx_layout, 50, 0.01, 50)
+-- ground_ref = res:AddModel('ground', ground_mdl)
 
--- Load shader
-prg_ref = hg.LoadPipelineProgramRefFromAssets('core/shader/pbr.hps', res, hg.GetForwardPipelineInfo())
+-- Create scene
+scene = hg.Scene()
+hg.LoadSceneFromAssets("main.scn", scene, res, hg.GetForwardPipelineInfo())
 
--- Create materials
-function create_material(ubc, orm)
-	mat = hg.Material()
-	hg.SetMaterialProgram(mat, prg_ref)
-	hg.SetMaterialValue(mat, "uBaseOpacityColor", ubc)
-	hg.SetMaterialValue(mat, "uOcclusionRoughnessMetalnessColor", orm)
-	return mat
-end
+-- -- Load shader
+-- prg_ref = hg.LoadPipelineProgramRefFromAssets('core/shader/pbr.hps', res, hg.GetForwardPipelineInfo())
+
+-- -- Create materials
+-- function create_material(ubc, orm)
+-- 	mat = hg.Material()
+-- 	hg.SetMaterialProgram(mat, prg_ref)
+-- 	hg.SetMaterialValue(mat, "uBaseOpacityColor", ubc)
+-- 	hg.SetMaterialValue(mat, "uOcclusionRoughnessMetalnessColor", orm)
+-- 	return mat
+-- end
 
 -- CRT Stuff
 
@@ -188,10 +192,6 @@ zoom_level = 1.0 / zoom_level
 
 -- 3D scene stuff
 
--- Create scene
-scene = hg.Scene()
-hg.LoadSceneFromAssets("main.scn", scene, res, hg.GetForwardPipelineInfo())
-
 -- Setup 2D rendering to display eyes textures
 quad_layout = hg.VertexLayout()
 quad_layout:Begin():Add(hg.A_Position, 3, hg.AT_Float):Add(hg.A_TexCoord0, 3, hg.AT_Float):End()
@@ -219,8 +219,8 @@ local switch_clock = hg.GetClock()
 
 crt_screen_node = scene:GetNode("crt_screen")
 crt_screen_material = crt_screen_node:GetObject():GetMaterial(0)
-photo_material_texture = hg.GetMaterialTexture(crt_screen_material, "uDiffuseMap")
-video_fx_material_texture = hg.GetMaterialTexture(crt_screen_material, "uSelfMap")
+-- photo_material_texture = hg.GetMaterialTexture(crt_screen_material, "uDiffuseMap")
+-- video_fx_material_texture = hg.GetMaterialTexture(crt_screen_material, "uSelfMap")
 -- video_fx_texture = res:GetTexture(video_fx_material_texture)
 
 video_fx_texture_ref = hg.LoadTextureFromAssets("common/video_noise_static.png", hg.TF_UClamp | hg.TF_VClamp, res)
@@ -233,6 +233,7 @@ video_fx_texture = res:GetTexture(video_fx_texture_ref)
 while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	keyboard:Update()
 	dt = hg.TickClock()
+	clock_s = hg.time_to_sec_f(hg.GetClock())
 
 	if photo_state.coroutine == nil and (keyboard:Released(hg.K_Space) or (hg.GetClock() - switch_clock > hg.time_from_sec_f(10.0 / SLIDE_SHOW_SPEED))) then
 		photo_state.coroutine = coroutine.create(PhotoChangeCoroutine)
@@ -257,7 +258,9 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	-- prepare slideshow display
 	chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
-	val_uniforms = {hg.MakeUniformSetValue('control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))}
+	val_uniforms = {	
+		hg.MakeUniformSetValue('control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0)),
+		hg.MakeUniformSetValue('uCustomClock', hg.Vec4(clock_s, 0.0, 0.0, 0.0))}
 	-- val_uniforms = {hg.MakeUniformSetValue('control', hg.Vec4(1.0, 1.0, 0.0, 0.0))} -- test only
 	-- _, tex_video, size, fmt = hg.UpdateTexture(streamer, handle, tex_video, size, fmt)
 
@@ -267,6 +270,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	}
 
 	hg.SetMaterialValue(crt_screen_material, 'control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
+	hg.SetMaterialValue(crt_screen_material, 'uCustomClock', hg.Vec4(clock_s, 0.0, 0.0, 0.0))
 	hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.ref, 0)
 
 	scene:Update(dt)

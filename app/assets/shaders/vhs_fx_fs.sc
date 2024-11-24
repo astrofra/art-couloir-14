@@ -8,6 +8,7 @@ $input vTexCoord0
 #include <bgfx_shader.sh>
 
 uniform vec4 control; // VHS FX -> x : noise_intensity, y : chroma_distortion
+uniform vec4 uCustomClock;
 
 SAMPLER2D(u_video, 0);
 SAMPLER2D(u_photo0, 1);
@@ -30,7 +31,7 @@ vec3 _YUV2RGB(vec3 yuvColor) {
 
 
 void main() {
-	vec4 vhs_noise = texture2D(u_video, vTexCoord0);
+	vec4 vhs_noise = texture2D(u_video, vTexCoord0 - vec2(mod(uCustomClock.x * 1.123456, 1.0), 0.0));
 	vec2 vTexCoord0_mirror = vec2(1.0, 0.0) + vTexCoord0 * vec2(-1.0, 1.0);
 	vec4 photo0, photo1;
 	float intensity_accumulation = 0.0;

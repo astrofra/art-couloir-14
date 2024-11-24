@@ -39,6 +39,7 @@ vec3 _YUV2RGB(vec3 yuvColor) {
 uniform vec4 uDiffuseColor;
 uniform vec4 uCustom;
 uniform vec4 control; // VHS FX -> x : noise_intensity, y : chroma_distortion
+uniform vec4 uCustomClock;
 
 // Texture slots
 SAMPLER2D(uDiffuseMap, 0); // Photo
@@ -49,7 +50,7 @@ void main() {
 #if USE_DIFFUSE_MAP
 	final_color = texture2D(uDiffuseMap, vTexCoord0) * uDiffuseColor;
 
-	vec4 vhs_noise = texture2D(uSelfMap, vTexCoord0);
+	vec4 vhs_noise = texture2D(uSelfMap, vTexCoord0 + vec2(mod(uCustomClock.x * 1.123456, 1.0), 0.0));
 	// vec2 vTexCoord0_mirror = vec2(1.0, 0.0) + vTexCoord0 * vec2(-1.0, 1.0);
 	vec4 photo0;
 	float intensity_accumulation = 0.0;
