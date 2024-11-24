@@ -64,7 +64,6 @@ def process_image(image_path, debug_folder):
 
         return colors
 
-
 def main():
     lua_table = {}
 
@@ -86,15 +85,30 @@ def main():
 
                 # Process the image and store its colors
                 colors = process_image(file_path, debug_folder)
-                # Extract the key by removing "_slide.png" from the file name
+
+                # Use the key without "_slide.png"
                 key = file_name.replace("_slide.png", "")
                 lua_table[folder_name][key] = colors
 
-
     # Write the Lua table to a file
     with open(output_lua_path, "w") as lua_file:
-        lua_file.write("return ")
-        lua_file.write(json.dumps(lua_table, indent=4))
+        lua_file.write("return " + convert_to_lua_table(lua_table))
+
+def convert_to_lua_table(data):
+    """Convert a Python dictionary to a Lua table."""
+    def format_value(value):
+        if isinstance(value, dict):
+            return convert_to_lua_table(value)
+        elif isinstance(value, list) or isinstance(value, tuple):  # Handle lists and tuples
+            return "{" + ", ".join(format_value(v) for v in value) + "}"
+        elif isinstance(value, str):
+            return f'"{value}"'
+        elif isinstance(value, (int, float)):
+            return str(value)
+        else:
+            raise TypeError(f"Unsupported data type: {type(value)}")
+
+    return "{" + ", ".join(f"[\"{key}\"] = {format_value(value)}" for key, value in data.items()) + "}"
 
 if __name__ == "__main__":
     main()

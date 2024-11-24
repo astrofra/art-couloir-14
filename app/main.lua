@@ -14,7 +14,7 @@ hg = require("harfang")
 require("utils")
 require("arguments")
 require("coroutines")
--- slides_colors = require("slides_colors")
+slides_colors = require("slides_colors")
 
 hg.InputInit()
 hg.WindowSystemInit()
