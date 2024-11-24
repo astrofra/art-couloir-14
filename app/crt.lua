@@ -177,7 +177,7 @@ while not keyboard:Pressed(hg.K_Escape) do
 
 	tex_uniforms = {
 		hg.MakeUniformSetTexture('u_video', tex_video, 0),
-		hg.MakeUniformSetTexture('u_photo0', photo_state.tex_photo0, 1)
+		hg.MakeUniformSetTexture('u_photo0', photo_state.tex_photo0.ref, 1)
 	}
 
 	view_id = 0

@@ -12,7 +12,7 @@ function PhotoChangeCoroutine(state)
         end
         state.photo_table = photo_tables[folder_table[state.current_folder]]
     end
-    state.next_tex = LoadPhotoFromTable(state.photo_table, state.current_photo, folder_table[state.current_folder])
+    state.next_tex = LoadPhotoFromTable(state.photo_table, state.current_photo, folder_table[state.current_folder], res)
     coroutine.yield()
     
     -- ramp up the noise intensity
