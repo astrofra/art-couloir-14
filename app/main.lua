@@ -78,26 +78,6 @@ vr_right_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
 scene = hg.Scene()
 hg.LoadSceneFromAssets("main.scn", scene, res, hg.GetForwardPipelineInfo())
 
--- -- Create models
--- vtx_layout = hg.VertexLayoutPosFloatNormUInt8()
-
--- cube_mdl = hg.CreateCubeModel(vtx_layout, 1, 1, 1)
--- cube_ref = res:AddModel('cube', cube_mdl)
--- ground_mdl = hg.CreateCubeModel(vtx_layout, 50, 0.01, 50)
--- ground_ref = res:AddModel('ground', ground_mdl)
-
--- -- Load shader
--- prg_ref = hg.LoadPipelineProgramRefFromAssets('core/shader/pbr.hps', res, hg.GetForwardPipelineInfo())
-
--- -- Create materials
--- function create_material(ubc, orm)
--- 	mat = hg.Material()
--- 	hg.SetMaterialProgram(mat, prg_ref)
--- 	hg.SetMaterialValue(mat, "uBaseOpacityColor", ubc)
--- 	hg.SetMaterialValue(mat, "uOcclusionRoughnessMetalnessColor", orm)
--- 	return mat
--- end
-
 -- CRT Stuff
 
 -- text rendering
@@ -152,7 +132,7 @@ photo_tables.hazmat = {}
 photo_tables.netzwerk = {}
 photo_tables.radiograf = {}
 
-for idx = 0, 23 do
+for idx = 0, 22 do
 	table.insert(photo_tables.arzamas_16, string.format("%03d", idx))
 end
 for idx = 0, 23 do
@@ -287,7 +267,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
 
 	-- loop noise video (ffmpeg)
-	if hg.GetClock() - video_start_clock > hg.time_from_sec_f(7.0) then
+	if hg.GetClock() - video_start_clock > hg.time_from_sec_f(6.90) then
 		video_start_clock = hg.GetClock()
 		print("Restart glitch tape!")
 		streamer:Seek(handle, 0)
