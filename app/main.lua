@@ -112,6 +112,7 @@ local photo_state = {
 	index_photo0 = nil,
     noise_intensity = nil,
     coroutine = nil,
+	update_pipeline = true,
 	sounds = {}
 }
 
@@ -261,10 +262,15 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		hg.MakeUniformSetTexture('u_photo0', photo_state.tex_photo0.texture, 1)
 	}
 
-	hg.SetMaterialValue(crt_screen_material, 'control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
-	hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
+	if photo_state.noise_intensity > 0.0 or chroma_distortion > 0.0 then
+		hg.SetMaterialValue(crt_screen_material, 'control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
+	end
 
-	hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
+	if photo_state.update_pipeline then
+		hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
+		hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
+		photo_state.update_pipeline = false
+	end
 
 	-- loop noise video (ffmpeg)
 	if hg.GetClock() - video_start_clock > hg.time_from_sec_f(6.90) then

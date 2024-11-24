@@ -36,6 +36,7 @@ function PhotoChangeCoroutine(state)
     state.tex_photo0 = state.next_tex
     state.index_photo0 = state.current_photo
     state.next_tex = nil
+    state.update_pipeline = true
     coroutine.yield()
     
     -- ramp down the noise intensity
