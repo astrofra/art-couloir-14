@@ -61,61 +61,61 @@
 	},
 	"instances": [
 		{
-			"name": "props/monitor_cctv/monitor_cctv.scn"
-		},
-		{
-			"name": "props/tv_vintage/tv_vintage.scn"
-		},
-		{
-			"name": "props/office_chair/SM_OfficeChair02.scn"
-		},
-		{
-			"name": "props/cyclo/cyclo.scn"
-		},
-		{
-			"name": "props/tandy_trs_80/SM_computer_01a.scn"
-		},
-		{
-			"name": "props/apple_2/apple_2.scn"
-		},
-		{
-			"name": "props/small_chair/SM_Chair05.scn"
-		},
-		{
-			"name": "props/old-home-computer/SM_HomeComputer.scn"
-		},
-		{
-			"name": "props/cyclo/cyclo.scn"
-		},
-		{
-			"name": "props/cyclo/cyclo.scn"
-		},
-		{
-			"name": "props/metal_desk/SM_MetalDesk.scn"
-		},
-		{
-			"name": "props/tv_medium_size/tv_medium_size.scn"
-		},
-		{
-			"name": "props/calendar/uploads_files_3187835_kalendar.scn"
-		},
-		{
-			"name": "props/table/Soviet_Table_Variant1_LOD0.scn"
-		},
-		{
-			"name": "props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
-		},
-		{
-			"name": "props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
-		},
-		{
-			"name": "props/armchair/Soviet_armchair_Lisek_LOD0.scn"
+			"name": "props/square_shadow/round_shadow.scn"
 		},
 		{
 			"name": "props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn"
 		},
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/armchair/Soviet_armchair_Lisek_LOD0.scn"
+		},
+		{
+			"name": "props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
+		},
+		{
+			"name": "props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
+		},
+		{
+			"name": "props/table/Soviet_Table_Variant1_LOD0.scn"
+		},
+		{
+			"name": "props/calendar/uploads_files_3187835_kalendar.scn"
+		},
+		{
+			"name": "props/tv_medium_size/tv_medium_size.scn"
+		},
+		{
+			"name": "props/metal_desk/SM_MetalDesk.scn"
+		},
+		{
+			"name": "props/cyclo/cyclo.scn"
+		},
+		{
+			"name": "props/cyclo/cyclo.scn"
+		},
+		{
+			"name": "props/old-home-computer/SM_HomeComputer.scn"
+		},
+		{
+			"name": "props/small_chair/SM_Chair05.scn"
+		},
+		{
+			"name": "props/apple_2/apple_2.scn"
+		},
+		{
+			"name": "props/tandy_trs_80/SM_computer_01a.scn"
+		},
+		{
+			"name": "props/cyclo/cyclo.scn"
+		},
+		{
+			"name": "props/office_chair/SM_OfficeChair02.scn"
+		},
+		{
+			"name": "props/tv_vintage/tv_vintage.scn"
+		},
+		{
+			"name": "props/monitor_cctv/monitor_cctv.scn"
 		}
 	],
 	"key_values": null,
@@ -306,7 +306,7 @@
 			],
 			"disabled": true,
 			"idx": 0,
-			"instance": 3,
+			"instance": 15,
 			"name": "cyclo"
 		},
 		{
@@ -319,7 +319,7 @@
 			],
 			"disabled": true,
 			"idx": 1,
-			"instance": 8,
+			"instance": 10,
 			"name": "cyclo"
 		},
 		{
@@ -357,7 +357,7 @@
 			],
 			"disabled": false,
 			"idx": 4,
-			"instance": 10,
+			"instance": 8,
 			"name": "SM_MetalDesk"
 		},
 		{
@@ -382,7 +382,7 @@
 			],
 			"disabled": false,
 			"idx": 6,
-			"instance": 2,
+			"instance": 16,
 			"name": "SM_OfficeChair02"
 		},
 		{
@@ -407,7 +407,7 @@
 			],
 			"disabled": false,
 			"idx": 8,
-			"instance": 1,
+			"instance": 17,
 			"name": "tv_medium_size"
 		},
 		{
@@ -420,7 +420,7 @@
 			],
 			"disabled": false,
 			"idx": 9,
-			"instance": 0,
+			"instance": 18,
 			"name": "monitor_cctv"
 		},
 		{
@@ -433,7 +433,7 @@
 			],
 			"disabled": false,
 			"idx": 10,
-			"instance": 11,
+			"instance": 7,
 			"name": "crt_tv"
 		},
 		{
@@ -446,7 +446,7 @@
 			],
 			"disabled": false,
 			"idx": 11,
-			"instance": 6,
+			"instance": 12,
 			"name": "Instance"
 		},
 		{
@@ -459,7 +459,7 @@
 			],
 			"disabled": false,
 			"idx": 12,
-			"instance": 5,
+			"instance": 13,
 			"name": "apple_2"
 		},
 		{
@@ -484,7 +484,7 @@
 			],
 			"disabled": false,
 			"idx": 14,
-			"instance": 4,
+			"instance": 14,
 			"name": "TRS-80"
 		},
 		{
@@ -497,7 +497,7 @@
 			],
 			"disabled": false,
 			"idx": 15,
-			"instance": 7,
+			"instance": 11,
 			"name": "SM_HomeComputer"
 		},
 		{
@@ -522,7 +522,7 @@
 			],
 			"disabled": false,
 			"idx": 17,
-			"instance": 12,
+			"instance": 6,
 			"name": "calendar"
 		},
 		{
@@ -535,7 +535,7 @@
 			],
 			"disabled": false,
 			"idx": 18,
-			"instance": 17,
+			"instance": 1,
 			"name": "Soviet_Chest_Of_Drawers_Variant2_LOD0"
 		},
 		{
@@ -548,7 +548,7 @@
 			],
 			"disabled": false,
 			"idx": 19,
-			"instance": 13,
+			"instance": 5,
 			"name": "Soviet_Table_Variant1_LOD0"
 		},
 		{
@@ -561,7 +561,7 @@
 			],
 			"disabled": false,
 			"idx": 20,
-			"instance": 14,
+			"instance": 4,
 			"name": "Soviet_Wardrobe_Variant1_LOD0"
 		},
 		{
@@ -574,7 +574,7 @@
 			],
 			"disabled": false,
 			"idx": 21,
-			"instance": 15,
+			"instance": 3,
 			"name": "Soviet_Wardrobe_Variant1_LOD0"
 		},
 		{
@@ -599,7 +599,7 @@
 			],
 			"disabled": false,
 			"idx": 23,
-			"instance": 16,
+			"instance": 2,
 			"name": "Soviet_armchair_Lisek_LOD0"
 		},
 		{
@@ -708,7 +708,7 @@
 			],
 			"disabled": false,
 			"idx": 32,
-			"instance": 18,
+			"instance": 0,
 			"name": "round_shadow"
 		}
 	],
@@ -817,6 +817,10 @@
 							"name": "uOcclusionRoughnessMetalnessMap",
 							"path": "props/primitives/ground_orm.png",
 							"stage": 1
+						},
+						{
+							"name": "uSelfMap",
+							"stage": 4
 						}
 					],
 					"values": [
@@ -1080,9 +1084,24 @@
 							"name": "uDiffuseMap",
 							"path": "photos/arzamas_16/000.png",
 							"stage": 0
+						},
+						{
+							"name": "uSelfMap",
+							"path": "common/maps/Concrete042A_2K_Color.png",
+							"stage": 4
 						}
 					],
 					"values": [
+						{
+							"name": "control",
+							"type": "vec4",
+							"value": [
+								0.5,
+								0.5,
+								1.0,
+								1.0
+							]
+						},
 						{
 							"name": "uCustom",
 							"type": "vec4",
@@ -1582,7 +1601,7 @@
 			],
 			"rot": [
 				62.999996185302734,
-				105.99992370605469,
+				105.99991607666016,
 				2.5787694539758377e-06
 			],
 			"scl": [

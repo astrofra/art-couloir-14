@@ -1,5 +1,5 @@
 {
-	"features": ["OptionalDiffuseMap"],
+	"features": ["OptionalDiffuseMap", "OptionalSelfMap"],
 	"uniforms": [
 		{"name": "uDiffuseColor", "type": "Color", "value": [1.0, 1.0, 1.0, 1.0]},
 		{"name": "uCustom", "type": "Vec4", "value": [1.0, 1.0, 1.0, 1.0]},
