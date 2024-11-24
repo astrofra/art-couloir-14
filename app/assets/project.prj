@@ -1,14 +1,14 @@
 {
 	"recent_files": [
+		"light_cone/light_cone.scn",
 		"main.scn",
+		"props/office_chair/SM_OfficeChair02.scn",
+		"props/old-home-computer/SM_HomeComputer.scn",
+		"props/slides_projector/uploads_files_2708484_SM_SlideProjector.scn",
 		"props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn",
 		"props/tv_vintage/tv_vintage.scn",
 		"props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen.scn",
-		"props/old-home-computer/SM_HomeComputer.scn",
 		"props/apple_2/apple_2.scn",
-		"test.scn",
-		"props/table/Soviet_Table_Variant1_LOD0.scn",
-		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn",
-		"props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
+		"test.scn"
 	]
 }
