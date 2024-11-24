@@ -6,8 +6,9 @@ function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder)
 	local texture = res:GetTexture(texture_ref)
 
 	local slide_texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/slides/" .. _photo_table[_photo_idx] .. '_slide.png', hg.TF_UClamp, res)
+	local slide_texture = res:GetTexture(slide_texture_ref)
 
-	return {texture_ref = texture_ref, texture = texture, slide_texture_ref = slide_texture_ref}
+	return {texture_ref = texture_ref, texture = texture, slide_texture_ref = slide_texture_ref, slide_texture = slide_texture}
 end
 
 hg = require("harfang")
@@ -278,20 +279,24 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		print("Update photos !")
 
 		-- textures
-		hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
-		hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
+		if hg.IsValid(photo_state.tex_photo0.texture) and hg.IsValid(photo_state.tex_photo0.slide_texture) then
+			hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
+			hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
 
-		-- light rig
-		for idx = 1, 4 do
-			local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
-			rgb_color = increase_saturation(rgb_color, 5.0)
-			local diffuse_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
-			local spec_color = diffuse_color
-			screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
-			screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
+			-- light rig
+			for idx = 1, 4 do
+				local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
+				rgb_color = increase_saturation(rgb_color, 5.0)
+				local diffuse_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
+				local spec_color = diffuse_color
+				screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
+				screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
+			end
+
+			photo_state.update_pipeline = false
+		else
+			print("Texture not valid !")
 		end
-
-		photo_state.update_pipeline = false
 	end
 
 	-- loop noise video (ffmpeg)
@@ -386,6 +391,9 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	hg.OpenVRSubmitFrame(vr_left_fb, vr_right_fb)
 
 	hg.UpdateWindow(win)
+
+	scene:GarbageCollect()
+	collectgarbage()
 end
 
 hg.DestroyForwardPipeline(pipeline)
