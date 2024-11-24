@@ -19,5 +19,5 @@
 "recalculate_tangents":"0"
 "scale":"1.000000"
 "scene_policy":"0"
-"texture_policy":"1"
+"texture_policy":"0"
 "use_finalizer_script":"0"

@@ -115,6 +115,9 @@
 			"name": "props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn"
 		},
 		{
+			"name": "props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn"
+		},
+		{
 			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen.scn"
 		}
 	],
@@ -696,8 +699,21 @@
 			],
 			"disabled": false,
 			"idx": 242,
-			"instance": 18,
+			"instance": 19,
 			"name": "SM_HomeComputer_screen"
+		},
+		{
+			"components": [
+				32,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 244,
+			"instance": 18,
+			"name": "tv_vintage_screen"
 		}
 	],
 	"objects": [
@@ -1637,6 +1653,24 @@
 				0.9700000286102295,
 				0.9699999094009399,
 				0.9699999094009399
+			]
+		},
+		{
+			"parent": 8,
+			"pos": [
+				-0.06157052516937256,
+				0.21299827098846436,
+				-0.31951773166656494
+			],
+			"rot": [
+				-0.0,
+				6.830182883277303e-06,
+				0.0
+			],
+			"scl": [
+				0.9999995231628418,
+				1.000000238418579,
+				1.0000008344650269
 			]
 		}
 	]

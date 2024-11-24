@@ -1,14 +1,14 @@
 {
 	"recent_files": [
 		"main.scn",
-		"props/table/Soviet_Table_Variant1_LOD0.scn",
-		"test.scn",
-		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn",
-		"props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn",
-		"props/armchair/Soviet_armchair_Lisek_LOD0.scn",
-		"props/tv_medium_size/tv_medium_size.scn",
-		"props/metal_desk/SM_MetalDesk.scn",
+		"props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn",
+		"props/tv_vintage/tv_vintage.scn",
+		"props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen.scn",
 		"props/old-home-computer/SM_HomeComputer.scn",
-		"props/office_chair/SM_OfficeChair02.scn"
+		"props/apple_2/apple_2.scn",
+		"test.scn",
+		"props/table/Soviet_Table_Variant1_LOD0.scn",
+		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn",
+		"props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
 	]
 }
