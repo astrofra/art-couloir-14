@@ -2,7 +2,10 @@
 
 function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder)
 	-- hg.LoadTextureFromAssets(slide_data[_idx].bitmap, hg.TF_UClamp | hg.TF_VClamp, res)
-	return hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp)
+	local texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp, res)
+	local texture = res:GetTexture(texture_ref)
+
+	return {texture_ref = texture_ref, texture = texture}
 end
 
 hg = require("harfang")
@@ -270,11 +273,11 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	tex_uniforms = {
 		hg.MakeUniformSetTexture('u_video', video_fx_texture, 0),
-		hg.MakeUniformSetTexture('u_photo0', photo_state.tex_photo0, 1)
+		hg.MakeUniformSetTexture('u_photo0', photo_state.tex_photo0.texture, 1)
 	}
 
 	hg.SetMaterialValue(crt_screen_material, 'control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
-	-- hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0, 0)
+	hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
 
 	-- loop noise video (ffmpeg)
 	if hg.GetClock() - video_start_clock > hg.time_from_sec_f(7.0) then
