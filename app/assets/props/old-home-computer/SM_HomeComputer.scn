@@ -11,9 +11,9 @@
 	},
 	"environment": {
 		"ambient": [
-			0,
-			0,
-			0,
+			512,
+			512,
+			255,
 			255
 		],
 		"brdf_map": "core/pbr/brdf.dds",
