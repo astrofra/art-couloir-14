@@ -201,6 +201,7 @@ initial_head_pos.y = 0.0
 local keyboard = hg.Keyboard('raw')
 local switch_clock = hg.GetClock()
 
+-- Fetch scene's nodes
 crt_screen_node = scene:GetNode("crt_screen")
 crt_screen_material = crt_screen_node:GetObject():GetMaterial(0)
 photo_material_texture = hg.GetMaterialTexture(crt_screen_material, "uDiffuseMap")
@@ -209,6 +210,12 @@ video_fx_texture = res:GetTexture(video_fx_material_texture)
 
 slide_screen_node = scene:GetNode("slide_screen")
 slide_screen_material = slide_screen_node:GetObject():GetMaterial(0)
+
+screen_lights = {}
+
+for idx = 0, 3 do
+	table.insert(screen_lights, scene:GetNode("ScreenLight" .. idx))
+end
 
 -- video stream
 -- tex_video = hg.CreateTexture(res_x, res_y, "Video texture", 0)

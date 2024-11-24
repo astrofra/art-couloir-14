@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw
 
 # Path to folders
 folders_path = "../../assets/photos/"
-output_lua_path = "output_colors.lua"
+output_lua_path = "../../slides_colors.lua"
 
 # Coordinates and radius for sampling
 areas = [
@@ -45,7 +45,7 @@ def process_image(image_path, debug_folder):
             median_color = np.median(sampled_pixels, axis=0).astype(int)
             mixed_color = (mean_color + median_color) // 2
 
-            colors.append(tuple(mixed_color))
+            colors.append(tuple(int(c) for c in mixed_color))  # Ensure native Python int
 
             # Draw the circle on the debug image
             debug_x, debug_y = int(x * scale_factor), int(y * scale_factor)
@@ -63,6 +63,7 @@ def process_image(image_path, debug_folder):
         debug_img.save(debug_image_path)
 
         return colors
+
 
 def main():
     lua_table = {}
@@ -85,7 +86,10 @@ def main():
 
                 # Process the image and store its colors
                 colors = process_image(file_path, debug_folder)
-                lua_table[folder_name][file_name] = colors
+                # Extract the key by removing "_slide.png" from the file name
+                key = file_name.replace("_slide.png", "")
+                lua_table[folder_name][key] = colors
+
 
     # Write the Lua table to a file
     with open(output_lua_path, "w") as lua_file:
