@@ -273,7 +273,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	end
 
 	-- loop noise video (ffmpeg)
-	if hg.GetClock() - video_start_clock > hg.time_from_sec_f(6.90) then
+	if hg.GetClock() - video_start_clock >= hg.time_from_sec_f(7.0) then
 		video_start_clock = hg.GetClock()
 		print("Restart glitch tape!")
 		streamer:Seek(handle, 0)
