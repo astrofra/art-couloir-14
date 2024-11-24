@@ -14,7 +14,7 @@ areas = [
     (600, 1140),
     (750, 750),
 ]
-radius = 64
+radius = 256
 
 def circle_mask(image_shape, center, radius):
     """Generate a circular mask for a given center and radius."""
@@ -31,9 +31,11 @@ def process_image(image_path, debug_folder):
         np_img = np.array(img)
         colors = []
 
-        # Create debug image (resized 512x512)
-        debug_img = Image.new("RGB", (512, 512), "black")
+        # Create a resized version of the original image as the background
+        resized_img = img.resize((512, 512))
+        debug_img = resized_img.copy()  # Start with the resized image as the base
         draw = ImageDraw.Draw(debug_img)
+
         scale_factor = 512 / img.width
 
         for idx, (x, y) in enumerate(areas):
@@ -63,6 +65,7 @@ def process_image(image_path, debug_folder):
         debug_img.save(debug_image_path)
 
         return colors
+
 
 def main():
     lua_table = {}

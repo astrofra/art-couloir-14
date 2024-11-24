@@ -97,4 +97,73 @@ function apply_aaa_settings(aaa_config, scene_path)
        aaa_config.taa_weight = scene_config.taa_weight
        aaa_config.z_thickness = scene_config.z_thickness
     end
-end  
+end
+
+function increase_saturation(rgb, factor)
+    -- Extract RGB values
+    local r, g, b = rgb[1] / 255, rgb[2] / 255, rgb[3] / 255
+
+    -- Find the maximum and minimum values of R, G, B
+    local max_val = math.max(r, g, b)
+    local min_val = math.min(r, g, b)
+    local delta = max_val - min_val
+
+    -- Calculate Lightness
+    local l = (max_val + min_val) / 2
+
+    -- Calculate Saturation
+    local s = 0
+    if delta ~= 0 then
+        if l < 0.5 then
+            s = delta / (max_val + min_val)
+        else
+            s = delta / (2.0 - max_val - min_val)
+        end
+    end
+
+    -- Calculate Hue
+    local h = 0
+    if delta ~= 0 then
+        if max_val == r then
+            h = (g - b) / delta
+        elseif max_val == g then
+            h = 2.0 + (b - r) / delta
+        else
+            h = 4.0 + (r - g) / delta
+        end
+    end
+    h = (h * 60) % 360  -- Ensure hue is in [0, 360)
+
+    -- Adjust Saturation
+    s = math.min(s * factor, 1)  -- Increase saturation by the given factor, clamped to 1
+
+    -- Convert back to RGB
+    local function hsl_to_rgb(h, s, l)
+        local function hue_to_rgb(p, q, t)
+            if t < 0 then t = t + 1 end
+            if t > 1 then t = t - 1 end
+            if t < 1/6 then return p + (q - p) * 6 * t end
+            if t < 1/2 then return q end
+            if t < 2/3 then return p + (q - p) * (2/3 - t) * 6 end
+            return p
+        end
+
+        if s == 0 then
+            local gray = math.floor(l * 255 + 0.5)
+            return gray, gray, gray
+        end
+
+        local q = (l < 0.5) and (l * (1 + s)) or (l + s - l * s)
+        local p = 2 * l - q
+
+        local r = hue_to_rgb(p, q, h / 360 + 1/3)
+        local g = hue_to_rgb(p, q, h / 360)
+        local b = hue_to_rgb(p, q, h / 360 - 1/3)
+
+        return math.floor(r * 255 + 0.5), math.floor(g * 255 + 0.5), math.floor(b * 255 + 0.5)
+    end
+
+    local new_r, new_g, new_b = hsl_to_rgb(h, s, l)
+    return {new_r, new_g, new_b}
+end
+
