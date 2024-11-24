@@ -1087,7 +1087,7 @@
 						},
 						{
 							"name": "uSelfMap",
-							"path": "common/maps/Concrete042A_2K_Color.png",
+							"path": "common/video_noise_static.png",
 							"stage": 4
 						}
 					],
@@ -1601,7 +1601,7 @@
 			],
 			"rot": [
 				62.999996185302734,
-				105.99991607666016,
+				105.99990844726563,
 				2.5787694539758377e-06
 			],
 			"scl": [

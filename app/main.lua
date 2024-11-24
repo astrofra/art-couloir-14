@@ -69,25 +69,29 @@ end
 vr_left_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
 vr_right_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
 
--- Create models
-vtx_layout = hg.VertexLayoutPosFloatNormUInt8()
+-- Create scene
+scene = hg.Scene()
+hg.LoadSceneFromAssets("main.scn", scene, res, hg.GetForwardPipelineInfo())
 
-cube_mdl = hg.CreateCubeModel(vtx_layout, 1, 1, 1)
-cube_ref = res:AddModel('cube', cube_mdl)
-ground_mdl = hg.CreateCubeModel(vtx_layout, 50, 0.01, 50)
-ground_ref = res:AddModel('ground', ground_mdl)
+-- -- Create models
+-- vtx_layout = hg.VertexLayoutPosFloatNormUInt8()
 
--- Load shader
-prg_ref = hg.LoadPipelineProgramRefFromAssets('core/shader/pbr.hps', res, hg.GetForwardPipelineInfo())
+-- cube_mdl = hg.CreateCubeModel(vtx_layout, 1, 1, 1)
+-- cube_ref = res:AddModel('cube', cube_mdl)
+-- ground_mdl = hg.CreateCubeModel(vtx_layout, 50, 0.01, 50)
+-- ground_ref = res:AddModel('ground', ground_mdl)
 
--- Create materials
-function create_material(ubc, orm)
-	mat = hg.Material()
-	hg.SetMaterialProgram(mat, prg_ref)
-	hg.SetMaterialValue(mat, "uBaseOpacityColor", ubc)
-	hg.SetMaterialValue(mat, "uOcclusionRoughnessMetalnessColor", orm)
-	return mat
-end
+-- -- Load shader
+-- prg_ref = hg.LoadPipelineProgramRefFromAssets('core/shader/pbr.hps', res, hg.GetForwardPipelineInfo())
+
+-- -- Create materials
+-- function create_material(ubc, orm)
+-- 	mat = hg.Material()
+-- 	hg.SetMaterialProgram(mat, prg_ref)
+-- 	hg.SetMaterialValue(mat, "uBaseOpacityColor", ubc)
+-- 	hg.SetMaterialValue(mat, "uOcclusionRoughnessMetalnessColor", orm)
+-- 	return mat
+-- end
 
 -- CRT Stuff
 
@@ -186,10 +190,6 @@ zoom_level = 1.0 / zoom_level
 
 -- 3D scene stuff
 
--- Create scene
-scene = hg.Scene()
-hg.LoadSceneFromAssets("main.scn", scene, res, hg.GetForwardPipelineInfo())
-
 -- Setup 2D rendering to display eyes textures
 quad_layout = hg.VertexLayout()
 quad_layout:Begin():Add(hg.A_Position, 3, hg.AT_Float):Add(hg.A_TexCoord0, 3, hg.AT_Float):End()
@@ -222,7 +222,7 @@ video_fx_material_texture = hg.GetMaterialTexture(crt_screen_material, "uSelfMap
 video_fx_texture = res:GetTexture(video_fx_material_texture)
 
 -- video stream
-tex_video = hg.CreateTexture(res_x, res_y, "Video texture", 0)
+-- tex_video = hg.CreateTexture(res_x, res_y, "Video texture", 0)
 size = hg.iVec2(res_x, res_y)
 fmt = hg.TF_RGB8
 
