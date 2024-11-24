@@ -14,6 +14,7 @@ hg = require("harfang")
 require("utils")
 require("arguments")
 require("coroutines")
+-- slides_colors = require("slides_colors")
 
 hg.InputInit()
 hg.WindowSystemInit()
@@ -274,6 +275,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	end
 
 	if photo_state.update_pipeline then
+		print("Update photos !")
 		hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
 		hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
 		photo_state.update_pipeline = false
