@@ -69,12 +69,16 @@ res = hg.PipelineResources()
 render_data = hg.SceneForwardPipelineRenderData()  -- this object is used by the low-level scene rendering API to share view-independent data with both eyes
 
 -- OpenVR initialization
-if not hg.OpenVRInit() then
-	os.exit()
+local open_vr_enabled = false
+
+if hg.OpenVRInit() then
+	open_vr_enabled = true
 end
 
-vr_left_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
-vr_right_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
+if open_vr_enabled then
+	vr_left_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
+	vr_right_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
+end
 
 -- Create scene
 scene = hg.Scene()
@@ -233,6 +237,16 @@ video_start_clock = hg.GetClock()
 -- tex_video_ref = res:AddTexture("tex_video", tex_video)
 -- hg.SetMaterialTexture(crt_screen_material, "uSelfMap", tex_video_ref, 4)
 
+if not open_vr_enabled then
+	local _cam = scene:GetNode("FPSCamera")
+	local _rot = _cam:GetTransform():GetRot()
+	_rot.y = _rot.y + math.pi / 8.0
+	_rot.x = _rot.x + math.pi / 16.0
+	_cam:GetTransform():SetRot(_rot)
+	_cam:GetCamera():SetFov(math.pi / 2.0)
+	scene:SetCurrentCamera(_cam)
+end
+
 -- Main loop
 while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	keyboard:Update()
@@ -309,55 +323,63 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	scene:Update(dt)
 
-	-- vr
-	actor_body_mtx = hg.TransformationMat4(initial_head_pos, hg.Vec3(0, 0, 0))
-
-	vr_state = hg.OpenVRGetState(actor_body_mtx, 0.05, 1000)
-	left, right = hg.OpenVRStateToViewState(vr_state)
-
+	-- rendering
 	view_id = 0  -- keep track of the next free view id
-	passId = hg.SceneForwardPipelinePassViewId()
 
-	-- Prepare view-independent render data once
-	view_id, passId = hg.PrepareSceneForwardPipelineCommonRenderData(view_id, scene, render_data, pipeline, res, passId)
-	vr_eye_rect = hg.IntRect(0, 0, vr_state.width, vr_state.height)
+	-- vr
+	if open_vr_enabled then
+			actor_body_mtx = hg.TransformationMat4(initial_head_pos, hg.Vec3(0, 0, 0))
 
-	-- Prepare the left eye render data then draw to its framebuffer
-	view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, left, scene, render_data, pipeline, res, passId)
-	view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, left, pipeline, render_data, res, vr_left_fb:GetHandle())
+			vr_state = hg.OpenVRGetState(actor_body_mtx, 0.05, 1000)
+			left, right = hg.OpenVRStateToViewState(vr_state)
 
-	-- Prepare the right eye render data then draw to its framebuffer
-	view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, right, scene, render_data, pipeline, res, passId)
-	view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, right, pipeline, render_data, res, vr_right_fb:GetHandle())
+			passId = hg.SceneForwardPipelinePassViewId()
+
+			-- Prepare view-independent render data once
+			view_id, passId = hg.PrepareSceneForwardPipelineCommonRenderData(view_id, scene, render_data, pipeline, res, passId)
+			vr_eye_rect = hg.IntRect(0, 0, vr_state.width, vr_state.height)
+
+			-- Prepare the left eye render data then draw to its framebuffer
+			view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, left, scene, render_data, pipeline, res, passId)
+			view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, left, pipeline, render_data, res, vr_left_fb:GetHandle())
+
+			-- Prepare the right eye render data then draw to its framebuffer
+			view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, right, scene, render_data, pipeline, res, passId)
+			view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, right, pipeline, render_data, res, vr_right_fb:GetHandle())
+	else
+		hg.SubmitSceneToPipeline(view_id, scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
+	end
 
 	view_id = view_id + 1
 
 	-- CRT display rendering
-	hg.SetViewPerspective(view_id, 0, 0, res_x, res_y, hg.TranslationMat4(hg.Vec3(0, 0, -0.68 * zoom_level)))
+	if open_vr_enabled then
+		hg.SetViewPerspective(view_id, 0, 0, res_x, res_y, hg.TranslationMat4(hg.Vec3(0, 0, -0.68 * zoom_level)))
 
-	hg.DrawModel(view_id, screen_mdl, screen_prg, val_uniforms, tex_uniforms, hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(math.pi / 2, math.pi, 0)))
+		hg.DrawModel(view_id, screen_mdl, screen_prg, val_uniforms, tex_uniforms, hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(math.pi / 2, math.pi, 0)))
 
-	-- text OSD
-	local osd_text = folder_short[photo_state.current_folder] .. (photo_state.index_photo0 - 1)
-	-- osd_text = ghostWorldAssociations[photo_state.index_photo0]
-	view_id = view_id + 1
+		-- text OSD
+		local osd_text = folder_short[photo_state.current_folder] .. (photo_state.index_photo0 - 1)
+		-- osd_text = ghostWorldAssociations[photo_state.index_photo0]
+		view_id = view_id + 1
 
-	hg.SetView2D(view_id, 0, 0, res_x, res_y, -1, 1, hg.CF_None, hg.Color.Black, 1, 0)
+		hg.SetView2D(view_id, 0, 0, res_x, res_y, -1, 1, hg.CF_None, hg.Color.Black, 1, 0)
 
-	local text_pos = hg.Vec3(res_x * 0.05, res_y * 0.05, -0.5)
-	local _osd_colors = {hg.Vec4(1.0, 0.0, 0.0, 0.8), hg.Vec4(0.0, 1.0, 0.0, 0.8), hg.Vec4(1.0, 1.0, 1.0, 1.0)}
-	local _osd_offsets = {-2.0, 1.0, 0.0}
+		local text_pos = hg.Vec3(res_x * 0.05, res_y * 0.05, -0.5)
+		local _osd_colors = {hg.Vec4(1.0, 0.0, 0.0, 0.8), hg.Vec4(0.0, 1.0, 0.0, 0.8), hg.Vec4(1.0, 1.0, 1.0, 1.0)}
+		local _osd_offsets = {-2.0, 1.0, 0.0}
 
-	for _text_loop = 1, 3 do
-		local _text_offset = hg.Vec3(res_x * 0.001 * _osd_offsets[_text_loop] * photo_state.noise_intensity, 0.0, 0.0)
-		hg.DrawText(view_id, font_osd, osd_text, font_program, 'u_tex', 0, 
-				hg.Mat4.Identity, text_pos + _text_offset, hg.DTHA_Left, hg.DTVA_Bottom, 
-				{hg.MakeUniformSetValue('u_color', _osd_colors[_text_loop])}, 
-				{}, text_render_state)
+		for _text_loop = 1, 3 do
+			local _text_offset = hg.Vec3(res_x * 0.001 * _osd_offsets[_text_loop] * photo_state.noise_intensity, 0.0, 0.0)
+			hg.DrawText(view_id, font_osd, osd_text, font_program, 'u_tex', 0, 
+					hg.Mat4.Identity, text_pos + _text_offset, hg.DTHA_Left, hg.DTVA_Bottom, 
+					{hg.MakeUniformSetValue('u_color', _osd_colors[_text_loop])}, 
+					{}, text_render_state)
+		end
 	end
 
 	-- Display the VR eyes texture to the backbuffer
-	if VR_DEBUG_DISPLAY then
+	if VR_DEBUG_DISPLAY and open_vr_enabled then
 		hg.SetViewRect(view_id, 0, 0, res_x, res_y)
 		vs = hg.ComputeOrthographicViewState(hg.TranslationMat4(hg.Vec3(0, 0, 0)), res_y, 0.1, 100, hg.ComputeAspectRatioX(res_x, res_y))
 		hg.SetViewTransform(view_id, vs.view, vs.proj)
@@ -388,7 +410,9 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	end
 
 	hg.Frame()
-	hg.OpenVRSubmitFrame(vr_left_fb, vr_right_fb)
+	if open_vr_enabled then
+		hg.OpenVRSubmitFrame(vr_left_fb, vr_right_fb)
+	end
 
 	hg.UpdateWindow(win)
 
