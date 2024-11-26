@@ -118,9 +118,6 @@
 			"name": "props/monitor_cctv/monitor_cctv.scn"
 		},
 		{
-			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen.scn"
-		},
-		{
 			"name": "props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn"
 		},
 		{
@@ -735,9 +732,9 @@
 				4294967295
 			],
 			"disabled": false,
-			"idx": 33,
+			"idx": 34,
 			"instance": 19,
-			"name": "SM_HomeComputer_screen"
+			"name": "tv_vintage_screen"
 		},
 		{
 			"components": [
@@ -748,9 +745,9 @@
 				4294967295
 			],
 			"disabled": false,
-			"idx": 34,
+			"idx": 35,
 			"instance": 20,
-			"name": "tv_vintage_screen"
+			"name": "SlideProjector"
 		},
 		{
 			"components": [
@@ -761,9 +758,9 @@
 				4294967295
 			],
 			"disabled": false,
-			"idx": 35,
+			"idx": 36,
 			"instance": 21,
-			"name": "SlideProjector"
+			"name": "light_cone"
 		},
 		{
 			"components": [
@@ -774,22 +771,21 @@
 				4294967295
 			],
 			"disabled": false,
-			"idx": 36,
+			"idx": 37,
 			"instance": 22,
-			"name": "light_cone"
+			"name": "apple_vintage_screen"
 		},
 		{
 			"components": [
 				37,
 				4294967295,
-				4294967295,
+				6,
 				4294967295,
 				4294967295
 			],
 			"disabled": false,
-			"idx": 289,
-			"instance": 23,
-			"name": "apple_vintage_screen"
+			"idx": 291,
+			"name": "SM_HomeComputer_screen"
 		}
 	],
 	"objects": [
@@ -1202,6 +1198,82 @@
 				}
 			],
 			"name": "props/primitives/ground.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "screen"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"stage": 0
+						},
+						{
+							"name": "uSelfMap",
+							"path": "titles/arzamas_16.png",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uCustom",
+							"type": "vec4",
+							"value": [
+								0.5,
+								0.800000011920929,
+								1.0,
+								1.0
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.19999998807907104,
+								0.0,
+								0.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								-1.0
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": true
+				}
+			],
+			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo"
 		}
 	],
 	"transforms": [
@@ -1800,24 +1872,6 @@
 			]
 		},
 		{
-			"parent": 15,
-			"pos": [
-				-0.021518170833587646,
-				0.26109665632247925,
-				-0.04408201575279236
-			],
-			"rot": [
-				-0.0,
-				-5.2810746637987904e-06,
-				0.0
-			],
-			"scl": [
-				0.9700000286102295,
-				0.9699999094009399,
-				0.9699999094009399
-			]
-		},
-		{
 			"parent": 8,
 			"pos": [
 				-0.06157052516937256,
@@ -1880,13 +1934,31 @@
 			],
 			"rot": [
 				-0.0,
-				3.260428911744384e-06,
+				3.2604286843707087e-06,
 				0.0
 			],
 			"scl": [
 				0.8500611186027527,
 				0.747962236404419,
 				0.7855778932571411
+			]
+		},
+		{
+			"parent": 15,
+			"pos": [
+				-0.02199999988079071,
+				0.26100000739097595,
+				-0.04399999976158142
+			],
+			"rot": [
+				-7.0167078561561656e-15,
+				180.0,
+				0.0
+			],
+			"scl": [
+				0.9700000286102295,
+				0.9700000286102295,
+				0.9700000286102295
 			]
 		}
 	]
