@@ -343,7 +343,8 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	if open_vr_enabled then
 
 		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
-		local val_uniforms = {hg.MakeUniformSetValue('uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))}
+		local clamped_noise = clamp(photo_state.noise_intensity, 0.01, 1.0)
+		local val_uniforms = {hg.MakeUniformSetValue('uControl', hg.Vec4(clamped_noise, chroma_distortion, hg.time_to_sec_f(hg.GetClock())%1.0, 0.0))}
 		-- val_uniforms = {hg.MakeUniformSetValue('control', hg.Vec4(1.0, 1.0, 0.0, 0.0))} -- test only
 		-- _, tex_video, size, fmt = hg.UpdateTexture(streamer, handle, tex_video, size, fmt)
 	
@@ -368,7 +369,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		local _osd_offsets = {-2.0, 1.0, 0.0}
 
 		for _text_loop = 1, 3 do
-			local _text_offset = hg.Vec3(res_x * 0.001 * _osd_offsets[_text_loop] * photo_state.noise_intensity, 0.0, 0.0)
+			local _text_offset = hg.Vec3(res_x * 0.001 * _osd_offsets[_text_loop] * clamped_noise, 0.0, 0.0)
 			hg.DrawText(view_id, font_osd, osd_text, font_program, 'u_tex', 0, 
 					hg.Mat4.Identity, text_pos + _text_offset, hg.DTHA_Left, hg.DTVA_Bottom, 
 					{hg.MakeUniformSetValue('u_color', _osd_colors[_text_loop])}, 
