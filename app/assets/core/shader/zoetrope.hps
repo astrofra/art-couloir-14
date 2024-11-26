@@ -1,0 +1,8 @@
+{
+	"features": [],
+	"uniforms": [
+		{"name": "uLightMap", "type": "Sampler", "channel": 3},
+		{"name": "uOpacityMap", "type": "Sampler", "channel": 5},
+		{"name": "uDiffuseColor", "type": "Color"}
+	]
+}
