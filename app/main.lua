@@ -1,6 +1,6 @@
 -- Display a scene in VR
 
-function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder)
+function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder, res)
 	-- hg.LoadTextureFromAssets(slide_data[_idx].bitmap, hg.TF_UClamp | hg.TF_VClamp, res)
 	local texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp, res)
 	local texture = res:GetTexture(texture_ref)
@@ -11,10 +11,24 @@ function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder)
 	return {texture_ref = texture_ref, texture = texture, slide_texture_ref = slide_texture_ref, slide_texture = slide_texture}
 end
 
+function ChangePhoto(state, folder_table, photo_tables, res)
+    state.current_photo = state.current_photo + 1
+    if state.current_photo > #state.photo_table then
+        state.current_photo = 1
+        state.current_folder = state.current_folder + 1
+        if state.current_folder > #folder_table then
+            state.current_folder = 1
+        end
+        state.photo_table = photo_tables[folder_table[state.current_folder]]
+    end
+
+    state.tex_photo0 = LoadPhotoFromTable(state.photo_table, state.current_photo, folder_table[state.current_folder], res)
+    return state
+end
+
 hg = require("harfang")
 require("utils")
 require("arguments")
-require("coroutines")
 slides_colors = require("slides_colors")
 
 hg.InputInit()
@@ -22,11 +36,10 @@ hg.WindowSystemInit()
 hg.OpenALInit()
 
 SLIDE_SHOW_SPEED = 1.0
-VR_DEBUG_DISPLAY = false
+VR_DEBUG_DISPLAY = true
 -- local res_x, res_y = 768, 576
 -- local res_x, res_y = 800, 600
 local res_x, res_y = 960, 720
--- local res_x, res_y = math.floor(1080 * (4/3)), 1080
 local default_window_mode = hg.WV_Windowed
 
 local options = parseArgs(arg)
@@ -55,18 +68,12 @@ hg.RenderReset(res_x, res_y, hg.RF_VSync | hg.RF_MSAA4X | hg.RF_MaxAnisotropy)
 
 hg.AddAssetsFolder("assets_compiled")
 
-imgui_prg = hg.LoadProgramFromAssets('core/shader/imgui')
-imgui_img_prg = hg.LoadProgramFromAssets('core/shader/imgui_image')
-
-local imgui_vid = 255
-hg.ImGuiInit(imgui_vid, imgui_prg, imgui_img_prg)
-
-pipeline = hg.CreateForwardPipeline(2048, false)
-res = hg.PipelineResources()
+local pipeline = hg.CreateForwardPipeline(2048, false)
+local res = hg.PipelineResources()
 
 -- VR Stuff
 
-render_data = hg.SceneForwardPipelineRenderData()  -- this object is used by the low-level scene rendering API to share view-independent data with both eyes
+local render_data = hg.SceneForwardPipelineRenderData()  -- this object is used by the low-level scene rendering API to share view-independent data with both eyes
 
 -- OpenVR initialization
 local open_vr_enabled = false
@@ -75,13 +82,14 @@ if hg.OpenVRInit() then
 	open_vr_enabled = true
 end
 
+local vr_left_fb, vr_right_fb
 if open_vr_enabled then
 	vr_left_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
 	vr_right_fb = hg.OpenVRCreateEyeFrameBuffer(hg.OVRAA_MSAA4x)
 end
 
 -- Create scene
-scene = hg.Scene()
+local scene = hg.Scene()
 hg.LoadSceneFromAssets("main.scn", scene, res, hg.GetForwardPipelineInfo())
 
 -- CRT Stuff
@@ -113,11 +121,8 @@ local screen_ref = res:AddModel('screen', screen_mdl)
 local photo_state = {
     current_photo = nil,
     photo_table = nil,
-    next_tex = nil,
     tex_photo0 = nil,
-	index_photo0 = nil,
     noise_intensity = nil,
-    coroutine = nil,
 	update_pipeline = true,
 	sounds = {}
 }
@@ -125,9 +130,9 @@ local photo_state = {
 -- photo
 local idx
 
-photo_tables = {}
-folder_table = {"arzamas_16", "fantomy", "hazmat", "netzwerk", "radiograf"}
-folder_short = {"_ARZM/", "_FNTM/", "_HZMT/", "_NETW/", "_RDGF/"}
+local photo_tables = {}
+local folder_table = {"arzamas_16", "fantomy", "hazmat", "netzwerk", "radiograf"}
+local folder_short = {"_ARZM/", "_FNTM/", "_HZMT/", "_NETW/", "_RDGF/"}
 
 for idx = 1, 5 do
 	photo_tables[folder_table[idx]] = {}
@@ -156,7 +161,6 @@ for idx = 0, 22 do
 end
 
 photo_state.current_folder = 1
-
 photo_state.photo_table = photo_tables[folder_table[photo_state.current_folder]]
 
 -- audio
@@ -170,36 +174,33 @@ for snd_idx = 0, 4 do
 end
 
 photo_state.current_photo = 1
-photo_state.next_tex = nil
-photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo, folder_table[photo_state.current_folder])
-photo_state.index_photo0 = photo_state.current_photo
+photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo, folder_table[photo_state.current_folder], res)
 
 photo_state.noise_intensity = 0.0
-chroma_distortion = 0.0
+local chroma_distortion = 0.0
 
-local zoom_level = 1.125
-zoom_level = 1.0 / zoom_level
+local zoom_level = 1.0 / 1.125
 
 -- 3D scene stuff
 
 -- Setup 2D rendering to display eyes textures
-quad_layout = hg.VertexLayout()
+local quad_layout = hg.VertexLayout()
 quad_layout:Begin():Add(hg.A_Position, 3, hg.AT_Float):Add(hg.A_TexCoord0, 3, hg.AT_Float):End()
 
-quad_model = hg.CreatePlaneModel(quad_layout, 1, 1, 1, 1)
-quad_render_state = hg.ComputeRenderState(hg.BM_Alpha, hg.DT_Disabled, hg.FC_Disabled)
+local quad_model = hg.CreatePlaneModel(quad_layout, 1, 1, 1, 1)
+local quad_render_state = hg.ComputeRenderState(hg.BM_Alpha, hg.DT_Disabled, hg.FC_Disabled)
 
-eye_t_size = res_x / 2.5
-eye_t_x = (res_x - 2 * eye_t_size) / 6 + eye_t_size / 2
-quad_matrix = hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(hg.Deg(90), hg.Deg(0), hg.Deg(0)), hg.Vec3(eye_t_size, 1, eye_t_size))
+local eye_t_size = res_x / 2.5
+local eye_t_x = (res_x - 2 * eye_t_size) / 6 + eye_t_size / 2
+local quad_matrix = hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(hg.Deg(90), hg.Deg(0), hg.Deg(0)), hg.Vec3(eye_t_size, 1, eye_t_size))
 
-tex0_program = hg.LoadProgramFromAssets("shaders/sprite")
+local tex0_program = hg.LoadProgramFromAssets("shaders/sprite")
 
-quad_uniform_set_value_list = hg.UniformSetValueList()
+local quad_uniform_set_value_list = hg.UniformSetValueList()
 quad_uniform_set_value_list:clear()
 quad_uniform_set_value_list:push_back(hg.MakeUniformSetValue("color", hg.Vec4(1, 1, 1, 1)))
 
-quad_uniform_set_texture_list = hg.UniformSetTextureList()
+local quad_uniform_set_texture_list = hg.UniformSetTextureList()
 
 local initial_head_pos = scene:GetNode("FPSCamera"):GetTransform():GetPos()
 initial_head_pos.y = 0.0
@@ -208,34 +209,17 @@ local keyboard = hg.Keyboard('raw')
 local switch_clock = hg.GetClock()
 
 -- Fetch scene's nodes
-crt_screen_node = scene:GetNode("crt_screen")
-crt_screen_material = crt_screen_node:GetObject():GetMaterial(0)
-photo_material_texture = hg.GetMaterialTexture(crt_screen_material, "uDiffuseMap")
-video_fx_material_texture = hg.GetMaterialTexture(crt_screen_material, "uSelfMap")
-video_fx_texture = res:GetTexture(video_fx_material_texture)
+local crt_screen_node = scene:GetNode("crt_screen")
+local crt_screen_material = crt_screen_node:GetObject():GetMaterial(0)
 
-slide_screen_node = scene:GetNode("slide_screen")
-slide_screen_material = slide_screen_node:GetObject():GetMaterial(0)
+local slide_screen_node = scene:GetNode("slide_screen")
+local slide_screen_material = slide_screen_node:GetObject():GetMaterial(0)
 
-screen_lights = {}
+local screen_lights = {}
 
 for idx = 0, 3 do
 	table.insert(screen_lights, scene:GetNode("ScreenLight" .. idx))
 end
-
--- video stream
--- tex_video = hg.CreateTexture(res_x, res_y, "Video texture", 0)
-size = hg.iVec2(res_x, res_y)
-fmt = hg.TF_RGB8
-
-streamer = hg.MakeVideoStreamer('hg_ffmpeg.dll')
-streamer:Startup()
-handle = streamer:Open('assets_compiled/videos/glitches.mp4')
-streamer:Play(handle)
-video_start_clock = hg.GetClock()
-
--- tex_video_ref = res:AddTexture("tex_video", tex_video)
--- hg.SetMaterialTexture(crt_screen_material, "uSelfMap", tex_video_ref, 4)
 
 if not open_vr_enabled then
 	local _cam = scene:GetNode("FPSCamera")
@@ -247,46 +231,20 @@ if not open_vr_enabled then
 	scene:SetCurrentCamera(_cam)
 end
 
-photo_state.lock = true
-
 -- Main loop
+local frame_count = 0
+
 while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	keyboard:Update()
 	dt = hg.TickClock()
 
-	photo_state.lock = false
+	-- photo_state.lock = false
 
-	-- slideshow main logic
-	if photo_state.coroutine == nil and (keyboard:Released(hg.K_Space) or (hg.GetClock() - switch_clock > hg.time_from_sec_f(10.0 / SLIDE_SHOW_SPEED))) then
-		photo_state.coroutine = coroutine.create(PhotoChangeCoroutine)
-		switch_clock = hg.GetClock()
-	elseif photo_state.coroutine and coroutine.status(photo_state.coroutine) ~= 'dead' then
-		coroutine.resume(photo_state.coroutine, photo_state)
-	else
-		photo_state.coroutine = nil
-	end
+	frame_count = frame_count + 1
+	if (frame_count > 60) then
+		photo_state = ChangePhoto(photo_state, folder_table, photo_tables, res)
+		frame_count = 0
 
-	photo_state.lock = true
-
-	-- CRT display
-	texture_updated, video_fx_texture, size, fmt = hg.UpdateTexture(streamer, handle, video_fx_texture, size, fmt)
-
-	-- prepare slideshow display
-	chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
-	val_uniforms = {hg.MakeUniformSetValue('control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))}
-	-- val_uniforms = {hg.MakeUniformSetValue('control', hg.Vec4(1.0, 1.0, 0.0, 0.0))} -- test only
-	-- _, tex_video, size, fmt = hg.UpdateTexture(streamer, handle, tex_video, size, fmt)
-
-	tex_uniforms = {
-		hg.MakeUniformSetTexture('u_video', video_fx_texture, 0),
-		hg.MakeUniformSetTexture('u_photo0', photo_state.tex_photo0.texture, 1)
-	}
-
-	if photo_state.noise_intensity > 0.0 or chroma_distortion > 0.0 then
-		hg.SetMaterialValue(crt_screen_material, 'control', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
-	end
-
-	if photo_state.update_pipeline then
 		print("Update photos !")
 
 		-- textures
@@ -303,19 +261,9 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 				screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
 				screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
 			end
-
-			photo_state.update_pipeline = false
 		else
 			print("Texture not valid !")
 		end
-	end
-
-	-- loop noise video (ffmpeg)
-	if hg.GetClock() - video_start_clock >= hg.time_from_sec_f(7.0) then
-		video_start_clock = hg.GetClock()
-		print("Restart glitch tape!")
-		streamer:Seek(handle, 0)
-		streamer:Play(handle)
 	end
 
 	scene:Update(dt)
@@ -349,32 +297,6 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	view_id = view_id + 1
 
-	-- CRT display rendering
-	if open_vr_enabled then
-		hg.SetViewPerspective(view_id, 0, 0, res_x, res_y, hg.TranslationMat4(hg.Vec3(0, 0, -0.68 * zoom_level)))
-
-		hg.DrawModel(view_id, screen_mdl, screen_prg, val_uniforms, tex_uniforms, hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(math.pi / 2, math.pi, 0)))
-
-		-- text OSD
-		local osd_text = folder_short[photo_state.current_folder] .. (photo_state.index_photo0 - 1)
-		-- osd_text = ghostWorldAssociations[photo_state.index_photo0]
-		view_id = view_id + 1
-
-		hg.SetView2D(view_id, 0, 0, res_x, res_y, -1, 1, hg.CF_None, hg.Color.Black, 1, 0)
-
-		local text_pos = hg.Vec3(res_x * 0.05, res_y * 0.05, -0.5)
-		local _osd_colors = {hg.Vec4(1.0, 0.0, 0.0, 0.8), hg.Vec4(0.0, 1.0, 0.0, 0.8), hg.Vec4(1.0, 1.0, 1.0, 1.0)}
-		local _osd_offsets = {-2.0, 1.0, 0.0}
-
-		for _text_loop = 1, 3 do
-			local _text_offset = hg.Vec3(res_x * 0.001 * _osd_offsets[_text_loop] * photo_state.noise_intensity, 0.0, 0.0)
-			hg.DrawText(view_id, font_osd, osd_text, font_program, 'u_tex', 0, 
-					hg.Mat4.Identity, text_pos + _text_offset, hg.DTHA_Left, hg.DTVA_Bottom, 
-					{hg.MakeUniformSetValue('u_color', _osd_colors[_text_loop])}, 
-					{}, text_render_state)
-		end
-	end
-
 	-- Display the VR eyes texture to the backbuffer
 	if VR_DEBUG_DISPLAY and open_vr_enabled then
 		hg.SetViewRect(view_id, 0, 0, res_x, res_y)
@@ -392,29 +314,16 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		hg.DrawModel(view_id, quad_model, tex0_program, quad_uniform_set_value_list, quad_uniform_set_texture_list, quad_matrix, quad_render_state)
 	end
 
-	-- ImGUI
-	if VR_DEBUG_DISPLAY then
-		hg.ImGuiBeginFrame(res_x, res_y, hg.TickClock(), hg.ReadMouse(), hg.ReadKeyboard())
-
-		if hg.ImGuiBegin('Debug') then
-			hg.ImGuiText('Actor:')
-			hg.ImGuiInputVec3("Pos", hg.GetTranslation(vr_state.head))
-		end
-		hg.ImGuiEnd()
-
-		hg.SetView2D(imgui_vid, 0, 0, res_x, res_y, -1, 1, 0, hg.Color.Black, 1, 0)
-		hg.ImGuiEndFrame(imgui_vid)
-	end
-
 	hg.Frame()
+
 	if open_vr_enabled then
 		hg.OpenVRSubmitFrame(vr_left_fb, vr_right_fb)
 	end
 
 	hg.UpdateWindow(win)
 
-	scene:GarbageCollect()
-	collectgarbage()
+	-- scene:GarbageCollect()
+	-- collectgarbage()
 end
 
 hg.DestroyForwardPipeline(pipeline)
