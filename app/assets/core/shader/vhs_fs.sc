@@ -44,12 +44,35 @@ uniform vec4 uControl; // VHS FX -> x : noise_intensity, y : chroma_distortion
 SAMPLER2D(uDiffuseMap, 0); // Photo
 SAMPLER2D(uSelfMap, 4); // Video FX
 
+// Define the framerate
+#define FRAMERATE 24.0
+
+// Function to compute intensity from the packed texture
+float getPackedIntensity(vec2 baseTexCoord, float time)
+{
+    // Calculate the frame index based on FRAMERATE
+    float frame_duration = 1.0 / FRAMERATE; // Duration of each frame
+    float frame_index = mod(floor(time / frame_duration), 256.0); // Current frame
+
+    // Determine the RGBA channel and UV coordinates
+    int channel = int(floor(frame_index / 64.0)); // Determine the RGBA channel
+    vec2 grid_coord = vec2(mod(frame_index, 8.0), floor(mod(frame_index, 64.0) / 8.0)); // 8x8 grid
+    vec2 tex_coord = (grid_coord + baseTexCoord) * (1.0 / 8.0); // Scale to grid UVs
+
+    // Sample the texture and extract the appropriate channel
+    vec4 packed_data = texture2D(uSelfMap, tex_coord);
+    if (channel == 0) return packed_data.r; // Red channel
+    if (channel == 1) return packed_data.g; // Green channel
+    if (channel == 2) return packed_data.b; // Blue channel
+    return packed_data.a; // Alpha channel
+}
+
 void main() {
 	vec4 final_color;
 #if USE_DIFFUSE_MAP
 	final_color = texture2D(uDiffuseMap, vTexCoord0) * uDiffuseColor;
 
-	vec4 vhs_noise = texture2D(uSelfMap, vTexCoord0);
+	vec4 vhs_noise = getPackedIntensity(vTexCoord0, uClock);
 	// vec2 vTexCoord0_mirror = vec2(1.0, 0.0) + vTexCoord0 * vec2(-1.0, 1.0);
 	vec4 photo0;
 	float intensity_accumulation = 0.0;
@@ -58,7 +81,7 @@ void main() {
 
 	for(i = 0.0; i < 1.0; i += 1.0/SAMPLE_WIDTH){
 		noise_offset = vTexCoord0 + vec2(i * 0.01, 0.0);
-		intensity_accumulation += texture2D(uSelfMap, vTexCoord0 + noise_offset);
+		intensity_accumulation += getPackedIntensity(vTexCoord0 + noise_offset, uClock);
 	}
 
 	intensity_accumulation = intensity_accumulation * (10.0 / SAMPLE_WIDTH);

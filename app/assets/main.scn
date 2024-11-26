@@ -774,18 +774,6 @@
 			"idx": 36,
 			"instance": 22,
 			"name": "light_cone"
-		},
-		{
-			"components": [
-				37,
-				4294967295,
-				6,
-				4294967295,
-				4294967295
-			],
-			"disabled": false,
-			"idx": 37,
-			"name": "crt_screen"
 		}
 	],
 	"objects": [
@@ -1164,7 +1152,7 @@
 						},
 						{
 							"name": "uSelfMap",
-							"path": "common/video_noise_static.png",
+							"path": "common/video_noise_animated.tga",
 							"stage": 4
 						}
 					],
@@ -1195,53 +1183,6 @@
 					"write_g": true,
 					"write_r": true,
 					"write_z": false
-				}
-			],
-			"name": "props/primitives/ground.geo"
-		},
-		{
-			"bones": [],
-			"material_infos": [
-				{
-					"name": "default"
-				}
-			],
-			"materials": [
-				{
-					"blend_mode": "alpha",
-					"depth_test": "less",
-					"face_culling": "cw",
-					"flags": [],
-					"program": "core/shader/zoetrope.hps",
-					"textures": [
-						{
-							"name": "uLightMap",
-							"path": "common/offscreen_bracket_animation.png",
-							"stage": 3
-						},
-						{
-							"name": "uOpacityMap",
-							"path": "common/rgb_filter.png",
-							"stage": 5
-						}
-					],
-					"values": [
-						{
-							"name": "uDiffuseColor",
-							"type": "vec4",
-							"value": [
-								1.0,
-								1.0,
-								1.0,
-								1.0
-							]
-						}
-					],
-					"write_a": true,
-					"write_b": true,
-					"write_g": true,
-					"write_r": true,
-					"write_z": true
 				}
 			],
 			"name": "props/primitives/ground.geo"
@@ -1905,31 +1846,13 @@
 			],
 			"rot": [
 				-2.284880997512756e-13,
-				-5.2293667977210134e-05,
+				-5.229366433923133e-05,
 				90.0
 			],
 			"scl": [
 				0.1999995857477188,
 				0.3149484694004059,
 				0.19999980926513672
-			]
-		},
-		{
-			"parent": null,
-			"pos": [
-				3.6577775478363037,
-				0.4545067846775055,
-				2.796931743621826
-			],
-			"rot": [
-				-90.0,
-				0.0,
-				23.390357971191406
-			],
-			"scl": [
-				0.8064019680023193,
-				0.9999991655349731,
-				0.5239664316177368
 			]
 		}
 	]
