@@ -402,8 +402,8 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	hg.UpdateWindow(win)
 
-	-- scene:GarbageCollect()
-	-- collectgarbage()
+	scene:GarbageCollect()
+	collectgarbage()
 end
 
 hg.DestroyForwardPipeline(pipeline)
