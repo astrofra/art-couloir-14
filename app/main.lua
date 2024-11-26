@@ -119,6 +119,8 @@ local screen_ref = res:AddModel('screen', screen_mdl)
 
 -- state context
 local photo_state = {
+	state = "display_photo",
+	start_clock = nil,
     current_photo = nil,
     photo_table = nil,
     tex_photo0 = nil,
@@ -233,6 +235,10 @@ end
 
 -- Main loop
 local frame_count = 0
+local DISPLAY_DURATION = hg.time_from_sec_f(8.0)
+local RAMP_UP_DURATION = hg.time_from_sec_f(1.0)
+local RAMP_DOWN_DURATION = hg.time_from_sec_f(1.0)
+photo_state.start_clock = hg.GetClock()
 
 while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	keyboard:Update()
@@ -240,10 +246,25 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	-- photo_state.lock = false
 
-	frame_count = frame_count + 1
-	if (frame_count > 4) then
+	if photo_state.state == "display_photo" then
+		-- next state ?
+		if hg.GetClock() - photo_state.start_clock > DISPLAY_DURATION then
+			photo_state.start_clock = hg.GetClock()
+			photo_state.state = "ramp_up"
+		end
+	elseif photo_state.state == "ramp_up" then
+		local clock = hg.GetClock() - photo_state.start_clock
+		local clock_s = hg.time_to_sec_f(clock)
+		photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, RAMP_UP_DURATION * 0.8, RAMP_UP_DURATION, 0.0, 1.0), 0.0, 1.0)
+		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
+		hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
+
+		-- next state ?
+		if hg.GetClock() - photo_state.start_clock > RAMP_UP_DURATION then
+			photo_state.state = "change_photo"
+		end
+	elseif photo_state.state == "change_photo" then
 		photo_state = ChangePhoto(photo_state, folder_table, photo_tables, res)
-		frame_count = 0
 		
 		-- textures
 		if hg.IsValid(photo_state.tex_photo0.texture) and hg.IsValid(photo_state.tex_photo0.slide_texture) then
@@ -263,6 +284,16 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 			end
 		else
 			print("Texture not valid !")
+		end
+
+		-- next state
+		photo_state.start_clock = hg.GetClock()
+		photo_state.state = "ramp_down"
+	elseif photo_state.state == "ramp_down" then
+		-- next state ?
+		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
+			photo_state.start_clock = hg.GetClock()
+			photo_state.state = "display_photo"
 		end
 	end
 

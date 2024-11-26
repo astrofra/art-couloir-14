@@ -7,7 +7,7 @@ $input vTexCoord0
 
 #include <bgfx_shader.sh>
 
-uniform vec4 control; // VHS FX -> x : noise_intensity, y : chroma_distortion
+uniform vec4 uControl; // VHS FX -> x : noise_intensity, y : chroma_distortion
 
 SAMPLER2D(u_video, 0);
 SAMPLER2D(u_photo0, 1);
@@ -49,13 +49,13 @@ void main() {
 	// photo0 = vec4(1.0, 0.0, 0.0, 1.0);
 	// photo1 = vec4(0.0, 1.0, 0.0, 1.0);
 
-	photo0 = texture2D(u_photo0, vTexCoord0_mirror + vec2(intensity_accumulation * control.x, 0.0));
-	vec4 final_color = photo0 + vhs_noise * control.x;
+	photo0 = texture2D(u_photo0, vTexCoord0_mirror + vec2(intensity_accumulation * uControl.x, 0.0));
+	vec4 final_color = photo0 + vhs_noise * uControl.x;
 	final_color = vec4(_RGB2YUV(final_color.xyz), 1.0);
-	final_color.y += intensity_accumulation * 4.0 * control.y;
+	final_color.y += intensity_accumulation * 4.0 * uControl.y;
 	final_color = vec4(_YUV2RGB(final_color.xyz), 1.0);
 
-	// gl_FragColor = vec4(control.x, control.y, 0.0, 1.0);
+	// gl_FragColor = vec4(uControl.x, uControl.y, 0.0, 1.0);
 	// gl_FragColor = vec4(intensity_accumulation, intensity_accumulation, intensity_accumulation, 1.0);
 	gl_FragColor = final_color;
 }

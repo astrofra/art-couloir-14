@@ -38,7 +38,7 @@ vec3 _YUV2RGB(vec3 yuvColor) {
 // Surface attributes
 uniform vec4 uDiffuseColor;
 uniform vec4 uCustom;
-uniform vec4 control; // VHS FX -> x : noise_intensity, y : chroma_distortion
+uniform vec4 uControl; // VHS FX -> x : noise_intensity, y : chroma_distortion
 
 // Texture slots
 SAMPLER2D(uDiffuseMap, 0); // Photo
@@ -65,10 +65,10 @@ void main() {
 	intensity_accumulation = min(1.0, intensity_accumulation) * 0.1;
 	intensity_accumulation = max(0.0, intensity_accumulation - 0.05);
 
-	photo0 = texture2D(uDiffuseMap, vTexCoord0 + vec2(intensity_accumulation * control.x, 0.0));
-	final_color = photo0 + vhs_noise * control.x;
+	photo0 = texture2D(uDiffuseMap, vTexCoord0 + vec2(intensity_accumulation * uControl.x, 0.0));
+	final_color = photo0 + vhs_noise * uControl.x;
 	final_color = vec4(_RGB2YUV(final_color.xyz), 1.0);
-	final_color.y += intensity_accumulation * 4.0 * control.y;
+	final_color.y += intensity_accumulation * 4.0 * uControl.y;
 	final_color = vec4(_YUV2RGB(final_color.xyz), 1.0);
 
 #else

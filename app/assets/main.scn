@@ -1158,7 +1158,7 @@
 					],
 					"values": [
 						{
-							"name": "control",
+							"name": "uControl",
 							"type": "vec4",
 							"value": [
 								0.5,
