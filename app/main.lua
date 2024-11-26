@@ -321,14 +321,14 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
-			hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(0.0, 0.0, 0.0, 0.0))
+			hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(0.05, 0.0, 0.0, 0.0))
 			photo_state.start_clock = hg.GetClock()
 			photo_state.state = "display_photo"
 		end
 	end
 
 	-- loop noise video (ffmpeg)
-	if hg.GetClock() - video_start_clock >= hg.time_from_sec_f(7.0) then
+	if hg.GetClock() - video_start_clock > hg.time_from_sec_f(6.5) then
 		video_start_clock = hg.GetClock()
 		print("Restart glitch tape!")
 		streamer:Seek(handle, 0)
