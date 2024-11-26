@@ -38,7 +38,7 @@ vec3 _YUV2RGB(vec3 yuvColor) {
 // Surface attributes
 uniform vec4 uDiffuseColor;
 uniform vec4 uCustom;
-uniform vec4 uControl; // VHS FX -> x : noise_intensity, y : chroma_distortion
+uniform vec4 uControl; // VHS FX -> x : noise_intensity, y : chroma_distortion, z : time offset
 
 // Texture slots
 SAMPLER2D(uDiffuseMap, 0); // Photo
@@ -72,7 +72,7 @@ void main() {
 #if USE_DIFFUSE_MAP
 	final_color = texture2D(uDiffuseMap, vTexCoord0) * uDiffuseColor;
 
-	vec4 vhs_noise = getPackedIntensity(vTexCoord0, uClock);
+	vec4 vhs_noise = getPackedIntensity(vTexCoord0, uClock + uControl.z);
 	// vec2 vTexCoord0_mirror = vec2(1.0, 0.0) + vTexCoord0 * vec2(-1.0, 1.0);
 	vec4 photo0;
 	float intensity_accumulation = 0.0;
@@ -81,7 +81,7 @@ void main() {
 
 	for(i = 0.0; i < 1.0; i += 1.0/SAMPLE_WIDTH){
 		noise_offset = vTexCoord0 + vec2(i * 0.01, 0.0);
-		intensity_accumulation += getPackedIntensity(vTexCoord0 + noise_offset, uClock);
+		intensity_accumulation += getPackedIntensity(vTexCoord0 + noise_offset, uClock + uControl.z);
 	}
 
 	intensity_accumulation = intensity_accumulation * (10.0 / SAMPLE_WIDTH);

@@ -296,12 +296,13 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
         local clock_s = hg.time_to_sec_f(clock)
         photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, RAMP_DOWN_DURATION * 0.8, RAMP_DOWN_DURATION * 1.0, 0.0, 1.0), 0.0, 1.0)
         photo_state.noise_intensity = (2.0 - photo_state.noise_intensity) / 2.0
+		photo_state.noise_intensity = photo_state.noise_intensity * ((1.0 - clock_s)^0.15)
 		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
 		hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
-			hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(0.05, 0.0, 0.0, 0.0))
+			hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(0.015, 0.0, 0.0, 0.0))
 			photo_state.start_clock = hg.GetClock()
 			photo_state.state = "display_photo"
 		end
