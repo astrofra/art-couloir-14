@@ -1,18 +1,3 @@
-
-function InitStreamer(res_x, res_y)
-	-- video stream
-	-- tex_video = hg.CreateTexture(res_x, res_y, "Video texture", 0)
-	local size = hg.iVec2(res_x, res_y)
-	local fmt = hg.TF_RGB8
-
-	local streamer = hg.MakeVideoStreamer('hg_ffmpeg.dll')
-	streamer:Startup()
-	local handle = streamer:Open('assets_compiled/videos/glitches.mp4')
-	streamer:Play(handle)
-	local video_start_clock = hg.GetClock()
-	return size, fmt, streamer, handle, video_start_clock
-end
-
 function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder, res)
 	-- hg.LoadTextureFromAssets(slide_data[_idx].bitmap, hg.TF_UClamp | hg.TF_VClamp, res)
 	local texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp, res)
@@ -250,11 +235,6 @@ if not open_vr_enabled then
 	scene:SetCurrentCamera(_cam)
 end
 
--- VHS noise video (via a ffmpeg streamer)
-local size, fmt, streamer, handle, video_start_clock
-size, fmt, streamer, handle, video_start_clock = InitStreamer(512, 512)
-local texture_updated = false
-
 -- Main loop
 local frame_count = 0
 local DISPLAY_DURATION = hg.time_from_sec_f(8.0)
@@ -326,17 +306,6 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 			photo_state.state = "display_photo"
 		end
 	end
-
-	-- loop noise video (ffmpeg)
-	if hg.GetClock() - video_start_clock > hg.time_from_sec_f(6.5) then
-		video_start_clock = hg.GetClock()
-		print("Restart glitch tape!")
-		streamer:Seek(handle, 0)
-		streamer:Play(handle)
-	end
-
-	-- update the texture of the CRT screen (inside the 3D scene)
-	texture_updated, video_fx_texture, size, fmt = hg.UpdateTexture(streamer, handle, video_fx_texture, size, fmt)
 
 	scene:Update(dt)
 
