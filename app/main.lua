@@ -246,13 +246,13 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	-- photo_state.lock = false
 
-	if photo_state.state == "display_photo" then
+	if photo_state.state == "display_photo" then -- Display the photo & wait for the end of exposure time
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > DISPLAY_DURATION then
 			photo_state.start_clock = hg.GetClock()
 			photo_state.state = "ramp_up"
 		end
-	elseif photo_state.state == "ramp_up" then
+	elseif photo_state.state == "ramp_up" then -- increase the static noise to the max
 		local clock = hg.GetClock() - photo_state.start_clock
 		local clock_s = hg.time_to_sec_f(clock)
 		photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, RAMP_UP_DURATION * 0.8, RAMP_UP_DURATION, 0.0, 1.0), 0.0, 1.0)
@@ -263,7 +263,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		if hg.GetClock() - photo_state.start_clock > RAMP_UP_DURATION then
 			photo_state.state = "change_photo"
 		end
-	elseif photo_state.state == "change_photo" then
+	elseif photo_state.state == "change_photo" then -- now that the noise is set to the max, let's swap the photo (trick!)
 		photo_state = ChangePhoto(photo_state, folder_table, photo_tables, res)
 		
 		-- textures
@@ -289,7 +289,14 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		-- next state
 		photo_state.start_clock = hg.GetClock()
 		photo_state.state = "ramp_down"
-	elseif photo_state.state == "ramp_down" then
+	elseif photo_state.state == "ramp_down" then -- ramp down the noise
+		local clock = hg.GetClock() - photo_state.start_clock
+        local clock_s = hg.time_to_sec_f(clock)
+        photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, RAMP_DOWN_DURATION * 0.8, RAMP_DOWN_DURATION * 1.0, 0.0, 1.0), 0.0, 1.0)
+        photo_state.noise_intensity = (2.0 - photo_state.noise_intensity) / 2.0
+		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
+		hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
+
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
 			photo_state.start_clock = hg.GetClock()
