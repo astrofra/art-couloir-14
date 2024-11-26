@@ -3,6 +3,10 @@ require("utils")
 
 function PhotoChangeCoroutine(state)
     -- load next photo
+    while state.lock do
+        coroutine.yield()
+    end
+
     state.current_photo = state.current_photo + 1
     if state.current_photo > #state.photo_table then
         state.current_photo = 1
@@ -12,6 +16,7 @@ function PhotoChangeCoroutine(state)
         end
         state.photo_table = photo_tables[folder_table[state.current_folder]]
     end
+
     state.next_tex = LoadPhotoFromTable(state.photo_table, state.current_photo, folder_table[state.current_folder])
     coroutine.yield()
     

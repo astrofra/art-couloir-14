@@ -247,22 +247,14 @@ if not open_vr_enabled then
 	scene:SetCurrentCamera(_cam)
 end
 
+photo_state.lock = true
+
 -- Main loop
 while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	keyboard:Update()
 	dt = hg.TickClock()
 
-	if photo_state.coroutine == nil and (keyboard:Released(hg.K_Space) or (hg.GetClock() - switch_clock > hg.time_from_sec_f(10.0 / SLIDE_SHOW_SPEED))) then
-		photo_state.coroutine = coroutine.create(PhotoChangeCoroutine)
-		switch_clock = hg.GetClock()
-	elseif photo_state.coroutine and coroutine.status(photo_state.coroutine) ~= 'dead' then
-		coroutine.resume(photo_state.coroutine, photo_state)
-	else
-		photo_state.coroutine = nil
-	end
-
-	-- CRT display
-	texture_updated, video_fx_texture, size, fmt = hg.UpdateTexture(streamer, handle, video_fx_texture, size, fmt)
+	photo_state.lock = false
 
 	-- slideshow main logic
 	if photo_state.coroutine == nil and (keyboard:Released(hg.K_Space) or (hg.GetClock() - switch_clock > hg.time_from_sec_f(10.0 / SLIDE_SHOW_SPEED))) then
@@ -273,6 +265,11 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	else
 		photo_state.coroutine = nil
 	end
+
+	photo_state.lock = true
+
+	-- CRT display
+	texture_updated, video_fx_texture, size, fmt = hg.UpdateTexture(streamer, handle, video_fx_texture, size, fmt)
 
 	-- prepare slideshow display
 	chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
