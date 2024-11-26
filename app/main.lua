@@ -321,6 +321,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
+			hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(0.0, 0.0, 0.0, 0.0))
 			photo_state.start_clock = hg.GetClock()
 			photo_state.state = "display_photo"
 		end
