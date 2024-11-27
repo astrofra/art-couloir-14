@@ -167,3 +167,9 @@ function increase_saturation(rgb, factor)
     return {new_r, new_g, new_b}
 end
 
+function LerpColor(a, b, k)
+    local va = hg.Vec4(a.r, a.g, a.b, a.a)
+    local vb = hg.Vec4(b.r, b.g, b.b, b.a)
+    local vl = hg.Lerp(va, vb, k)
+    return hg.Color(vl.x, vl.y, vl.z, vl.w)
+end

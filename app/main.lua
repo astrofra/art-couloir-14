@@ -288,6 +288,16 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 		hg.SetMaterialValue(slide_screen_material, 'uCustom', hg.Vec4(slide_exposure, slide_gamma, 0.0, 0.0))
 
+		-- light rig
+		for idx = 1, 4 do
+			local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
+			rgb_color = increase_saturation(rgb_color, 5.0)
+			local diffuse_color = LerpColor(hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0), hg.Color.White * 0.8, slide_transition)
+			local spec_color = diffuse_color
+			screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
+			screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
+		end
+
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_UP_DURATION then
 			photo_state.state = "change_photo"
@@ -305,16 +315,6 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 			hg.SetMaterialTexture(crt_scene_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
 
 			hg.SetMaterialTexture(home_computer_screen_material, "uSelfMap", photo_state.tex_title0, 4)
-
-			-- light rig
-			for idx = 1, 4 do
-				local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
-				rgb_color = increase_saturation(rgb_color, 5.0)
-				local diffuse_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
-				local spec_color = diffuse_color
-				screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
-				screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
-			end
 		else
 			print("Texture not valid !")
 		end
@@ -341,11 +341,31 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 		hg.SetMaterialValue(slide_screen_material, 'uCustom', hg.Vec4(slide_exposure, slide_gamma, 0.0, 0.0))
 
+		-- light rig
+		for idx = 1, 4 do
+			local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
+			rgb_color = increase_saturation(rgb_color, 5.0)
+			local diffuse_color = LerpColor(hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0), hg.Color.White * 0.8, slide_transition)
+			local spec_color = diffuse_color
+			screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
+			screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
+		end
+
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
 			hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(0.015, 0.0, 0.0, 0.0))
 
 			hg.SetMaterialValue(crt_scene_screen_material, 'uControl', hg.Vec4(0.015, 0.0, 0.0, 0.0))
+
+			-- light rig
+			for idx = 1, 4 do
+				local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
+				rgb_color = increase_saturation(rgb_color, 5.0)
+				local diffuse_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
+				local spec_color = diffuse_color
+				screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
+				screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
+			end
 
 			photo_state.start_clock = hg.GetClock()
 			photo_state.state = "display_photo"
