@@ -10,7 +10,8 @@
 			"node_custom_order": {
 				"refs": null,
 				"roots": [
-					0
+					0,
+					1
 				]
 			},
 			"node_sort_method": "custom",
