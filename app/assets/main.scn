@@ -895,9 +895,21 @@
 				4294967295
 			],
 			"disabled": false,
-			"idx": 314,
+			"idx": 44,
 			"instance": 29,
 			"name": "SM_FloppyBl"
+		},
+		{
+			"components": [
+				45,
+				4294967295,
+				7,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 45,
+			"name": "SM_HomeComputer_noise"
 		}
 	],
 	"objects": [
@@ -1383,6 +1395,103 @@
 					"write_g": true,
 					"write_r": true,
 					"write_z": true
+				}
+			],
+			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "screen"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/vhs.hps",
+					"textures": [
+						{
+							"name": "uDiffuseMap",
+							"path": "common/video_bw_noise.png",
+							"stage": 0
+						},
+						{
+							"name": "uSelfMap",
+							"path": "common/video_noise_animated.tga",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.5,
+								0.5,
+								0.5,
+								1.0
+							]
+						},
+						{
+							"name": "uControl",
+							"type": "vec4",
+							"value": [
+								0.30000001192092896,
+								0.20000000298023224,
+								0.42399999499320984,
+								1.0
+							]
+						},
+						{
+							"name": "uCustom",
+							"type": "vec4",
+							"value": [
+								0.20000000298023224,
+								0.30000001192092896,
+								1.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								1.0,
+								1.0,
+								1.0,
+								1.0
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.08999999612569809,
+								0.3100000023841858,
+								0.4599999785423279,
+								0.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								-1.0
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
 				}
 			],
 			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo"
@@ -2046,7 +2155,7 @@
 			],
 			"rot": [
 				-0.0,
-				3.260428456997033e-06,
+				3.2604280022496823e-06,
 				0.0
 			],
 			"scl": [
@@ -2082,7 +2191,7 @@
 			],
 			"rot": [
 				-0.0,
-				-10.999999046325684,
+				-10.999998092651367,
 				0.0
 			],
 			"scl": [
@@ -2118,7 +2227,7 @@
 			],
 			"rot": [
 				-0.0,
-				-1.9999996423721313,
+				-1.9999992847442627,
 				0.0
 			],
 			"scl": [
@@ -2154,7 +2263,7 @@
 			],
 			"rot": [
 				-0.0,
-				83.99999237060547,
+				83.9999771118164,
 				0.0
 			],
 			"scl": [
@@ -2172,7 +2281,7 @@
 			],
 			"rot": [
 				-0.0,
-				7.999994277954102,
+				7.999992847442627,
 				0.0
 			],
 			"scl": [
@@ -2190,13 +2299,31 @@
 			],
 			"rot": [
 				-0.0,
-				101.00000762939453,
+				100.99999237060547,
 				0.0
 			],
 			"scl": [
 				0.9999998807907104,
 				0.9999995827674866,
 				0.9999991655349731
+			]
+		},
+		{
+			"parent": 37,
+			"pos": [
+				-2.9802322387695313e-08,
+				0.0,
+				0.002387493848800659
+			],
+			"rot": [
+				-8.918557073615114e-16,
+				3.4150925785070285e-06,
+				-3.4234865207191222e-15
+			],
+			"scl": [
+				1.0000004768371582,
+				1.0000005960464478,
+				1.0000004768371582
 			]
 		}
 	]

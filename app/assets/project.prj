@@ -1,14 +1,14 @@
 {
 	"recent_files": [
+		"main.scn",
+		"props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn",
+		"props/calendar/uploads_files_3187835_kalendar.scn",
+		"props/floppy_dirty/SM_FloppyBlue01.scn",
+		"props/slides_projector/uploads_files_2708484_SM_SlideProjector.scn",
+		"props/floppy_dirty/SM_FloppyBl.scn",
 		"props/8_inch_floppy_disk/8_inch_floppy_disk.scn",
 		"props/floppy_dirty/SM_FloppyRed.scn",
 		"props/floppy_dirty/SM_FloppyBlue02.scn",
-		"props/floppy_dirty/SM_FloppyBlue01.scn",
-		"props/floppy_dirty/SM_FloppyBl.scn",
-		"main.scn",
-		"crt.scn",
-		"props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen.scn",
-		"props/apple_2/apple_2-screen_static.scn",
-		"props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn"
+		"crt.scn"
 	]
 }

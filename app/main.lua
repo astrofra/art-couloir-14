@@ -1,9 +1,9 @@
 function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder, res)
 	-- hg.LoadTextureFromAssets(slide_data[_idx].bitmap, hg.TF_UClamp | hg.TF_VClamp, res)
-	local texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp, res)
+	local texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp | hg.TF_VClamp, res)
 	local texture = res:GetTexture(texture_ref)
 
-	local slide_texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/slides/" .. _photo_table[_photo_idx] .. '_slide.png', hg.TF_UClamp, res)
+	local slide_texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/slides/" .. _photo_table[_photo_idx] .. '_slide.png', hg.TF_UClamp | hg.TF_VClamp, res)
 	local slide_texture = res:GetTexture(slide_texture_ref)
 
 	return {texture_ref = texture_ref, texture = texture, slide_texture_ref = slide_texture_ref, slide_texture = slide_texture}
@@ -21,6 +21,7 @@ function ChangePhoto(state, folder_table, photo_tables, res)
     end
 
     state.tex_photo0 = LoadPhotoFromTable(state.photo_table, state.current_photo, folder_table[state.current_folder], res)
+	state.tex_title0 = hg.LoadTextureFromAssets('titles/' .. folder_table[state.current_folder] .. '.png', hg.TF_UClamp | hg.TF_VClamp, res)
     return state
 end
 
@@ -125,6 +126,7 @@ local photo_state = {
     current_photo = nil,
     photo_table = nil,
     tex_photo0 = nil,
+	tex_title0 = nil,
     noise_intensity = nil,
 	update_pipeline = true,
 	sounds = {}
@@ -178,6 +180,7 @@ end
 
 photo_state.current_photo = 1
 photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo, folder_table[photo_state.current_folder], res)
+photo_state.tex_title0 = hg.LoadTextureFromAssets('titles/' .. folder_table[photo_state.current_folder] .. '.png', hg.TF_UClamp | hg.TF_VClamp, res)
 
 photo_state.noise_intensity = 0.0
 local chroma_distortion = 0.0
@@ -229,6 +232,10 @@ local crt_scene_screen_material = crt_scene_screen_node:GetObject():GetMaterial(
 -- local crt_scene_photo_material_texture = hg.GetMaterialTexture(crt_scene_screen_material, "uDiffuseMap")
 -- local crt_scene_video_fx_material_texture = hg.GetMaterialTexture(crt_scene_screen_material, "uSelfMap")
 
+-- HomeComputer (terminal to display the title of each folder)
+local home_computer_screen = scene:GetNode("SM_HomeComputer_screen")
+local home_computer_screen_material = home_computer_screen:GetObject():GetMaterial(0)
+
 local screen_lights = {}
 
 for idx = 0, 3 do
@@ -247,7 +254,7 @@ end
 
 -- Main loop
 local frame_count = 0
-local DISPLAY_DURATION = hg.time_from_sec_f(8.0)
+local DISPLAY_DURATION = hg.time_from_sec_f(2.0)
 local RAMP_UP_DURATION = hg.time_from_sec_f(1.0)
 local RAMP_DOWN_DURATION = hg.time_from_sec_f(1.0)
 photo_state.start_clock = hg.GetClock()
@@ -289,6 +296,8 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 			hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
 
 			hg.SetMaterialTexture(crt_scene_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
+
+			hg.SetMaterialTexture(home_computer_screen_material, "uSelfMap", photo_state.tex_title0, 4)
 
 			-- light rig
 			for idx = 1, 4 do
