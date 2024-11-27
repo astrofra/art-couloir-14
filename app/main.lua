@@ -90,6 +90,8 @@ end
 local scene = hg.Scene()
 hg.LoadSceneFromAssets("main.scn", scene, res, hg.GetForwardPipelineInfo())
 
+local crt_scene = hg.Scene()
+
 -- CRT Stuff
 
 -- text rendering
@@ -309,6 +311,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	end
 
 	scene:Update(dt)
+	crt_scene:Update(dt)
 
 	-- rendering
 	view_id = 0  -- keep track of the next free view id
@@ -334,13 +337,15 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 			view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, right, scene, render_data, pipeline, res, passId)
 			view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, right, pipeline, render_data, res, vr_right_fb:GetHandle())
 	else
-		hg.SubmitSceneToPipeline(view_id, scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
+		view_id, passId = hg.SubmitSceneToPipeline(view_id, scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
 	end
 
 	view_id = view_id + 1
 
 	-- -- CRT display rendering
 	if open_vr_enabled then
+
+		view_id, passId = hg.SubmitSceneToPipeline(view_id, crt_scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
 
 		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
 		local clamped_noise = clamp(photo_state.noise_intensity, 0.01, 1.0)
