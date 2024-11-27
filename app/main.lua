@@ -339,23 +339,11 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	view_id = view_id + 1
 
-	-- CRT display rendering
+	-- -- CRT display rendering
 	if open_vr_enabled then
 
 		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
 		local clamped_noise = clamp(photo_state.noise_intensity, 0.01, 1.0)
-		local val_uniforms = {hg.MakeUniformSetValue('uControl', hg.Vec4(clamped_noise, chroma_distortion, hg.time_to_sec_f(hg.GetClock())%1.0, 0.0))}
-		-- val_uniforms = {hg.MakeUniformSetValue('control', hg.Vec4(1.0, 1.0, 0.0, 0.0))} -- test only
-		-- _, tex_video, size, fmt = hg.UpdateTexture(streamer, handle, tex_video, size, fmt)
-	
-		local tex_uniforms = {
-			hg.MakeUniformSetTexture('u_video', video_fx_texture, 0),
-			hg.MakeUniformSetTexture('u_photo0', photo_state.tex_photo0.texture, 1)
-		}
-
-		hg.SetViewPerspective(view_id, 0, 0, res_x, res_y, hg.TranslationMat4(hg.Vec3(0, 0, -0.68 * zoom_level)))
-
-		hg.DrawModel(view_id, screen_mdl, screen_prg, val_uniforms, tex_uniforms, hg.TransformationMat4(hg.Vec3(0, 0, 0), hg.Vec3(math.pi / 2, math.pi, 0)))
 
 		-- text OSD
 		local osd_text = folder_short[photo_state.current_folder] .. (photo_state.current_photo - 1)
@@ -402,8 +390,8 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	hg.UpdateWindow(win)
 
-	scene:GarbageCollect()
-	collectgarbage()
+	-- scene:GarbageCollect()
+	-- collectgarbage()
 end
 
 hg.DestroyForwardPipeline(pipeline)
