@@ -254,7 +254,7 @@ end
 
 -- Main loop
 local frame_count = 0
-local DISPLAY_DURATION = hg.time_from_sec_f(2.0)
+local DISPLAY_DURATION = hg.time_from_sec_f(8.0)
 local RAMP_UP_DURATION = hg.time_from_sec_f(1.0)
 local RAMP_DOWN_DURATION = hg.time_from_sec_f(1.0)
 photo_state.start_clock = hg.GetClock()
@@ -274,12 +274,19 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	elseif photo_state.state == "ramp_up" then -- increase the static noise to the max
 		local clock = hg.GetClock() - photo_state.start_clock
 		local clock_s = hg.time_to_sec_f(clock)
-		photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, RAMP_UP_DURATION * 0.8, RAMP_UP_DURATION, 0.0, 1.0), 0.0, 1.0)
+		photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, hg.time_to_sec_f(RAMP_UP_DURATION) * 0.8, hg.time_to_sec_f(RAMP_UP_DURATION), 0.0, 1.0), 0.0, 1.0)
 		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
 
 		hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
-		
 		hg.SetMaterialValue(crt_scene_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
+		
+		-- slide screen
+		local slide_transition = clamp(map(clock_s, hg.time_to_sec_f(RAMP_UP_DURATION) * 0.925, hg.time_to_sec_f(RAMP_UP_DURATION), 0.0, 1.0), 0.0, 1.0)
+		-- slide_transition = slide_transition^2.0
+		local slide_exposure = hg.Lerp(2.0, 0.5, slide_transition)
+		local slide_gamma = hg.Lerp(0.35, 10.0, slide_transition)
+
+		hg.SetMaterialValue(slide_screen_material, 'uCustom', hg.Vec4(slide_exposure, slide_gamma, 0.0, 0.0))
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_UP_DURATION then
@@ -318,14 +325,21 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	elseif photo_state.state == "ramp_down" then -- ramp down the noise
 		local clock = hg.GetClock() - photo_state.start_clock
         local clock_s = hg.time_to_sec_f(clock)
-        photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, RAMP_DOWN_DURATION * 0.8, RAMP_DOWN_DURATION * 1.0, 0.0, 1.0), 0.0, 1.0)
+        photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, hg.time_to_sec_f(RAMP_DOWN_DURATION) * 0.8, hg.time_to_sec_f(RAMP_DOWN_DURATION), 0.0, 1.0), 0.0, 1.0)
         photo_state.noise_intensity = (2.0 - photo_state.noise_intensity) / 2.0
 		photo_state.noise_intensity = photo_state.noise_intensity * ((1.0 - clock_s)^0.15)
 		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
 
 		hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
-
 		hg.SetMaterialValue(crt_scene_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
+
+		-- slide screen
+		local slide_transition = 1.0 - clamp(map(clock_s, 0.0, hg.time_to_sec_f(RAMP_UP_DURATION) * 0.25, 0.0, 1.0), 0.0, 1.0)
+		-- slide_transition = slide_transition^2.0
+		local slide_exposure = hg.Lerp(2.0, 0.5, slide_transition)
+		local slide_gamma = hg.Lerp(0.35, 10.0, slide_transition)
+
+		hg.SetMaterialValue(slide_screen_material, 'uCustom', hg.Vec4(slide_exposure, slide_gamma, 0.0, 0.0))
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
