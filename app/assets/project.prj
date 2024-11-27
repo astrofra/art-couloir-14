@@ -1,14 +1,14 @@
 {
 	"recent_files": [
-		"main.scn",
-		"props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn",
-		"props/calendar/uploads_files_3187835_kalendar.scn",
-		"props/floppy_dirty/SM_FloppyBlue01.scn",
+		"light_cone/light_cone_merged.scn",
 		"props/slides_projector/uploads_files_2708484_SM_SlideProjector.scn",
-		"props/floppy_dirty/SM_FloppyBl.scn",
-		"props/8_inch_floppy_disk/8_inch_floppy_disk.scn",
-		"props/floppy_dirty/SM_FloppyRed.scn",
-		"props/floppy_dirty/SM_FloppyBlue02.scn",
-		"crt.scn"
+		"props/metal_desk/SM_MetalDesk.scn",
+		"props/office_chair/SM_OfficeChair02.scn",
+		"props/armchair/Soviet_armchair_Lisek_LOD0.scn",
+		"props/table/Soviet_Table_Variant1_LOD0.scn",
+		"props/small_chair/SM_Chair05.scn",
+		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn",
+		"props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn",
+		"light_cone/light_cone.scn"
 	]
 }
