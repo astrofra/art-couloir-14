@@ -1,0 +1,36 @@
+{
+	"blend_mode": "add",
+	"depth_test": "less",
+	"face_culling": "cw",
+	"flags": [],
+	"program": "shaders/alphareflection.hps",
+	"textures": [
+		{
+			"name": "uLightMap",
+			"path": "light_cone/light_cone.png",
+			"stage": 3
+		},
+		{
+			"name": "uReflectionMap",
+			"path": "light_cone/radial_gradient.png",
+			"stage": 7
+		}
+	],
+	"values": [
+		{
+			"name": "uDiffuseColor",
+			"type": "vec4",
+			"value": [
+				0.0,
+				0.364705890417099,
+				0.3490196168422699,
+				1.0
+			]
+		}
+	],
+	"write_a": true,
+	"write_b": true,
+	"write_g": true,
+	"write_r": true,
+	"write_z": false
+}
