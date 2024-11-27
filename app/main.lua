@@ -91,6 +91,7 @@ local scene = hg.Scene()
 hg.LoadSceneFromAssets("main.scn", scene, res, hg.GetForwardPipelineInfo())
 
 local crt_scene = hg.Scene()
+hg.LoadSceneFromAssets("crt.scn", crt_scene, res, hg.GetForwardPipelineInfo())
 
 -- CRT Stuff
 
