@@ -215,12 +215,19 @@ local switch_clock = hg.GetClock()
 local crt_screen_node = scene:GetNode("crt_screen")
 local crt_screen_material = crt_screen_node:GetObject():GetMaterial(0)
 
+-- local photo_material_texture = hg.GetMaterialTexture(crt_screen_material, "uDiffuseMap")
+-- local video_fx_material_texture = hg.GetMaterialTexture(crt_screen_material, "uSelfMap")
+
 local slide_screen_node = scene:GetNode("slide_screen")
 local slide_screen_material = slide_screen_node:GetObject():GetMaterial(0)
 
-local photo_material_texture = hg.GetMaterialTexture(crt_screen_material, "uDiffuseMap")
-local video_fx_material_texture = hg.GetMaterialTexture(crt_screen_material, "uSelfMap")
-local video_fx_texture = res:GetTexture(video_fx_material_texture)
+-- fullscreen crt scene
+
+local crt_scene_screen_node = crt_scene:GetNode("crt_screen")
+local crt_scene_screen_material = crt_scene_screen_node:GetObject():GetMaterial(0)
+
+-- local crt_scene_photo_material_texture = hg.GetMaterialTexture(crt_scene_screen_material, "uDiffuseMap")
+-- local crt_scene_video_fx_material_texture = hg.GetMaterialTexture(crt_scene_screen_material, "uSelfMap")
 
 local screen_lights = {}
 
@@ -262,7 +269,10 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		local clock_s = hg.time_to_sec_f(clock)
 		photo_state.noise_intensity = clock_s + 2.0 * clamp(map(clock_s, RAMP_UP_DURATION * 0.8, RAMP_UP_DURATION, 0.0, 1.0), 0.0, 1.0)
 		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
+
 		hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
+		
+		hg.SetMaterialValue(crt_scene_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_UP_DURATION then
@@ -277,6 +287,8 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 			hg.SetMaterialTexture(crt_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
 			hg.SetMaterialTexture(slide_screen_material, "uSelfMap", photo_state.tex_photo0.slide_texture_ref, 4)
+
+			hg.SetMaterialTexture(crt_scene_screen_material, "uDiffuseMap", photo_state.tex_photo0.texture_ref, 0)
 
 			-- light rig
 			for idx = 1, 4 do
@@ -301,11 +313,17 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
         photo_state.noise_intensity = (2.0 - photo_state.noise_intensity) / 2.0
 		photo_state.noise_intensity = photo_state.noise_intensity * ((1.0 - clock_s)^0.15)
 		local chroma_distortion = clamp(map(photo_state.noise_intensity, 0.1, 0.5, 0.0, 1.0), 0.0, 1.0)
+
 		hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
+
+		hg.SetMaterialValue(crt_scene_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
 			hg.SetMaterialValue(crt_screen_material, 'uControl', hg.Vec4(0.015, 0.0, 0.0, 0.0))
+
+			hg.SetMaterialValue(crt_scene_screen_material, 'uControl', hg.Vec4(0.015, 0.0, 0.0, 0.0))
+
 			photo_state.start_clock = hg.GetClock()
 			photo_state.state = "display_photo"
 		end
