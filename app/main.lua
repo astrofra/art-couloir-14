@@ -224,6 +224,9 @@ local crt_screen_material = crt_screen_node:GetObject():GetMaterial(0)
 local slide_screen_node = scene:GetNode("slide_screen")
 local slide_screen_material = slide_screen_node:GetObject():GetMaterial(0)
 
+local light_cone_node = scene:GetNode("light_cone_merged")
+local light_cone_material = light_cone_node:GetObject():GetMaterial(0)
+
 -- fullscreen crt scene
 
 local crt_scene_screen_node = crt_scene:GetNode("crt_screen")
@@ -289,14 +292,27 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		hg.SetMaterialValue(slide_screen_material, 'uCustom', hg.Vec4(slide_exposure, slide_gamma, 0.0, 0.0))
 
 		-- light rig
+		local diffuse_color, spec_color
 		for idx = 1, 4 do
 			local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
 			rgb_color = increase_saturation(rgb_color, 5.0)
-			local diffuse_color = LerpColor(hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0), hg.Color.White * 0.8, slide_transition)
-			local spec_color = diffuse_color
+			diffuse_color = LerpColor(hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0), hg.Color.White * 0.8, slide_transition)
+			spec_color = diffuse_color
 			screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
 			screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
 		end
+
+		-- light cone
+		local light_cone_color = hg.Color.Black
+		local rgb_color
+		for idx = 1, 4 do
+			rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
+			rgb_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
+			light_cone_color = light_cone_color + rgb_color
+		end
+		light_cone_color = light_cone_color / 5.0
+		light_cone_color = hg.Vec4(light_cone_color.r, light_cone_color.g, light_cone_color.b, light_cone_color.a)
+		hg.SetMaterialValue(light_cone_material, 'uDiffuseColor', light_cone_color)
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_UP_DURATION then
@@ -342,14 +358,27 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		hg.SetMaterialValue(slide_screen_material, 'uCustom', hg.Vec4(slide_exposure, slide_gamma, 0.0, 0.0))
 
 		-- light rig
+		local diffuse_color, spec_color
 		for idx = 1, 4 do
 			local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
 			rgb_color = increase_saturation(rgb_color, 5.0)
-			local diffuse_color = LerpColor(hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0), hg.Color.White * 0.8, slide_transition)
-			local spec_color = diffuse_color
+			diffuse_color = LerpColor(hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0), hg.Color.White * 0.8, slide_transition)
+			spec_color = diffuse_color
 			screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
 			screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
 		end
+
+		-- light cone
+		local light_cone_color = hg.Color.Black
+		local rgb_color
+		for idx = 1, 4 do
+			rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
+			rgb_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
+			light_cone_color = light_cone_color + rgb_color
+		end
+		light_cone_color = light_cone_color / 5.0
+		light_cone_color = hg.Vec4(light_cone_color.r, light_cone_color.g, light_cone_color.b, light_cone_color.a)
+		hg.SetMaterialValue(light_cone_material, 'uDiffuseColor', light_cone_color)
 
 		-- next state ?
 		if hg.GetClock() - photo_state.start_clock > RAMP_DOWN_DURATION then
@@ -358,14 +387,27 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 			hg.SetMaterialValue(crt_scene_screen_material, 'uControl', hg.Vec4(0.015, 0.0, 0.0, 0.0))
 
 			-- light rig
+			local diffuse_color, spec_color
 			for idx = 1, 4 do
 				local rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
 				rgb_color = increase_saturation(rgb_color, 5.0)
-				local diffuse_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
-				local spec_color = diffuse_color
+				diffuse_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
+				spec_color = diffuse_color
 				screen_lights[idx]:GetLight():SetDiffuseColor(diffuse_color * 2.0)
 				screen_lights[idx]:GetLight():SetSpecularColor(spec_color * 2.0)
 			end
+
+			-- light cone
+			local light_cone_color = hg.Color.Black
+			local rgb_color
+			for idx = 1, 4 do
+				rgb_color = slides_colors[folder_table[photo_state.current_folder]][string.format("%03d", photo_state.current_photo - 1)][idx]
+				rgb_color = hg.Color(rgb_color[1], rgb_color[2], rgb_color[3], 255.0) * (1.0 / 255.0)
+				light_cone_color = light_cone_color + rgb_color
+			end
+			light_cone_color = light_cone_color / 5.0
+			light_cone_color = hg.Vec4(light_cone_color.r, light_cone_color.g, light_cone_color.b, light_cone_color.a)
+			hg.SetMaterialValue(light_cone_material, 'uDiffuseColor', light_cone_color)
 
 			photo_state.start_clock = hg.GetClock()
 			photo_state.state = "display_photo"

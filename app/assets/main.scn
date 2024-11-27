@@ -64,16 +64,16 @@
 			"name": "props/square_shadow/round_shadow.scn"
 		},
 		{
-			"name": "props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn"
+			"name": "props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_merged.scn"
 		},
 		{
 			"name": "props/armchair/Soviet_armchair_Lisek_LOD0.scn"
 		},
 		{
-			"name": "props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
+			"name": "props/warbrode/Soviet_Wardrobe_Variant1_merged.scn"
 		},
 		{
-			"name": "props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
+			"name": "props/warbrode/Soviet_Wardrobe_Variant1_merged.scn"
 		},
 		{
 			"name": "props/table/Soviet_Table_Variant1_LOD0.scn"
@@ -85,7 +85,7 @@
 			"name": "props/tv_medium_size/tv_medium_size.scn"
 		},
 		{
-			"name": "props/metal_desk/SM_MetalDesk.scn"
+			"name": "props/metal_desk/SM_MetalDesk_merged.scn"
 		},
 		{
 			"name": "props/cyclo/cyclo.scn"
@@ -124,7 +124,7 @@
 			"name": "props/slides_projector/uploads_files_2708484_SM_SlideProjector.scn"
 		},
 		{
-			"name": "light_cone/light_cone.scn"
+			"name": "light_cone/light_cone_merged.scn"
 		},
 		{
 			"name": "props/apple_2/apple_2-screen_static.scn"
@@ -2155,7 +2155,7 @@
 			],
 			"rot": [
 				-0.0,
-				3.2604280022496823e-06,
+				3.260427774876007e-06,
 				0.0
 			],
 			"scl": [
@@ -2263,7 +2263,7 @@
 			],
 			"rot": [
 				-0.0,
-				83.9999771118164,
+				83.99996948242188,
 				0.0
 			],
 			"scl": [
@@ -2317,7 +2317,7 @@
 			],
 			"rot": [
 				-8.918557073615114e-16,
-				3.4150925785070285e-06,
+				3.415092351133353e-06,
 				-3.4234865207191222e-15
 			],
 			"scl": [

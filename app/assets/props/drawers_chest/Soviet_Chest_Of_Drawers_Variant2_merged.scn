@@ -3,9 +3,9 @@
 		"clear_color": true,
 		"clear_z": true,
 		"color": [
-			103,
-			103,
-			103,
+			100,
+			100,
+			100,
 			255
 		]
 	},
@@ -13,7 +13,7 @@
 		"ambient": [
 			512,
 			512,
-			512,
+			0,
 			255
 		],
 		"brdf_map": "core/pbr/brdf.dds",
@@ -48,23 +48,6 @@
 			"type": "sphere"
 		}
 	},
-	"instances": [
-		{
-			"name": "props/square_shadow/round_shadow.scn"
-		},
-		{
-			"name": "props/square_shadow/round_shadow.scn"
-		},
-		{
-			"name": "props/square_shadow/round_shadow.scn"
-		},
-		{
-			"name": "props/square_shadow/round_shadow.scn"
-		},
-		{
-			"name": "props/square_shadow/round_shadow.scn"
-		}
-	],
 	"key_values": null,
 	"nodes": [
 		{
@@ -76,85 +59,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"idx": 0,
-			"name": "armchair"
-		},
-		{
-			"components": [
-				1,
-				4294967295,
-				4294967295,
-				4294967295,
-				4294967295
-			],
-			"disabled": true,
-			"idx": 1,
-			"instance": 4,
-			"name": "round_shadow"
-		},
-		{
-			"components": [
-				2,
-				4294967295,
-				4294967295,
-				4294967295,
-				4294967295
-			],
-			"disabled": true,
-			"idx": 2,
-			"instance": 3,
-			"name": "round_shadow"
-		},
-		{
-			"components": [
-				5,
-				4294967295,
-				4294967295,
-				4294967295,
-				4294967295
-			],
-			"disabled": true,
-			"idx": 3,
-			"instance": 0,
-			"name": "round_shadow"
-		},
-		{
-			"components": [
-				3,
-				4294967295,
-				4294967295,
-				4294967295,
-				4294967295
-			],
-			"disabled": true,
-			"idx": 4,
-			"instance": 2,
-			"name": "round_shadow"
-		},
-		{
-			"components": [
-				4,
-				4294967295,
-				4294967295,
-				4294967295,
-				4294967295
-			],
-			"disabled": true,
-			"idx": 5,
-			"instance": 1,
-			"name": "round_shadow"
-		},
-		{
-			"components": [
-				6,
-				4294967295,
-				1,
-				4294967295,
-				4294967295
-			],
-			"disabled": false,
-			"idx": 11,
-			"name": "shadows_merged"
+			"idx": 18,
+			"name": "drawer_merged"
 		}
 	],
 	"objects": [
@@ -162,7 +68,13 @@
 			"bones": [],
 			"material_infos": [
 				{
-					"name": "Soviet_chair_lisek"
+					"name": "M_Soviet_Chest_Of_Drawers_Variant2"
+				},
+				{
+					"name": "square_shadow"
+				},
+				{
+					"name": "square_shadow"
 				}
 			],
 			"materials": [
@@ -175,17 +87,17 @@
 					"textures": [
 						{
 							"name": "uBaseOpacityMap",
-							"path": "props/armchair/Soviet_armchair_Lisek_yellow_BaseColor.png",
+							"path": "props/drawers_chest/T_M_Soviet_Chest_Of_Drawers_Variant2_Brown_Dirty_BaseColor.tga",
 							"stage": 0
 						},
 						{
 							"name": "uNormalMap",
-							"path": "props/armchair/Soviet_armchair_Lisek_yellow_Normal.png",
+							"path": "props/drawers_chest/T_M_Soviet_Chest_Of_Drawers_Variant2_Brown_Dirty_Normal.tga",
 							"stage": 2
 						},
 						{
 							"name": "uOcclusionRoughnessMetalnessMap",
-							"path": "props/armchair/Soviet_armchair_Lisek_yellow_OcclusionRoughnessMetallic.png",
+							"path": "props/drawers_chest/T_M_Soviet_Chest_Of_Drawers_Variant2_Brown_Dirty_OcclusionRoughnessMetallic.tga",
 							"stage": 1
 						}
 					],
@@ -194,9 +106,9 @@
 							"name": "uBaseOpacityColor",
 							"type": "vec4",
 							"value": [
-								0.800000011920929,
-								0.800000011920929,
-								0.800000011920929,
+								1.0,
+								1.0,
+								1.0,
 								1.0
 							]
 						},
@@ -226,18 +138,58 @@
 					"write_g": true,
 					"write_r": true,
 					"write_z": true
-				}
-			],
-			"name": "props/armchair/armchair.geo"
-		},
-		{
-			"bones": [],
-			"material_infos": [
+				},
 				{
-					"name": "square_shadow"
-				}
-			],
-			"materials": [
+					"blend_mode": "alpha",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"path": "props/square_shadow/square_shadow_alpha.png",
+							"stage": 0
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								-1.0
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				},
 				{
 					"blend_mode": "alpha",
 					"depth_test": "less",
@@ -315,118 +267,10 @@
 					"write_z": false
 				}
 			],
-			"name": "props/armchair/shadows_merged.geo"
+			"name": "props/drawers_chest/drawer_merged.geo"
 		}
 	],
 	"transforms": [
-		{
-			"parent": null,
-			"pos": [
-				0.0,
-				0.0,
-				0.0
-			],
-			"rot": [
-				-0.0,
-				0.0,
-				0.0
-			],
-			"scl": [
-				1.0,
-				1.0,
-				1.0
-			]
-		},
-		{
-			"parent": null,
-			"pos": [
-				-0.26881158351898193,
-				0.009999880567193031,
-				-0.2691490948200226
-			],
-			"rot": [
-				-0.0,
-				0.0,
-				0.0
-			],
-			"scl": [
-				0.09999991208314896,
-				0.09999991208314896,
-				0.09999984502792358
-			]
-		},
-		{
-			"parent": null,
-			"pos": [
-				0.27183014154434204,
-				0.009999880567193031,
-				-0.26929789781570435
-			],
-			"rot": [
-				-0.0,
-				0.0,
-				0.0
-			],
-			"scl": [
-				0.09999991208314896,
-				0.09999991208314896,
-				0.09999984502792358
-			]
-		},
-		{
-			"parent": null,
-			"pos": [
-				-0.2696799039840698,
-				0.009999880567193031,
-				0.2952045500278473
-			],
-			"rot": [
-				-0.0,
-				0.0,
-				0.0
-			],
-			"scl": [
-				0.09999991208314896,
-				0.09999991208314896,
-				0.09999984502792358
-			]
-		},
-		{
-			"parent": null,
-			"pos": [
-				0.2751445770263672,
-				0.009999940171837807,
-				0.2940882444381714
-			],
-			"rot": [
-				-0.0,
-				0.0,
-				0.0
-			],
-			"scl": [
-				0.09999990463256836,
-				0.09999990463256836,
-				0.09999983012676239
-			]
-		},
-		{
-			"parent": null,
-			"pos": [
-				0.0,
-				0.009999880567193031,
-				0.0
-			],
-			"rot": [
-				-0.0,
-				0.0,
-				0.0
-			],
-			"scl": [
-				1.0,
-				1.0,
-				1.0
-			]
-		},
 		{
 			"parent": null,
 			"pos": [

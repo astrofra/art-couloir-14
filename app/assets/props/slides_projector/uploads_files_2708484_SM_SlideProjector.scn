@@ -87,7 +87,7 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
+			"disabled": true,
 			"idx": 1,
 			"instance": 3,
 			"name": "round_shadow"
@@ -100,8 +100,8 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
-			"idx": 3,
+			"disabled": true,
+			"idx": 2,
 			"instance": 2,
 			"name": "round_shadow"
 		},
@@ -113,8 +113,8 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
-			"idx": 5,
+			"disabled": true,
+			"idx": 3,
 			"instance": 1,
 			"name": "round_shadow"
 		},
@@ -126,8 +126,8 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
-			"idx": 7,
+			"disabled": true,
+			"idx": 4,
 			"instance": 0,
 			"name": "square_shadow"
 		},
@@ -139,10 +139,22 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
-			"idx": 9,
+			"disabled": true,
+			"idx": 5,
 			"instance": 4,
 			"name": "round_shadow"
+		},
+		{
+			"components": [
+				6,
+				4294967295,
+				1,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 11,
+			"name": "projector_merged"
 		}
 	],
 	"objects": [
@@ -217,6 +229,147 @@
 				}
 			],
 			"name": "props/slides_projector/SlideProjector_40.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				},
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "alpha",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"path": "props/square_shadow/round_shadow_alpha.png",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				},
+				{
+					"blend_mode": "alpha",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"path": "props/square_shadow/square_shadow_alpha.png",
+							"stage": 0
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								-1.0
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/slides_projector/projector_merged.geo"
 		}
 	],
 	"transforms": [
@@ -228,7 +381,7 @@
 				0.0
 			],
 			"rot": [
-				9.33466617425438e-06,
+				9.334665264759678e-06,
 				0.0,
 				0.0
 			],
@@ -326,6 +479,24 @@
 				0.34999993443489075,
 				0.9999995231628418,
 				0.34999993443489075
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	]

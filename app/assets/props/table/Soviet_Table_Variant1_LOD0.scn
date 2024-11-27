@@ -123,7 +123,7 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
+			"disabled": true,
 			"idx": 4,
 			"instance": 0,
 			"name": "round_shadow"
@@ -136,7 +136,7 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
+			"disabled": true,
 			"idx": 5,
 			"instance": 1,
 			"name": "round_shadow"
@@ -149,7 +149,7 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
+			"disabled": true,
 			"idx": 6,
 			"instance": 2,
 			"name": "round_shadow"
@@ -162,7 +162,7 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
+			"disabled": true,
 			"idx": 7,
 			"instance": 3,
 			"name": "round_shadow"
@@ -175,10 +175,22 @@
 				4294967295,
 				4294967295
 			],
-			"disabled": false,
+			"disabled": true,
 			"idx": 8,
 			"instance": 4,
 			"name": "round_shadow"
+		},
+		{
+			"components": [
+				9,
+				4294967295,
+				4,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 14,
+			"name": "shadows_merged"
 		}
 	],
 	"objects": [
@@ -477,6 +489,93 @@
 				}
 			],
 			"name": "props/table/Deck1_LOD0_41.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "alpha",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"path": "props/square_shadow/round_shadow_alpha.png",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/table/shadows_merged.geo"
 		}
 	],
 	"transforms": [
@@ -524,8 +623,8 @@
 				66.70046997070313
 			],
 			"rot": [
-				5.919573141000001e-06,
-				-9.334664355264977e-06,
+				5.91957268625265e-06,
+				-9.334663445770275e-06,
 				90.00000762939453
 			],
 			"scl": [
@@ -638,6 +737,24 @@
 			],
 			"scl": [
 				1.5700000524520874,
+				1.0,
+				1.0
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.0,
 				1.0,
 				1.0
 			]
