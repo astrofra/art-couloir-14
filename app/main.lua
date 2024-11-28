@@ -172,6 +172,19 @@ photo_state.photo_table = photo_tables[folder_table[photo_state.current_folder]]
 -- background noise
 local bg_snd_ref = hg.OpenALLoadWAVSoundAsset('sfx/static.wav')
 local bg_src_ref = hg.OpenALPlayStereo(bg_snd_ref, hg.OpenALStereoSourceState(1, hg.OALSR_Loop))
+hg.OpenALSetSourceVolume(bg_src_ref, 0.25)
+
+-- slide change sfx
+local slide_snd_ref = {}
+for idx = 0, 4 do
+	table.insert(slide_snd_ref, hg.OpenALLoadOGGSoundAsset('sfx/carousel/slide_' .. idx .. '.ogg'))
+end
+
+-- narrator voices
+local narrator_snd_ref = {}
+for idx = 1, 5 do
+	table.insert(narrator_snd_ref, hg.OpenALLoadOGGSoundAsset('sfx/narrator/narrator_' .. folder_table[idx] .. '.ogg'))
+end
 
 -- photo change fx
 for snd_idx = 0, 4 do
@@ -262,6 +275,8 @@ local RAMP_UP_DURATION = hg.time_from_sec_f(1.0)
 local RAMP_DOWN_DURATION = hg.time_from_sec_f(1.0)
 photo_state.start_clock = hg.GetClock()
 
+local prev_folder = -1
+
 while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	keyboard:Update()
 	dt = hg.TickClock()
@@ -319,7 +334,17 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 			photo_state.state = "change_photo"
 		end
 	elseif photo_state.state == "change_photo" then -- now that the noise is set to the max, let's swap the photo (trick!)
+		hg.OpenALPlayStereo(slide_snd_ref[math.random(1, 5)], hg.OpenALStereoSourceState(1, hg.OALSR_Once))
+
 		photo_state = ChangePhoto(photo_state, folder_table, photo_tables, res)
+
+		if photo_state.current_folder == prev_folder then
+			-- do nothing
+		else
+			hg.OpenALPlayStereo(narrator_snd_ref[photo_state.current_folder], hg.OpenALStereoSourceState(1, hg.OALSR_Once))
+		end
+
+		prev_folder = photo_state.current_folder
 		
 		-- textures
 		if hg.IsValid(photo_state.tex_photo0.texture) and hg.IsValid(photo_state.tex_photo0.slide_texture) then
@@ -350,7 +375,8 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		hg.SetMaterialValue(crt_scene_screen_material, 'uControl', hg.Vec4(photo_state.noise_intensity, chroma_distortion, 0.0, 0.0))
 
 		-- slide screen
-		local slide_transition = 1.0 - clamp(map(clock_s, 0.0, hg.time_to_sec_f(RAMP_UP_DURATION) * 0.25, 0.0, 1.0), 0.0, 1.0)
+		local slide_transition = clamp(map(clock_s, 0.0, hg.time_to_sec_f(RAMP_UP_DURATION) * 0.25, 1.0, 0.0), 0.0, 1.0)
+		slide_transition = slide_transition + 0.1 * make_triangle_wave(clamp(map(clock_s, hg.time_to_sec_f(RAMP_UP_DURATION) * 0.6, hg.time_to_sec_f(RAMP_UP_DURATION) * 0.85, 0.0, 1.0), 0.0, 1.0))
 		-- slide_transition = slide_transition^2.0
 		local slide_exposure = hg.Lerp(2.0, 0.5, slide_transition)
 		local slide_gamma = hg.Lerp(0.35, 10.0, slide_transition)
