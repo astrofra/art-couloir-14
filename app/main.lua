@@ -152,7 +152,10 @@ photo_tables.radiograf = {}
 for idx = 0, 22 do
 	table.insert(photo_tables.arzamas_16, string.format("%03d", idx))
 end
-for idx = 0, 23 do
+for idx = 20, 23 do
+	table.insert(photo_tables.fantomy, string.format("%03d", idx))
+end
+for idx = 0, 19 do
 	table.insert(photo_tables.fantomy, string.format("%03d", idx))
 end
 for idx = 0, 15 do
@@ -191,7 +194,7 @@ for snd_idx = 0, 4 do
 	photo_state.sounds[snd_idx + 1] = hg.OpenALLoadWAVSoundAsset('sfx/change' .. snd_idx .. '.wav') 
 end
 
-photo_state.current_photo = 1
+photo_state.current_photo = 18
 photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo, folder_table[photo_state.current_folder], res)
 photo_state.tex_title0 = hg.LoadTextureFromAssets('titles/' .. folder_table[photo_state.current_folder] .. '.png', hg.TF_UClamp | hg.TF_VClamp, res)
 
