@@ -1,5 +1,6 @@
 {
 	"recent_files": [
+		"props/main_scene_cables/main_scene_cables.scn",
 		"main.scn",
 		"light_cone/light_cone_merged.scn",
 		"props/slides_projector/uploads_files_2708484_SM_SlideProjector.scn",
@@ -8,7 +9,6 @@
 		"props/armchair/Soviet_armchair_Lisek_LOD0.scn",
 		"props/table/Soviet_Table_Variant1_LOD0.scn",
 		"props/small_chair/SM_Chair05.scn",
-		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn",
-		"props/warbrode/Soviet_Wardrobe_Variant1_LOD0.scn"
+		"props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_LOD0.scn"
 	]
 }
