@@ -36,10 +36,10 @@ hg.OpenALInit()
 
 SLIDE_SHOW_SPEED = 1.0
 VR_DEBUG_DISPLAY = false
--- local res_x, res_y = 768, 576
+local res_x, res_y = 768, 576
 -- local res_x, res_y = 800, 600
-local res_x, res_y = 960, 720
-local default_window_mode = hg.WV_Windowed
+-- local res_x, res_y = 960, 720
+local default_window_mode = hg.WV_Fullscreen
 
 local options = parseArgs(arg)
 local screen_modes = {
@@ -77,9 +77,9 @@ local render_data = hg.SceneForwardPipelineRenderData()  -- this object is used 
 -- OpenVR initialization
 local open_vr_enabled = false
 
-if hg.OpenVRInit() then
-	open_vr_enabled = true
-end
+-- if hg.OpenVRInit() then
+-- 	open_vr_enabled = true
+-- end
 
 local vr_left_fb, vr_right_fb
 if open_vr_enabled then
@@ -194,7 +194,7 @@ for snd_idx = 0, 4 do
 	photo_state.sounds[snd_idx + 1] = hg.OpenALLoadWAVSoundAsset('sfx/change' .. snd_idx .. '.wav') 
 end
 
-photo_state.current_photo = 18
+photo_state.current_photo = 1
 photo_state.tex_photo0 = LoadPhotoFromTable(photo_state.photo_table, photo_state.current_photo, folder_table[photo_state.current_folder], res)
 photo_state.tex_title0 = hg.LoadTextureFromAssets('titles/' .. folder_table[photo_state.current_folder] .. '.png', hg.TF_UClamp | hg.TF_VClamp, res)
 
@@ -476,7 +476,7 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	view_id = view_id + 1
 
 	-- -- CRT display rendering
-	if open_vr_enabled then
+	if not VR_DEBUG_DISPLAY then
 
 		view_id, passId = hg.SubmitSceneToPipeline(view_id, crt_scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
 
