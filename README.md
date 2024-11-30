@@ -27,6 +27,13 @@ This project leverages GAN technology (Midjourney) to create images that depict 
 2. **Virtual Setup**:
     - Develop a virtual environment that mirrors the physical setup using HARFANG 3D and Lua.
     - Align virtual objects with physical ones for a seamless experience.
+  
+3. **How to run it**:
+    - Download either the whole [archive](https://github.com/astrofra/art-couloir-14/archive/refs/heads/main.zip) or the [latest release](https://github.com/astrofra/art-couloir-14/releases)
+    - Unzip the file
+    - Start `SteamVR` and make sure the VR headset is up and running
+    - Run `app/1-build.bat` (will take a couple of minute, you only have to do this once)
+    - run `app/2-start.bat`
 
 ## Themes and Imagery
 
