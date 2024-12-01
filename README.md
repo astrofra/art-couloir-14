@@ -39,6 +39,10 @@ This project leverages GAN technology (Midjourney) to create images that depict 
     - Run `app/1-build.bat` (will take a couple of minute, you only have to do this once)
     - run `app/2-start.bat`
 
+4. **Misc documents**:
+    - [Notice (French)](img/cartel-Couloir-14-FR.pdf)
+    - [Notice (English)](img/cartel-Couloir-14-EN.pdf)
+
 ## Themes and Imagery
 
 The generated images are categorized into several themes:
