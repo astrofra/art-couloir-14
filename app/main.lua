@@ -77,9 +77,9 @@ local render_data = hg.SceneForwardPipelineRenderData()  -- this object is used 
 -- OpenVR initialization
 local open_vr_enabled = false
 
--- if hg.OpenVRInit() then
--- 	open_vr_enabled = true
--- end
+if hg.OpenVRInit() then
+	open_vr_enabled = true
+end
 
 local vr_left_fb, vr_right_fb
 if open_vr_enabled then
@@ -273,7 +273,7 @@ end
 
 -- Main loop
 local frame_count = 0
-local DISPLAY_DURATION = hg.time_from_sec_f(8.0)
+local DISPLAY_DURATION = hg.time_from_sec_f(5.0)
 local RAMP_UP_DURATION = hg.time_from_sec_f(1.0)
 local RAMP_DOWN_DURATION = hg.time_from_sec_f(1.0)
 photo_state.start_clock = hg.GetClock()
