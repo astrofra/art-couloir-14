@@ -1,0 +1,5 @@
+# Le Netzwerk
+
+Innovation pionnière de la RDA, le Netzwerk a matérialisé une vision utopique : connecter les complexes scientifiques de l’URSS dans une symphonie technologique unifiée. Sous l’impulsion de Kroutchev, ce réseau devait symboliser l’avant-garde de la modernité soviétique, surpassant les États-Unis dans la course à la modernité. Mais, congrès après congrès, l’inertie bureaucratique et l’ivresse des grandeurs l'ont emporté sur la planification.
+
+L’ambition rationnelle a donné lieu à une prolifération anarchique : des kilomètres de câbles étouffant les allées, des conduits massifs occupant les coursives et des structures d’interconnexion devenues parasites dans les espaces de travail. Le réseau, conçu pour fluidifier les flux d’information et accélérer la recherche, est devenu une entité hors de contrôle, obstruant jusqu’à la libre circulation de ses propres créateurs.

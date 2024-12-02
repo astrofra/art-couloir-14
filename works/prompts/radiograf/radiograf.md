@@ -1,0 +1,5 @@
+# VEB Radiograf
+
+Né sous les auspices de la RDA, le combinat VEB Radiograf a été conçu pour incarner l’avant-garde technologique, produisant des ordinateurs massifs pour soutenir les besoins en traitement de données. Pensé pour optimiser la recherche et l’administration, l’infrastructure mal adaptée a été alourdie par des ajouts incessants. Les encombrantes machines se sont entassées, leur maintenance rendue toujours plus complexe.
+
+La technique du calcul analogique, adoptée à rebours de ce qui se faisait à l'ouest, a perturbé l’ensemble du système. Des hallucinations informatiques sont apparues, les écrans affichant régulièrement des silhouettes fantomatiques et autres formes indistinctes apparemment vivantes. Ces anomalies, accompagnées de messages chiffrés et impénétrables, ont précipité la chute d’une industrie devenue hors de contrôle.
