@@ -36,9 +36,11 @@ hg.OpenALInit()
 
 SLIDE_SHOW_SPEED = 1.0
 VR_DEBUG_DISPLAY = false
-local res_x, res_y = 768, 576
+CRT_DISPLAY = true
+-- local res_x, res_y = 768, 576
 -- local res_x, res_y = 800, 600
 -- local res_x, res_y = 960, 720
+local res_x, res_y = 1920, 1080
 local default_window_mode = hg.WV_Fullscreen
 
 local options = parseArgs(arg)
@@ -77,9 +79,9 @@ local render_data = hg.SceneForwardPipelineRenderData()  -- this object is used 
 -- OpenVR initialization
 local open_vr_enabled = false
 
-if hg.OpenVRInit() then
-	open_vr_enabled = true
-end
+-- if hg.OpenVRInit() then
+-- 	open_vr_enabled = true
+-- end
 
 local vr_left_fb, vr_right_fb
 if open_vr_enabled then
@@ -451,32 +453,32 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 	-- vr
 	if open_vr_enabled then
-			actor_body_mtx = hg.TransformationMat4(initial_head_pos, hg.Vec3(0, 0, 0))
+		actor_body_mtx = hg.TransformationMat4(initial_head_pos, hg.Vec3(0, 0, 0))
 
-			vr_state = hg.OpenVRGetState(actor_body_mtx, 0.05, 1000)
-			left, right = hg.OpenVRStateToViewState(vr_state)
+		vr_state = hg.OpenVRGetState(actor_body_mtx, 0.05, 1000)
+		left, right = hg.OpenVRStateToViewState(vr_state)
 
-			passId = hg.SceneForwardPipelinePassViewId()
+		passId = hg.SceneForwardPipelinePassViewId()
 
-			-- Prepare view-independent render data once
-			view_id, passId = hg.PrepareSceneForwardPipelineCommonRenderData(view_id, scene, render_data, pipeline, res, passId)
-			vr_eye_rect = hg.IntRect(0, 0, vr_state.width, vr_state.height)
+		-- Prepare view-independent render data once
+		view_id, passId = hg.PrepareSceneForwardPipelineCommonRenderData(view_id, scene, render_data, pipeline, res, passId)
+		vr_eye_rect = hg.IntRect(0, 0, vr_state.width, vr_state.height)
 
-			-- Prepare the left eye render data then draw to its framebuffer
-			view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, left, scene, render_data, pipeline, res, passId)
-			view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, left, pipeline, render_data, res, vr_left_fb:GetHandle())
+		-- Prepare the left eye render data then draw to its framebuffer
+		view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, left, scene, render_data, pipeline, res, passId)
+		view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, left, pipeline, render_data, res, vr_left_fb:GetHandle())
 
-			-- Prepare the right eye render data then draw to its framebuffer
-			view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, right, scene, render_data, pipeline, res, passId)
-			view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, right, pipeline, render_data, res, vr_right_fb:GetHandle())
-	else
+		-- Prepare the right eye render data then draw to its framebuffer
+		view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, right, scene, render_data, pipeline, res, passId)
+		view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, right, pipeline, render_data, res, vr_right_fb:GetHandle())
+	elseif not CRT_DISPLAY then
 		view_id, passId = hg.SubmitSceneToPipeline(view_id, scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
 	end
 
 	view_id = view_id + 1
 
 	-- -- CRT display rendering
-	if not VR_DEBUG_DISPLAY then
+	if CRT_DISPLAY then
 
 		view_id, passId = hg.SubmitSceneToPipeline(view_id, crt_scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
 
