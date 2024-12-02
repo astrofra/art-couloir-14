@@ -10,7 +10,7 @@ This project aims to create an installation that blurs the lines between the phy
 
 This project leverages GAN technology (Midjourney, SDXL) to create images that depict ghostly figures and atypical buildings inspired by the city known as ["Arzamas-16"](https://en.wikipedia.org/wiki/Sarov). The installation is both physical and virtual, where visitors sit in a chair facing a desk adorned with various documents and objects, including a CRT television. When visitors put on the VR headset, they are immersed in a space that mirrors the physical setup, with the physical and virtual tables aligning to enhance the immersive experience. The virtual environment elevates the physical installation, with the virtual television displaying a series of documents and generated photos projected on a giant screen in VR. This experience is further enriched by a spatialized soundscape and the images are grouped by themes such as **Arzamas-16**, **Fantomy**, **Hazmat**, **Netzwerk** and **Radiograf**.
 
-- [Artist's statement (French)](img/intention-Couloir-14-FR.pdf)
+- [Artist's statement (French)](img/intention-couloir-14-fr.pdf)
 - Artist's statement (English) / NA
 
 
@@ -44,8 +44,8 @@ This project leverages GAN technology (Midjourney, SDXL) to create images that d
     - run `app/2-start.bat`
 
 4. **Misc documents**:
-    - [Notice (French)](img/cartel-Couloir-14-FR.pdf)
-    - [Notice (English)](img/cartel-Couloir-14-EN.pdf)
+    - [Notice (French)](img/cartel-couloir-14-fr.pdf)
+    - [Notice (English)](img/cartel-Couloir-14-en.pdf)
 
 ## Themes and imagery
 
