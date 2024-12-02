@@ -14,7 +14,7 @@ This project leverages GAN technology (Midjourney, SDXL) to create images that d
 - Artist's statement (English) / NA
 
 
-## Technical Details
+## Technical details
 
 - **Hardware**: 
   - PC with 2 video outputs (HDMI and Display port)
@@ -26,7 +26,7 @@ This project leverages GAN technology (Midjourney, SDXL) to create images that d
   - HARFANG 3D
   - Lua
 
-## Installation Setup
+## Installation setup
 
 1. **Physical Setup**:
     - A chair facing a desk with various documents and objects.
@@ -47,7 +47,7 @@ This project leverages GAN technology (Midjourney, SDXL) to create images that d
     - [Notice (French)](img/cartel-Couloir-14-FR.pdf)
     - [Notice (English)](img/cartel-Couloir-14-EN.pdf)
 
-## Themes and Imagery
+## Themes and imagery
 
 The generated images are categorized into several themes:
 - **Arzamas-16**: Depictions of the secretive Soviet city.
@@ -56,7 +56,7 @@ The generated images are categorized into several themes:
 - **Netzwerk**: A network of decaying infrastructure, symbols of overengineered yet abandoned connectivity.
 - **Radiograf**: Ghostly depictions of radiographic imprints and experimental technology.
 
-## Sound Design
+## Sound design
 
 - Develop a (spatialized) soundscape to accompany the visuals.
 - Ensure the sound enhances the thematic elements of the installation.
