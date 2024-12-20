@@ -46,6 +46,7 @@ local run_mode = "play"
 -- local res_x, res_y = 1920, 1080
 local res_x, res_y = 960, 720
 local default_window_mode = hg.WV_Fullscreen
+local open_vr_enabled = true
 
 -- -- local options = parseArgs(arg)
 -- local screen_modes = {
@@ -67,7 +68,7 @@ local default_window_mode = hg.WV_Fullscreen
 -- 	res_y = options.height
 -- end
 
-run_mode, res_x, res_y, default_window_mode = config_gui(res_x, res_y)
+run_mode, res_x, res_y, default_window_mode, open_vr_enabled = config_gui(res_x, res_y, open_vr_enabled)
 
 if run_mode == "cancel" then
 	os.exit()
@@ -85,10 +86,10 @@ local res = hg.PipelineResources()
 local render_data = hg.SceneForwardPipelineRenderData()  -- this object is used by the low-level scene rendering API to share view-independent data with both eyes
 
 -- OpenVR initialization
-local open_vr_enabled = false
-
-if hg.OpenVRInit() then
+if open_vr_enabled and hg.OpenVRInit() then
 	open_vr_enabled = true
+else
+	open_vr_enabled = false
 end
 
 local vr_left_fb, vr_right_fb

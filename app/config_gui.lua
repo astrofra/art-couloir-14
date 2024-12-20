@@ -1,7 +1,8 @@
 
-function config_gui(default_res_x, default_res_y)
+function config_gui(default_res_x, default_res_y, open_vr_enabled)
     default_res_x = default_res_x or 960
     default_res_y = default_res_y or 720
+    open_vr_enabled = open_vr_enabled or false
     -- resolution selection
     local res_list = {{640, 360}, {768, 432}, {896, 504}, {960, 720}, {1024, 576}, {1152, 648}, {1280, 720}, {1920, 1080}, {1920, 1200}, {2560, 1440}, {3840, 2160}, {5120, 2880}}
     local res_list_str = {}
@@ -15,7 +16,7 @@ function config_gui(default_res_x, default_res_y)
     local fullscreen_preset = 2
     local default_fullscreen = hg.WV_Undecorated
 
-    -- local pressed_full_aaa = false
+    -- local open_vr_enabled = false
     -- local pressed_low_aaa = false
     -- local pressed_no_aaa = false
 
@@ -44,9 +45,10 @@ function config_gui(default_res_x, default_res_y)
         hg.ImGuiBeginFrame(res_x, res_y, hg.TickClock(), hg.ReadMouse(), hg.ReadKeyboard())
 
         -- main window
-        if hg.ImGuiBegin("Rendering Configuration", true, hg.ImGuiWindowFlags_NoMove | hg.ImGuiWindowFlags_NoResize) then
-            hg.ImGuiSetWindowPos("Rendering Configuration", hg.Vec2(0, 0), hg.ImGuiCond_Once)
-            hg.ImGuiSetWindowSize("Rendering Configuration", hg.Vec2(res_x, res_y), hg.ImGuiCond_Once)
+        local screen_config_tex = "CRT Display Output"
+        if hg.ImGuiBegin(screen_config_tex, true, hg.ImGuiWindowFlags_NoMove | hg.ImGuiWindowFlags_NoResize) then
+            hg.ImGuiSetWindowPos(screen_config_tex, hg.Vec2(0, 0), hg.ImGuiCond_Once)
+            hg.ImGuiSetWindowSize(screen_config_tex, hg.Vec2(res_x, res_y), hg.ImGuiCond_Once)
 
             hg.ImGuiText("Screen")
 
@@ -66,20 +68,20 @@ function config_gui(default_res_x, default_res_y)
                 default_fullscreen = mode_list[fullscreen_preset + 1]
             end
 
-            -- -- Rendering settings
-            -- hg.ImGuiSpacing()
-            -- hg.ImGuiSeparator()
-            -- hg.ImGuiSpacing()
-            -- hg.ImGuiText("Rendering")
+            -- Rendering settings
+            hg.ImGuiSpacing()
+            hg.ImGuiSeparator()
+            hg.ImGuiSpacing()
+            hg.ImGuiText("Setup")
 
-            -- pressed_full_aaa = hg.ImGuiRadioButton("Full AAA", full_aaa)
+            -- pressed_open_vr_enabled = hg.ImGuiRadioButton("Enable VR", open_vr_enabled)
             -- hg.ImGuiSameLine()
             -- pressed_low_aaa = hg.ImGuiRadioButton("Low AAA", low_aaa)
             -- hg.ImGuiSameLine()
             -- pressed_no_aaa = hg.ImGuiRadioButton("Classic", no_aaa)
             -- hg.ImGuiSameLine()
 
-            -- if pressed_full_aaa then
+            -- if open_vr_enabled then
             --     full_aaa = true
             --     low_aaa = false
             --     no_aaa = false
@@ -131,5 +133,5 @@ function config_gui(default_res_x, default_res_y)
     hg.RenderShutdown()
 	hg.DestroyWindow(win)
 
-    return run_mode, default_res_x, default_res_y, default_fullscreen
+    return run_mode, default_res_x, default_res_y, default_fullscreen, open_vr_enabled
 end
