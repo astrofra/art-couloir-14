@@ -60,3 +60,18 @@ The generated images are categorized into several themes:
 
 - Develop a (spatialized) soundscape to accompany the visuals.
 - Ensure the sound enhances the thematic elements of the installation.
+
+## Concept
+
+- Concept/code/3D layout : [Astrofra](https://github.com/astrofra)
+- 3D models of vintage objects :
+   - [IsolatedSoulStudio](https://www.cgtrader.com/designers/IsolatedSoulStudio) (slide projector, floppy disks)
+   - [nollieinward](https://www.cgtrader.com/designers/nollieinward) (vintage soviet-like furnitures)
+   - [weeray](https://www.cgtrader.com/designers/weeray) (vintage desk)
+   - [kotkozyrkov](https://www.cgtrader.com/designers/kotkozyrkov) (crt tv)
+   - [Gamereadyassets](https://www.cgtrader.com/designers/Gamereadyassets) (crt tv)
+   - [Shrednector](https://www.cgtrader.com/designers/Shrednector) (vintage computer)
+ - sounds :
+   - [PMBROWNE](https://freesound.org/people/PMBROWNE/sounds/397467/) Slide projector sound
+   - https://elevenlabs.io/ (french voice-over)
+ - images generated using MidJourney, SDXL EpicRealism (https://civitai.com/models/277058/epicrealism-xl) over the course of 3 years (check: [latentspacecadet](https://www.instagram.com/latentspacecadet/) and [couloir14](https://www.instagram.com/couloir14/))
