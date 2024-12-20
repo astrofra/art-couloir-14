@@ -1,3 +1,8 @@
+hg = require("harfang")
+require("config_gui")
+require("utils")
+slides_colors = require("slides_colors")
+
 function LoadPhotoFromTable(_photo_table, _photo_idx, _photo_folder, res)
 	-- hg.LoadTextureFromAssets(slide_data[_idx].bitmap, hg.TF_UClamp | hg.TF_VClamp, res)
 	local texture_ref = hg.LoadTextureFromAssets('photos/' .. _photo_folder .. "/" .. _photo_table[_photo_idx] .. '.png', hg.TF_UClamp | hg.TF_VClamp, res)
@@ -25,10 +30,7 @@ function ChangePhoto(state, folder_table, photo_tables, res)
     return state
 end
 
-hg = require("harfang")
-require("utils")
-require("arguments")
-slides_colors = require("slides_colors")
+hg.AddAssetsFolder("assets_compiled")
 
 hg.InputInit()
 hg.WindowSystemInit()
@@ -37,37 +39,43 @@ hg.OpenALInit()
 SLIDE_SHOW_SPEED = 1.0
 VR_DEBUG_DISPLAY = false
 CRT_DISPLAY = true
+local run_mode = "play"
+
 -- local res_x, res_y = 768, 576
 -- local res_x, res_y = 800, 600
--- local res_x, res_y = 960, 720
-local res_x, res_y = 1920, 1080
+-- local res_x, res_y = 1920, 1080
+local res_x, res_y = 960, 720
 local default_window_mode = hg.WV_Fullscreen
 
-local options = parseArgs(arg)
-local screen_modes = {
-	Windowed = hg.WV_Windowed,
-    Undecorated = hg.WV_Undecorated,
-    Fullscreen = hg.WV_Fullscreen,
-    Hidden = hg.WV_Hidden,
-    FullscreenMonitor1 = hg.WV_FullscreenMonitor1,
-    FullscreenMonitor2 = hg.WV_FullscreenMonitor2,
-    FullscreenMonitor3 = hg.WV_FullscreenMonitor3
-}
-if options.output then
-	default_window_mode = screen_modes[options.output]
-end
-if options.width then
-	res_x = options.width
-end
-if options.height then
-	res_y = options.height
+-- -- local options = parseArgs(arg)
+-- local screen_modes = {
+-- 	Windowed = hg.WV_Windowed,
+--     Undecorated = hg.WV_Undecorated,
+--     Fullscreen = hg.WV_Fullscreen,
+--     Hidden = hg.WV_Hidden,
+--     FullscreenMonitor1 = hg.WV_FullscreenMonitor1,
+--     FullscreenMonitor2 = hg.WV_FullscreenMonitor2,
+--     FullscreenMonitor3 = hg.WV_FullscreenMonitor3
+-- }
+-- if options.output then
+-- 	default_window_mode = screen_modes[options.output]
+-- end
+-- if options.width then
+-- 	res_x = options.width
+-- end
+-- if options.height then
+-- 	res_y = options.height
+-- end
+
+run_mode, res_x, res_y, default_window_mode = config_gui(res_x, res_y)
+
+if run_mode == "cancel" then
+	os.exit()
 end
 
 local win = hg.NewWindow('COULOIR 14', res_x, res_y, 32, default_window_mode) --, hg.WV_Fullscreen)
 hg.RenderInit(win)
 hg.RenderReset(res_x, res_y, hg.RF_VSync | hg.RF_MSAA4X | hg.RF_MaxAnisotropy)
-
-hg.AddAssetsFolder("assets_compiled")
 
 local pipeline = hg.CreateForwardPipeline(2048, false)
 local res = hg.PipelineResources()
@@ -79,9 +87,9 @@ local render_data = hg.SceneForwardPipelineRenderData()  -- this object is used 
 -- OpenVR initialization
 local open_vr_enabled = false
 
--- if hg.OpenVRInit() then
--- 	open_vr_enabled = true
--- end
+if hg.OpenVRInit() then
+	open_vr_enabled = true
+end
 
 local vr_left_fb, vr_right_fb
 if open_vr_enabled then
