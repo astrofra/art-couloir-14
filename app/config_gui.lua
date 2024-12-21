@@ -1,8 +1,10 @@
 
-function config_gui(default_res_x, default_res_y, open_vr_enabled)
+function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscreen_enabled)
     default_res_x = default_res_x or 960
     default_res_y = default_res_y or 720
-    open_vr_enabled = open_vr_enabled or false
+    open_vr_enabled = open_vr_enabled or true
+    crt_fullscreen_enabled = crt_fullscreen_enabled or true
+
     -- resolution selection
     local res_list = {{640, 360}, {768, 432}, {896, 504}, {960, 720}, {1024, 576}, {1152, 648}, {1280, 720}, {1920, 1080}, {1920, 1200}, {2560, 1440}, {3840, 2160}, {5120, 2880}}
     local res_list_str = {}
@@ -50,7 +52,7 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled)
             hg.ImGuiSetWindowPos(screen_config_tex, hg.Vec2(0, 0), hg.ImGuiCond_Once)
             hg.ImGuiSetWindowSize(screen_config_tex, hg.Vec2(res_x, res_y), hg.ImGuiCond_Once)
 
-            hg.ImGuiText("Screen")
+            hg.ImGuiText("CRT Screen")
 
             res_modified, res_preset = hg.ImGuiCombo("Resolution", res_preset, res_list_str)
 
@@ -74,26 +76,14 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled)
             hg.ImGuiSpacing()
             hg.ImGuiText("Setup")
 
-            -- pressed_open_vr_enabled = hg.ImGuiRadioButton("Enable VR", open_vr_enabled)
-            -- hg.ImGuiSameLine()
-            -- pressed_low_aaa = hg.ImGuiRadioButton("Low AAA", low_aaa)
-            -- hg.ImGuiSameLine()
-            -- pressed_no_aaa = hg.ImGuiRadioButton("Classic", no_aaa)
-            -- hg.ImGuiSameLine()
+            pressed_open_vr_enabled, open_vr_enabled = hg.ImGuiCheckbox("Enable VR", open_vr_enabled)
 
-            -- if open_vr_enabled then
-            --     full_aaa = true
-            --     low_aaa = false
-            --     no_aaa = false
-            -- elseif pressed_low_aaa then
-            --     full_aaa = false
-            --     low_aaa = true
-            --     no_aaa = false
-            -- elseif pressed_no_aaa then
-            --     full_aaa = false
-            --     low_aaa = false
-            --     no_aaa = true
-            -- end
+            if not open_vr_enabled then
+                pressed_crt_fullscreen_enabled, crt_fullscreen_enabled = hg.ImGuiCheckbox("Enable fullscreen CRT slideshow", crt_fullscreen_enabled)
+            else
+                hg.ImGuiText("\tFullscreen CRT slideshow is enabled")
+                crt_fullscreen_enabled = true
+            end
 
             -- start demo
             hg.ImGuiSpacing()
@@ -133,5 +123,5 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled)
     hg.RenderShutdown()
 	hg.DestroyWindow(win)
 
-    return run_mode, default_res_x, default_res_y, default_fullscreen, open_vr_enabled
+    return run_mode, default_res_x, default_res_y, default_fullscreen, open_vr_enabled, crt_fullscreen_enabled
 end

@@ -38,37 +38,18 @@ hg.OpenALInit()
 
 SLIDE_SHOW_SPEED = 1.0
 VR_DEBUG_DISPLAY = false
-CRT_DISPLAY = true
 local run_mode = "play"
 
 -- local res_x, res_y = 768, 576
 -- local res_x, res_y = 800, 600
 -- local res_x, res_y = 1920, 1080
+
 local res_x, res_y = 960, 720
 local default_window_mode = hg.WV_Fullscreen
-local open_vr_enabled = true
+local open_vr_enabled = true -- do we run the main scene thru OpenVR
+local crt_fullscreen_enabled = true -- do we use the main display to render the "fake CRT" slideshow ?
 
--- -- local options = parseArgs(arg)
--- local screen_modes = {
--- 	Windowed = hg.WV_Windowed,
---     Undecorated = hg.WV_Undecorated,
---     Fullscreen = hg.WV_Fullscreen,
---     Hidden = hg.WV_Hidden,
---     FullscreenMonitor1 = hg.WV_FullscreenMonitor1,
---     FullscreenMonitor2 = hg.WV_FullscreenMonitor2,
---     FullscreenMonitor3 = hg.WV_FullscreenMonitor3
--- }
--- if options.output then
--- 	default_window_mode = screen_modes[options.output]
--- end
--- if options.width then
--- 	res_x = options.width
--- end
--- if options.height then
--- 	res_y = options.height
--- end
-
-run_mode, res_x, res_y, default_window_mode, open_vr_enabled = config_gui(res_x, res_y, open_vr_enabled)
+run_mode, res_x, res_y, default_window_mode, open_vr_enabled, crt_fullscreen_enabled = config_gui(res_x, res_y, open_vr_enabled, crt_fullscreen_enabled)
 
 if run_mode == "cancel" then
 	os.exit()
@@ -480,14 +461,14 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 		-- Prepare the right eye render data then draw to its framebuffer
 		view_id, passId = hg.PrepareSceneForwardPipelineViewDependentRenderData(view_id, right, scene, render_data, pipeline, res, passId)
 		view_id, passId = hg.SubmitSceneToForwardPipeline(view_id, scene, vr_eye_rect, right, pipeline, render_data, res, vr_right_fb:GetHandle())
-	elseif not CRT_DISPLAY then
+	elseif not crt_fullscreen_enabled then
 		view_id, passId = hg.SubmitSceneToPipeline(view_id, scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
 	end
 
 	view_id = view_id + 1
 
 	-- -- CRT display rendering
-	if CRT_DISPLAY then
+	if crt_fullscreen_enabled then
 
 		view_id, passId = hg.SubmitSceneToPipeline(view_id, crt_scene, hg.IntRect(0, 0, res_x, res_y), true, pipeline, res)
 
