@@ -27,14 +27,14 @@
 		"fog_far": 0.0,
 		"fog_near": 0.0,
 		"probe": {
-			"irradiance_map": "probes/abandoned_hall_01_2k.hdr.irradiance",
+			"irradiance_map": "probes/desk_3.hdr.irradiance",
 			"parallax": 0.0,
 			"pos": [
 				0.0,
 				0.0,
 				0.0
 			],
-			"radiance_map": "probes/abandoned_hall_01_2k.hdr.radiance",
+			"radiance_map": "probes/desk_3.hdr.radiance",
 			"rot": [
 				0.0,
 				0.0,
