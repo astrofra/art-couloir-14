@@ -45,7 +45,7 @@ This project leverages GAN technology (Midjourney, SDXL) to create images that d
 
 4. **Misc documents**:
     - [Notice (French)](img/cartel-couloir-14-fr.pdf)
-    - [Notice (English)](img/cartel-Couloir-14-en.pdf)
+    - [Notice (English)](img/cartel-couloir-14-en.pdf)
 
 ## Themes and imagery
 
