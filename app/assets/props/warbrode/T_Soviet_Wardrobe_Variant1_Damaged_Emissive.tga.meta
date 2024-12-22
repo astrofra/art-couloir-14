@@ -1,7 +1,7 @@
 {
 	"profiles": {
 		"default": {
-			"compression": "BC7"
+			"max-size": 256
 		}
 	}
 }
