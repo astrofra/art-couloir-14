@@ -182,3 +182,69 @@ function array_find(t, value)
     end
     return nil -- Return nil if the value is not found
 end
+
+-- Function to read an .ini file with missing file handling
+function read_ini(file_path)
+    -- Check if the file exists
+    local file = io.open(file_path, "r")
+    if not file then
+        print("Warning: Configuration file not found: " .. file_path)
+        return nilt
+    end
+
+    local config = {}
+
+    -- Read and parse the file
+    local section
+    for line in file:lines() do
+        local s = line:match("^%[([^%]]+)%]$")
+        if s then
+            section = s
+            config[section] = config[section] or {}
+        else
+            local key, value = line:match("^([^=]+)%s-=%s-(.+)$")
+            if key and value then
+                key = key:match("^%s*(.-)%s*$") -- Trim whitespace
+                value = value:match("^%s*(.-)%s*$") -- Trim whitespace
+                if tonumber(value) then
+                    value = tonumber(value)
+                elseif value == "true" then
+                    value = true
+                elseif value == "false" then
+                    value = false
+                end
+                if section then
+                    config[section][key] = value
+                else
+                    config[key] = value
+                end
+            end
+        end
+    end
+
+    file:close()
+    return config
+end
+
+-- Function to write an .ini file
+function write_ini(file_path, config)
+    local file = io.open(file_path, "w")
+    if not file then
+        error("Could not open file for writing: " .. file_path)
+    end
+
+    for section, values in pairs(config) do
+        if type(values) == "table" then
+            file:write(string.format("[%s]\n", section))
+            for key, value in pairs(values) do
+                local value_str = tostring(value)
+                file:write(string.format("%s = %s\n", key, value_str))
+            end
+        else
+            file:write(string.format("%s = %s\n", section, tostring(values)))
+        end
+        file:write("\n")
+    end
+
+    file:close()
+end

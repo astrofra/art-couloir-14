@@ -1,3 +1,4 @@
+require("utils")
 
 function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscreen_enabled, language)
     default_res_x = default_res_x or 960
@@ -5,6 +6,17 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscree
     open_vr_enabled = open_vr_enabled or true
     crt_fullscreen_enabled = crt_fullscreen_enabled or true
     language = language or "en"
+
+    local config_file = "config.ini"
+    local loaded_config = read_ini(config_file)
+
+    if loaded_config then
+        default_res_x = loaded_config.default_res_x
+        default_res_y = loaded_config.default_res_y
+        open_vr_enabled = loaded_config.open_vr_enabled
+        crt_fullscreen_enabled = loaded_config.crt_fullscreen_enabled
+        language = loaded_config.language
+    end
 
     -- resolution selection
     local res_list = {{640, 360}, {768, 432}, {896, 504}, {960, 720}, {1024, 576}, {1152, 648}, {1280, 720}, {1920, 1080}, {1920, 1200}, {2560, 1440}, {3840, 2160}, {5120, 2880}}
@@ -17,7 +29,12 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscree
     local lang_preset = array_find(language_list, language) - 1
 
     local res_modified
-    local res_preset = 3
+    -- prepare list of resolutions
+    local i
+    for i = 1, #res_list do
+        table.insert(res_list_str, res_list[i][1] .. "x" .. res_list[i][2])
+    end    
+    local res_preset = (array_find(res_list_str, tostring(default_res_x) .. "x" .. tostring(default_res_y)) - 1) or 3 -- 3 is the default resolution
     local fullscreen_modified
     local fullscreen_preset = 2
     local default_fullscreen = hg.WV_Undecorated
@@ -39,12 +56,6 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscree
     local imgui_img_prg = hg.LoadProgramFromAssets('core/shader/imgui_image')
 
     hg.ImGuiInit(10, imgui_prg, imgui_img_prg)
-
-    -- prepare list of resolutions
-    local i
-    for i = 1, #res_list do
-        table.insert(res_list_str, res_list[i][1] .. "x" .. res_list[i][2])
-    end
 
     -- main loop
     while run_mode == "stay" do
@@ -136,5 +147,16 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscree
 	hg.DestroyWindow(win)
 
     language = language_list[lang_preset + 1]
+
+    local saved_config = {
+        default_res_x = default_res_x,
+        default_res_y = default_res_y,
+        open_vr_enabled = open_vr_enabled,
+        crt_fullscreen_enabled = crt_fullscreen_enabled,
+        language = language
+    }
+
+    write_ini(config_file, saved_config)
+
     return run_mode, default_res_x, default_res_y, default_fullscreen, open_vr_enabled, crt_fullscreen_enabled, language
 end
