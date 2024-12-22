@@ -4,6 +4,8 @@
 
 This project aims to create an installation that blurs the lines between the physical and virtual worlds. By utilizing GAN technology (Midjourney) on photos from my personal collection, I have generated dozens of images that simulate a lost and rediscovered archive of a research center deep in the heart of the late 1970s USSR.
 
+Couloir 14, the installation, was first presented to the public at the digital art festival [Matricule Bis](https://sites.google.com/view/matriculebis2024/), organized by the [Alliance Française of Orléans](https://aforleans.org/) in 2024.
+
 ![Couloir 14, hero image](img/hero_image_00.png)
 
 ## Concept
