@@ -25,8 +25,8 @@ This project leverages GAN technology (Midjourney, SDXL) to create images that d
   - HDMI to Scart adapter
 
 - **Software**: 
-  - HARFANG 3D
-  - Lua
+  - [HARFANG 3D](https://github.com/harfang3d/)
+  - [Lua](https://lua.org/)
 
 ## Installation setup
 
