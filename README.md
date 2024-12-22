@@ -75,5 +75,5 @@ The generated images are categorized into several themes:
    - [Shrednector](https://www.cgtrader.com/designers/Shrednector) (vintage computer)
  - sounds :
    - [PMBROWNE](https://freesound.org/people/PMBROWNE/sounds/397467/) Slide projector sound
-   - https://elevenlabs.io/ (french voice-over)
+   - https://elevenlabs.io/ (french & english voice-over)
  - images generated using MidJourney, SDXL [EpicRealism](https://civitai.com/models/277058/epicrealism-xl) over the course of 3 years (check: [latentspacecadet](https://www.instagram.com/latentspacecadet/) and [couloir14](https://www.instagram.com/couloir14/))
