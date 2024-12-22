@@ -19,10 +19,10 @@ This project leverages GAN technology (Midjourney, SDXL) to create images that d
 ## Technical details
 
 - **Hardware**: 
-  - PC with 2 video outputs (HDMI and Display port)
-  - HTC Vive VR headset
+  - PC with 2 video outputs (HDMI and Display port) running Win64
+  - [HTC Vive VR headset](https://www.vive.com/uk/product/vive-pro-full-kit/) (any SteamVR compliant headset with persistent calibration should work, see [Pico 4](https://www.picoxr.com/uk))
   - CRT 4:3 Color Television set with scart input
-  - HDMI to Scart adapter
+  - HDMI to Scart adapter (Check [here](https://fr.aliexpress.com/w/wholesale-scart-hdmi-adapter.html))
 
 - **Software**: 
   - [HARFANG 3D](https://github.com/harfang3d/)
