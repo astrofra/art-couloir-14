@@ -1,5 +1,5 @@
 # Hazmat
 
-Selected to embody the elite of Soviet space exploration, the men and women of the space program were meant to carry the USSR to the stars. Victims of bureaucracy, these cosmonauts found themselves endlessly building the program’s infrastructure, which never advanced beyond the construction phase.
+Chosen to incarnate the elite of the Soviet space conquest, the men and women of the space programme were supposed to take the USSR to the stars. However, victims of bureaucratic red tape, these cosmonauts were forced to carry out the interminable erection of the programme's infrastructure, which never got beyond the construction stage.
 
-Nicknamed the "Hazmat," they were reduced to construction workers, their dreams of stellar conquest crushed beneath the weight of concrete shells and the sprawling pipework of an eternally unfinished space center
+Known as ‘Hazmats’ and transformed into construction workers, they watched their dreams of conquering the stars crushed by the concrete sails and imposing pipes of a forever unfinished space complex.
