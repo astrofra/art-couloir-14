@@ -243,7 +243,7 @@ function write_ini(file_path, config)
         else
             file:write(string.format("%s = %s\n", section, tostring(values)))
         end
-        file:write("\n")
+        -- file:write("\n")
     end
 
     file:close()
