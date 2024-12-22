@@ -4,6 +4,8 @@
 
 This project aims to create an installation that blurs the lines between the physical and virtual worlds. By utilizing GAN technology (Midjourney) on photos from my personal collection, I have generated dozens of images that simulate a lost and rediscovered archive of a research center deep in the heart of the late 1970s USSR.
 
+Couloir 14, the installation, was first presented to the public at the digital art festival [Matricule Bis](https://sites.google.com/view/matriculebis2024/), organized by the [Alliance Française of Orléans](https://aforleans.org/) in 2024.
+
 ![Couloir 14, hero image](img/hero_image_00.png)
 
 ## Concept
@@ -23,8 +25,8 @@ This project leverages GAN technology (Midjourney, SDXL) to create images that d
   - HDMI to Scart adapter
 
 - **Software**: 
-  - HARFANG 3D
-  - Lua
+  - [HARFANG 3D](https://github.com/harfang3d/)
+  - [Lua](https://lua.org/)
 
 ## Installation setup
 
@@ -73,5 +75,5 @@ The generated images are categorized into several themes:
    - [Shrednector](https://www.cgtrader.com/designers/Shrednector) (vintage computer)
  - sounds :
    - [PMBROWNE](https://freesound.org/people/PMBROWNE/sounds/397467/) Slide projector sound
-   - https://elevenlabs.io/ (french voice-over)
+   - https://elevenlabs.io/ (french & english voice-over)
  - images generated using MidJourney, SDXL [EpicRealism](https://civitai.com/models/277058/epicrealism-xl) over the course of 3 years (check: [latentspacecadet](https://www.instagram.com/latentspacecadet/) and [couloir14](https://www.instagram.com/couloir14/))
