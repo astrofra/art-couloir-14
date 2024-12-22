@@ -1,16 +1,20 @@
 
-function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscreen_enabled)
+function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscreen_enabled, language)
     default_res_x = default_res_x or 960
     default_res_y = default_res_y or 720
     open_vr_enabled = open_vr_enabled or true
     crt_fullscreen_enabled = crt_fullscreen_enabled or true
+    language = language or "en"
 
     -- resolution selection
     local res_list = {{640, 360}, {768, 432}, {896, 504}, {960, 720}, {1024, 576}, {1152, 648}, {1280, 720}, {1920, 1080}, {1920, 1200}, {2560, 1440}, {3840, 2160}, {5120, 2880}}
     local res_list_str = {}
-    local res_x, res_y = 600, 250
+    local res_x, res_y = 600, 280
     local mode_list = {hg.WV_Windowed, hg.WV_Fullscreen, hg.WV_Undecorated, hg.WV_FullscreenMonitor1, hg.WV_FullscreenMonitor2, hg.WV_FullscreenMonitor3}
     local mode_list_str = {"Windowed", "Fullscreen", "Undecorated", "Fullscreen Monitor #1", "Fullscreen Monitor #2", "Fullscreen Monitor #3"}
+    local language_list = {"en", "fr"}
+    local language_list_str = {"English", "French"}
+    local lang_preset = array_find(language_list, language) - 1
 
     local res_modified
     local res_preset = 3
@@ -85,6 +89,14 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscree
                 crt_fullscreen_enabled = true
             end
 
+            -- Voice over language
+            hg.ImGuiSpacing()
+            hg.ImGuiSeparator()
+            hg.ImGuiSpacing()
+            hg.ImGuiText("Voice over language")
+
+            lang_modified, lang_preset = hg.ImGuiCombo("Language", lang_preset, language_list_str)
+
             -- start demo
             hg.ImGuiSpacing()
             hg.ImGuiSeparator()
@@ -123,5 +135,6 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscree
     hg.RenderShutdown()
 	hg.DestroyWindow(win)
 
-    return run_mode, default_res_x, default_res_y, default_fullscreen, open_vr_enabled, crt_fullscreen_enabled
+    language = language_list[lang_preset + 1]
+    return run_mode, default_res_x, default_res_y, default_fullscreen, open_vr_enabled, crt_fullscreen_enabled, language
 end

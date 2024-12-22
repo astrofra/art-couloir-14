@@ -48,8 +48,9 @@ local res_x, res_y = 960, 720
 local default_window_mode = hg.WV_Fullscreen
 local open_vr_enabled = true -- do we run the main scene thru OpenVR
 local crt_fullscreen_enabled = true -- do we use the main display to render the "fake CRT" slideshow ?
+local language = "en"
 
-run_mode, res_x, res_y, default_window_mode, open_vr_enabled, crt_fullscreen_enabled = config_gui(res_x, res_y, open_vr_enabled, crt_fullscreen_enabled)
+run_mode, res_x, res_y, default_window_mode, open_vr_enabled, crt_fullscreen_enabled, language = config_gui(res_x, res_y, open_vr_enabled, crt_fullscreen_enabled, language)
 
 if run_mode == "cancel" then
 	os.exit()
@@ -178,7 +179,7 @@ end
 -- narrator voices
 local narrator_snd_ref = {}
 for idx = 1, 5 do
-	table.insert(narrator_snd_ref, hg.OpenALLoadOGGSoundAsset('sfx/narrator/narrator_' .. folder_table[idx] .. '.ogg'))
+	table.insert(narrator_snd_ref, hg.OpenALLoadOGGSoundAsset('sfx/narrator/' .. language .. '/narrator_' .. folder_table[idx] .. '.ogg'))
 end
 
 -- photo change fx

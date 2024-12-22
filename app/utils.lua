@@ -173,3 +173,12 @@ function LerpColor(a, b, k)
     local vl = hg.Lerp(va, vb, k)
     return hg.Color(vl.x, vl.y, vl.z, vl.w)
 end
+
+function array_find(t, value)
+    for i, v in ipairs(t) do
+        if v == value then
+            return i -- Return the index as soon as the value is found
+        end
+    end
+    return nil -- Return nil if the value is not found
+end
