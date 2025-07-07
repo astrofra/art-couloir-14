@@ -218,7 +218,8 @@ quad_uniform_set_value_list:push_back(hg.MakeUniformSetValue("color", hg.Vec4(1,
 local quad_uniform_set_texture_list = hg.UniformSetTextureList()
 
 local initial_head_pos = scene:GetNode("FPSCamera"):GetTransform():GetPos()
-initial_head_pos.y = 0.0
+initial_head_pos.y = 0.10
+initial_head_pos.z = initial_head_pos.z + 0.5
 
 local keyboard = hg.Keyboard('raw')
 local switch_clock = hg.GetClock()

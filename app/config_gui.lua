@@ -58,7 +58,8 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscree
     hg.ImGuiInit(10, imgui_prg, imgui_img_prg)
 
     -- main loop
-    while run_mode == "stay" do
+    local timeout = hg.GetClock()
+    while run_mode == "stay" and hg.GetClock() - timeout < hg.time_from_sec_f(25.0) do
         hg.ImGuiBeginFrame(res_x, res_y, hg.TickClock(), hg.ReadMouse(), hg.ReadKeyboard())
 
         -- main window
