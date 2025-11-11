@@ -1,5 +1,7 @@
 # Couloir 14
 
+_Version for XUL 2025 Festival in Orleans, France. The changes mainly involve the OS-related setup, how to force the audio output, how to run the software when the system is switched on, ...)_
+
 > VR installation to embark the visitor in an archive of (imaginary) lost+found documents.
 
 This project aims to create an installation that blurs the lines between the physical and virtual worlds. By utilizing GAN technology (Midjourney) on photos from my personal collection, I have generated dozens of images that simulate a lost and rediscovered archive of a research center deep in the heart of the late 1970s USSR.
