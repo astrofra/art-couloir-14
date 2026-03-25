@@ -134,8 +134,6 @@ function config_gui(default_res_x, default_res_y, open_vr_enabled, crt_fullscree
 
         hg.ImGuiEnd()
 
-        hg.ImGuiEnd()
-
         hg.SetView2D(0, 0, 0, res_x, res_y, -1, 1, hg.CF_Color | hg.CF_Depth, hg.Color.Black, 1, 0)
         hg.ImGuiEndFrame(0)
 

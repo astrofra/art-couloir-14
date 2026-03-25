@@ -1,0 +1,46 @@
+<Scene>
+    <Editor>
+        <SceneTools>
+            <SceneCameraTool>
+                <WorldMatrix m00="0.999073" m10="-0.000000" m20="-0.043057" m01="0.003459" m11="0.996768" m21="0.080259" m02="0.042918" m12="-0.080333" m22="0.995844" m03="-0.145084" m13="-0.155052" m23="-4.797556"/>
+            </SceneCameraTool>
+        </SceneTools>
+    </Editor>
+    <Components/>
+    <Nodes>
+        <Node Uid="2" Name="key_light">
+            <Components>
+                <Transform>
+                    <Position x="0.000000" y="0.000000" z="-1.000000"/>
+                    <Rotation x="0.379609" y="0.850848" z="-0.000000"/>
+                </Transform>
+                <Light Model="Linear" Shadow="ShadowMap" ShadowRange="0.000000" ClipDistance="1500.000000" SpecularIntensity="1.000000" ConeAngle="0.532325">
+                    <SpecularColor r="1.000000" g="1.000000" b="1.000000"/>
+                </Light>
+            </Components>
+        </Node>
+        <Node Uid="4" Name="back_light">
+            <Components>
+                <Transform>
+                    <Position x="0.000000" y="0.000000" z="-1.000000"/>
+                    <Rotation x="0.197886" y="2.685894" z="-0.028251"/>
+                </Transform>
+                <Light Model="Linear" ShadowRange="0.000000" ClipDistance="1500.000000" SpecularIntensity="1.000000" ConeAngle="0.532325">
+                    <DiffuseColor r="0.469841" g="0.893965" b="1.000000"/>
+                    <SpecularColor r="0.552377" g="0.961654" b="1.000000"/>
+                </Light>
+            </Components>
+        </Node>
+        <Node Uid="5" Name="fill_light">
+            <Components>
+                <Transform>
+                    <Position x="0.000000" y="0.000000" z="-1.000000"/>
+                    <Rotation x="-0.301069" y="-1.094321" z="0.000000"/>
+                </Transform>
+                <Light Model="Linear" ShadowRange="0.000000" ClipDistance="1500.000000" DiffuseIntensity="0.250000" SpecularIntensity="0.100000" ConeAngle="0.532325">
+                    <SpecularColor r="1.000000" g="1.000000" b="1.000000"/>
+                </Light>
+            </Components>
+        </Node>
+    </Nodes>
+</Scene>
