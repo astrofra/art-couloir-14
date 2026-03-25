@@ -217,7 +217,8 @@ quad_uniform_set_value_list:push_back(hg.MakeUniformSetValue("color", hg.Vec4(1,
 
 local quad_uniform_set_texture_list = hg.UniformSetTextureList()
 
-local initial_head_pos = scene:GetNode("FPSCamera"):GetTransform():GetPos()
+local initial_head_pos = hg.GetTranslation(scene:GetNode("FPSCamera"):GetTransform():GetWorld())
+-- local head_pos_offset = hg.Vec3(0,0,0)
 initial_head_pos.y = 0.0
 
 local keyboard = hg.Keyboard('raw')
@@ -448,6 +449,13 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 
 		vr_state = hg.OpenVRGetState(actor_body_mtx, 0.05, 1000)
 		left, right = hg.OpenVRStateToViewState(vr_state)
+
+		-- -- Calibration
+		-- if keyboard:Released(hg.K_Space) then
+		-- 	local physical_head_pos = hg.GetTranslation(vr_state.head)
+		-- 	head_pos_offset = initial_head_pos - physical_head_pos
+		-- 	-- calibration_local_matrix = hg.InverseFast(head_matrix) * hg.TransformationMat4(calibration_node.GetTransform().GetPos(), calibration_node.GetTransform().GetRot())
+		-- end
 
 		passId = hg.SceneForwardPipelinePassViewId()
 
