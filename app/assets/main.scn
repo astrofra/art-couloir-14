@@ -158,6 +158,48 @@
 		},
 		{
 			"name": "props/main_scene_cables/main_scene_cables_merged.scn"
+		},
+		{
+			"name": "common/tube/tube.scn"
+		},
+		{
+			"name": "common/tube/tube.scn"
+		},
+		{
+			"name": "common/tube/tube.scn"
+		},
+		{
+			"name": "common/tube/tube.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
 		}
 	],
 	"key_values": null,
@@ -347,6 +389,7 @@
 				4294967295
 			],
 			"disabled": true,
+			"editor": false,
 			"idx": 0,
 			"instance": 15,
 			"name": "cyclo"
@@ -360,6 +403,7 @@
 				4294967295
 			],
 			"disabled": true,
+			"editor": false,
 			"idx": 1,
 			"instance": 10,
 			"name": "cyclo"
@@ -373,6 +417,7 @@
 				4294967295
 			],
 			"disabled": true,
+			"editor": false,
 			"idx": 2,
 			"instance": 9,
 			"name": "cyclo"
@@ -386,6 +431,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 3,
 			"name": "cyclo_root"
 		},
@@ -398,6 +444,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 4,
 			"instance": 8,
 			"name": "SM_MetalDesk"
@@ -411,6 +458,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 5,
 			"name": "Spotlight"
 		},
@@ -423,6 +471,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 6,
 			"instance": 16,
 			"name": "SM_OfficeChair02"
@@ -436,6 +485,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 7,
 			"name": "sphere_chrome"
 		},
@@ -448,6 +498,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 8,
 			"instance": 17,
 			"name": "tv_medium_size"
@@ -461,6 +512,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 9,
 			"instance": 18,
 			"name": "monitor_cctv"
@@ -474,6 +526,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 10,
 			"instance": 7,
 			"name": "crt_tv"
@@ -487,6 +540,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 11,
 			"instance": 12,
 			"name": "Instance"
@@ -500,6 +554,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 12,
 			"instance": 13,
 			"name": "apple_2"
@@ -513,6 +568,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 13,
 			"name": "ground_light"
 		},
@@ -525,6 +581,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 14,
 			"instance": 14,
 			"name": "TRS-80"
@@ -538,6 +595,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 15,
 			"instance": 11,
 			"name": "SM_HomeComputer"
@@ -551,6 +609,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 16,
 			"name": "ground"
 		},
@@ -563,6 +622,7 @@
 				4294967295
 			],
 			"disabled": true,
+			"editor": false,
 			"idx": 17,
 			"instance": 6,
 			"name": "calendar"
@@ -576,6 +636,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 18,
 			"instance": 1,
 			"name": "Soviet_Chest_Of_Drawers_Variant2_LOD0"
@@ -589,6 +650,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 19,
 			"instance": 5,
 			"name": "Soviet_Table_Variant1_LOD0"
@@ -602,6 +664,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 20,
 			"instance": 4,
 			"name": "Soviet_Wardrobe_Variant1_LOD0"
@@ -615,6 +678,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 21,
 			"instance": 3,
 			"name": "Soviet_Wardrobe_Variant1_LOD0"
@@ -628,6 +692,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 22,
 			"name": "light_panel"
 		},
@@ -640,6 +705,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 23,
 			"instance": 2,
 			"name": "Soviet_armchair_Lisek_LOD0"
@@ -653,6 +719,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 24,
 			"name": "light_panel"
 		},
@@ -665,6 +732,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 25,
 			"name": "slide_screen"
 		},
@@ -677,6 +745,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 26,
 			"name": "ScreenLight0"
 		},
@@ -689,6 +758,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 27,
 			"name": "FPSCamera"
 		},
@@ -701,6 +771,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 28,
 			"name": "ScreenLight1"
 		},
@@ -713,6 +784,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 29,
 			"name": "ScreenLight2"
 		},
@@ -725,6 +797,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 30,
 			"name": "ScreenLight3"
 		},
@@ -737,6 +810,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 31,
 			"name": "crt_screen"
 		},
@@ -749,6 +823,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 32,
 			"instance": 0,
 			"name": "round_shadow"
@@ -762,6 +837,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 33,
 			"instance": 19,
 			"name": "tv_vintage_screen"
@@ -775,6 +851,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 34,
 			"instance": 20,
 			"name": "SlideProjector"
@@ -788,6 +865,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 35,
 			"instance": 21,
 			"name": "light_cone"
@@ -801,6 +879,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 36,
 			"instance": 22,
 			"name": "apple_vintage_screen"
@@ -814,6 +893,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 37,
 			"name": "SM_HomeComputer_screen"
 		},
@@ -826,6 +906,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 38,
 			"instance": 23,
 			"name": "8_inch_floppy_disk"
@@ -839,6 +920,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 39,
 			"instance": 24,
 			"name": "8_inch_floppy_disk"
@@ -852,6 +934,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 40,
 			"instance": 25,
 			"name": "8_inch_floppy_disk"
@@ -865,6 +948,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 41,
 			"instance": 26,
 			"name": "8_inch_floppy_disk"
@@ -878,6 +962,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 42,
 			"instance": 27,
 			"name": "8_inch_floppy_disk"
@@ -891,6 +976,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 43,
 			"instance": 28,
 			"name": "SM_FloppyBl"
@@ -904,6 +990,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 44,
 			"instance": 29,
 			"name": "SM_FloppyBl"
@@ -917,6 +1004,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 45,
 			"name": "SM_HomeComputer_noise"
 		},
@@ -929,6 +1017,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 46,
 			"instance": 31,
 			"name": "round_shadow"
@@ -942,6 +1031,7 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 47,
 			"instance": 30,
 			"name": "round_shadow"
@@ -955,14 +1045,212 @@
 				4294967295
 			],
 			"disabled": false,
+			"editor": false,
 			"idx": 48,
 			"instance": 32,
 			"name": "main_scene_cables"
+		},
+		{
+			"components": [
+				49,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 49,
+			"instance": 33,
+			"name": "tube"
+		},
+		{
+			"components": [
+				50,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 50,
+			"instance": 34,
+			"name": "tube"
+		},
+		{
+			"components": [
+				52,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 51,
+			"instance": 36,
+			"name": "tube"
+		},
+		{
+			"components": [
+				51,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 52,
+			"instance": 35,
+			"name": "tube"
+		},
+		{
+			"components": [
+				53,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 234,
+			"instance": 37,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				54,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 236,
+			"instance": 38,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				55,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 238,
+			"instance": 39,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				56,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 240,
+			"instance": 40,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				57,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 242,
+			"instance": 41,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				58,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 244,
+			"instance": 42,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				59,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 246,
+			"instance": 43,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				60,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 248,
+			"instance": 44,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				61,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 250,
+			"instance": 45,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				62,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"editor": false,
+			"idx": 252,
+			"instance": 46,
+			"name": "round_shadow"
 		}
 	],
 	"objects": [
 		{
 			"bones": [],
+			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1025,10 +1313,12 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/ground.geo"
+			"name": "props/primitives/ground.geo",
+			"shadow": ""
 		},
 		{
 			"bones": [],
+			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1099,10 +1389,12 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/ground.geo"
+			"name": "props/primitives/ground.geo",
+			"shadow": ""
 		},
 		{
 			"bones": [],
+			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1168,10 +1460,12 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/ground.geo"
+			"name": "props/primitives/ground.geo",
+			"shadow": ""
 		},
 		{
 			"bones": [],
+			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1237,10 +1531,12 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/ground.geo"
+			"name": "props/primitives/ground.geo",
+			"shadow": ""
 		},
 		{
 			"bones": [],
+			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1294,10 +1590,12 @@
 					"write_z": false
 				}
 			],
-			"name": "props/primitives/ground.geo"
+			"name": "props/primitives/ground.geo",
+			"shadow": ""
 		},
 		{
 			"bones": [],
+			"flags": [],
 			"material_infos": [
 				{
 					"name": "screen"
@@ -1370,10 +1668,12 @@
 					"write_z": true
 				}
 			],
-			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo"
+			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo",
+			"shadow": ""
 		},
 		{
 			"bones": [],
+			"flags": [],
 			"material_infos": [
 				{
 					"name": "screen"
@@ -1467,10 +1767,12 @@
 					"write_z": false
 				}
 			],
-			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo"
+			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo",
+			"shadow": ""
 		},
 		{
 			"bones": [],
+			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1542,7 +1844,8 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/sphere.geo"
+			"name": "props/primitives/sphere.geo",
+			"shadow": ""
 		}
 	],
 	"transforms": [
@@ -1663,7 +1966,7 @@
 			],
 			"rot": [
 				-0.0,
-				-16.80999755859375,
+				-16.809993743896484,
 				0.0
 			],
 			"scl": [
@@ -2293,7 +2596,7 @@
 			],
 			"rot": [
 				-0.0,
-				83.99995422363281,
+				83.99994659423828,
 				0.0
 			],
 			"scl": [
@@ -2347,7 +2650,7 @@
 			],
 			"rot": [
 				-8.918557073615114e-16,
-				3.415091896386002e-06,
+				3.4150914416386513e-06,
 				-3.4234865207191222e-15
 			],
 			"scl": [
@@ -2382,7 +2685,7 @@
 				9.514562277829946e-16
 			],
 			"rot": [
-				-4.5498197176426985e-21,
+				-4.5498189098491316e-21,
 				0.0,
 				0.0
 			],
@@ -2419,13 +2722,265 @@
 			],
 			"rot": [
 				-0.0,
-				4.999999523162842,
+				4.999998569488525,
 				0.0
 			],
 			"scl": [
 				0.9999997019767761,
 				0.9999998211860657,
 				0.9999997615814209
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				2.610712766647339,
+				0.0,
+				3.0825188159942627
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.19999995827674866,
+				2.1499998569488525,
+				0.19999992847442627
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-1.5609352588653564,
+				0.0,
+				3.0825188159942627
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.19999994337558746,
+				2.1499996185302734,
+				0.1999998837709427
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				2.610713005065918,
+				0.07434701919555664,
+				3.0825188159942627
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				90.0
+			],
+			"scl": [
+				0.19999979436397552,
+				2.089998960494995,
+				0.19999971985816956
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				2.610712766647339,
+				4.241440296173096,
+				3.0825188159942627
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				90.0
+			],
+			"scl": [
+				0.1999998837709427,
+				2.0899996757507324,
+				0.1999998241662979
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.15249787271022797,
+				0.7778220772743225,
+				-0.041421517729759216
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.6999999284744263,
+				0.6999999284744263,
+				0.6999999284744263
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-0.21668381989002228,
+				0.7778220772743225,
+				-0.05202434957027435
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.6999998688697815,
+				0.6999998688697815,
+				0.6999998688697815
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.6953985095024109,
+				0.7778221368789673,
+				-0.13109152019023895
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.6999998092651367,
+				0.6999998092651367,
+				0.6999998092651367
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				1.0259802341461182,
+				0.6534212827682495,
+				-0.12371627986431122
+			],
+			"rot": [
+				-90.0,
+				0.0,
+				77.32935333251953
+			],
+			"scl": [
+				0.6999995112419128,
+				0.6999995112419128,
+				0.6999995708465576
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				1.012990951538086,
+				0.4180155396461487,
+				-0.2186676412820816
+			],
+			"rot": [
+				-90.0,
+				0.0,
+				77.32935333251953
+			],
+			"scl": [
+				0.6999993324279785,
+				0.6999995112419128,
+				0.6999993920326233
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.956798791885376,
+				0.5289482474327087,
+				-0.10384216159582138
+			],
+			"rot": [
+				-90.0,
+				0.0,
+				77.32935333251953
+			],
+			"scl": [
+				0.6999991536140442,
+				0.6999995112419128,
+				0.699999213218689
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.38347089290618896,
+				0.018232718110084534,
+				-0.33645182847976685
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.9999996423721313,
+				1.9999996423721313,
+				1.9999992847442627
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				1.7964942455291748,
+				0.018232718110084534,
+				-0.706045925617218
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.9999995231628418,
+				1.9999995231628418,
+				1.9999990463256836
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				1.2139620780944824,
+				0.018232718110084534,
+				-2.1422104835510254
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				1.9999994039535522,
+				1.9999994039535522,
+				1.9999988079071045
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-2.4092373847961426,
+				0.02755480259656906,
+				0.3529703617095947
+			],
+			"rot": [
+				-0.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				2.0,
+				2.0,
+				2.0
 			]
 		}
 	]
