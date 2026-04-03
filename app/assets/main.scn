@@ -61,142 +61,151 @@
 	},
 	"instances": [
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/armchair/Soviet_armchair_Lisek_LOD0.scn"
 		},
 		{
 			"name": "props/drawers_chest/Soviet_Chest_Of_Drawers_Variant2_merged.scn"
 		},
 		{
-			"name": "props/armchair/Soviet_armchair_Lisek_LOD0.scn"
+			"name": "props/square_shadow/round_shadow.scn"
 		},
 		{
-			"name": "props/warbrode/Soviet_Wardrobe_Variant1_merged.scn"
+			"name": "common/tube/tube.scn"
 		},
 		{
-			"name": "props/warbrode/Soviet_Wardrobe_Variant1_merged.scn"
-		},
-		{
-			"name": "props/table/Soviet_Table_Variant1_LOD0.scn"
-		},
-		{
-			"name": "props/calendar/uploads_files_3187835_kalendar.scn"
-		},
-		{
-			"name": "props/tv_medium_size/tv_medium_size.scn"
-		},
-		{
-			"name": "props/metal_desk/SM_MetalDesk_merged.scn"
-		},
-		{
-			"name": "props/cyclo/cyclo.scn"
-		},
-		{
-			"name": "props/cyclo/cyclo.scn"
-		},
-		{
-			"name": "props/old-home-computer/SM_HomeComputer.scn"
-		},
-		{
-			"name": "props/small_chair/SM_Chair05.scn"
-		},
-		{
-			"name": "props/apple_2/apple_2.scn"
-		},
-		{
-			"name": "props/tandy_trs_80/SM_computer_01a.scn"
-		},
-		{
-			"name": "props/cyclo/cyclo.scn"
-		},
-		{
-			"name": "props/office_chair/SM_OfficeChair02.scn"
-		},
-		{
-			"name": "props/tv_vintage/tv_vintage.scn"
-		},
-		{
-			"name": "props/monitor_cctv/monitor_cctv.scn"
-		},
-		{
-			"name": "props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn"
-		},
-		{
-			"name": "props/slides_projector/uploads_files_2708484_SM_SlideProjector.scn"
-		},
-		{
-			"name": "light_cone/light_cone_merged.scn"
-		},
-		{
-			"name": "props/apple_2/apple_2-screen_static.scn"
-		},
-		{
-			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
-		},
-		{
-			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
-		},
-		{
-			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
-		},
-		{
-			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
-		},
-		{
-			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
-		},
-		{
-			"name": "props/floppy_dirty/SM_FloppyBl.scn"
-		},
-		{
-			"name": "props/floppy_dirty/SM_FloppyBlue01.scn"
+			"name": "common/tube/tube.scn"
 		},
 		{
 			"name": "props/square_shadow/round_shadow.scn"
 		},
 		{
 			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "props/square_shadow/round_shadow.scn"
+		},
+		{
+			"name": "common/tube/tube.scn"
+		},
+		{
+			"name": "common/tube/tube.scn"
+		},
+		{
+			"name": "common/tube/tube.scn"
+		},
+		{
+			"name": "common/tube/tube.scn"
 		},
 		{
 			"name": "props/main_scene_cables/main_scene_cables_merged.scn"
 		},
 		{
-			"name": "common/tube/tube.scn"
-		},
-		{
-			"name": "common/tube/tube.scn"
-		},
-		{
-			"name": "common/tube/tube.scn"
-		},
-		{
-			"name": "common/tube/tube.scn"
-		},
-		{
 			"name": "props/square_shadow/round_shadow.scn"
 		},
 		{
 			"name": "props/square_shadow/round_shadow.scn"
 		},
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/floppy_dirty/SM_FloppyBlue01.scn"
 		},
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/floppy_dirty/SM_FloppyBl.scn"
 		},
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
 		},
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
 		},
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
 		},
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
 		},
 		{
-			"name": "props/square_shadow/round_shadow.scn"
+			"name": "props/8_inch_floppy_disk/8_inch_floppy_disk.scn"
+		},
+		{
+			"name": "props/apple_2/apple_2-screen_static.scn"
+		},
+		{
+			"name": "light_cone/light_cone_merged.scn"
+		},
+		{
+			"name": "props/slides_projector/uploads_files_2708484_SM_SlideProjector.scn"
+		},
+		{
+			"name": "props/tv_vintage/tv_vintage_screen/tv_vintage_screen.scn"
+		},
+		{
+			"name": "props/monitor_cctv/monitor_cctv.scn"
+		},
+		{
+			"name": "props/tv_vintage/tv_vintage.scn"
+		},
+		{
+			"name": "props/office_chair/SM_OfficeChair02.scn"
+		},
+		{
+			"name": "props/cyclo/cyclo.scn"
+		},
+		{
+			"name": "props/tandy_trs_80/SM_computer_01a.scn"
+		},
+		{
+			"name": "props/apple_2/apple_2.scn"
+		},
+		{
+			"name": "props/small_chair/SM_Chair05.scn"
+		},
+		{
+			"name": "props/old-home-computer/SM_HomeComputer.scn"
+		},
+		{
+			"name": "props/cyclo/cyclo.scn"
+		},
+		{
+			"name": "props/cyclo/cyclo.scn"
+		},
+		{
+			"name": "props/metal_desk/SM_MetalDesk_merged.scn"
+		},
+		{
+			"name": "props/tv_medium_size/tv_medium_size.scn"
+		},
+		{
+			"name": "props/calendar/uploads_files_3187835_kalendar.scn"
+		},
+		{
+			"name": "props/table/Soviet_Table_Variant1_LOD0.scn"
+		},
+		{
+			"name": "props/warbrode/Soviet_Wardrobe_Variant1_merged.scn"
+		},
+		{
+			"name": "props/warbrode/Soviet_Wardrobe_Variant1_merged.scn"
 		},
 		{
 			"name": "props/square_shadow/round_shadow.scn"
@@ -223,6 +232,8 @@
 			],
 			"radius": 0.0,
 			"shadow_bias": 9.999999747378752e-05,
+			"shadow_far": 25.0,
+			"shadow_near": 5.0,
 			"shadow_type": "map",
 			"specular": [
 				255,
@@ -252,6 +263,8 @@
 			],
 			"radius": 5.0,
 			"shadow_bias": 9.999999747378752e-05,
+			"shadow_far": 100.0,
+			"shadow_near": 0.10000000149011612,
 			"shadow_type": "none",
 			"specular": [
 				29,
@@ -281,6 +294,8 @@
 			],
 			"radius": 5.0,
 			"shadow_bias": 9.999999747378752e-05,
+			"shadow_far": 100.0,
+			"shadow_near": 0.10000000149011612,
 			"shadow_type": "none",
 			"specular": [
 				6,
@@ -310,6 +325,8 @@
 			],
 			"radius": 5.0,
 			"shadow_bias": 9.999999747378752e-05,
+			"shadow_far": 100.0,
+			"shadow_near": 0.10000000149011612,
 			"shadow_type": "none",
 			"specular": [
 				6,
@@ -339,6 +356,8 @@
 			],
 			"radius": 2.609999895095825,
 			"shadow_bias": 9.999999747378752e-05,
+			"shadow_far": 100.0,
+			"shadow_near": 0.10000000149011612,
 			"shadow_type": "none",
 			"specular": [
 				6,
@@ -368,6 +387,8 @@
 			],
 			"radius": 2.609999895095825,
 			"shadow_bias": 9.999999747378752e-05,
+			"shadow_far": 100.0,
+			"shadow_near": 0.10000000149011612,
 			"shadow_type": "none",
 			"specular": [
 				6,
@@ -389,9 +410,8 @@
 				4294967295
 			],
 			"disabled": true,
-			"editor": false,
 			"idx": 0,
-			"instance": 15,
+			"instance": 36,
 			"name": "cyclo"
 		},
 		{
@@ -403,9 +423,8 @@
 				4294967295
 			],
 			"disabled": true,
-			"editor": false,
 			"idx": 1,
-			"instance": 10,
+			"instance": 41,
 			"name": "cyclo"
 		},
 		{
@@ -417,9 +436,8 @@
 				4294967295
 			],
 			"disabled": true,
-			"editor": false,
 			"idx": 2,
-			"instance": 9,
+			"instance": 42,
 			"name": "cyclo"
 		},
 		{
@@ -431,7 +449,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 3,
 			"name": "cyclo_root"
 		},
@@ -444,9 +461,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 4,
-			"instance": 8,
+			"instance": 43,
 			"name": "SM_MetalDesk"
 		},
 		{
@@ -458,7 +474,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 5,
 			"name": "Spotlight"
 		},
@@ -471,9 +486,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 6,
-			"instance": 16,
+			"instance": 35,
 			"name": "SM_OfficeChair02"
 		},
 		{
@@ -485,7 +499,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 7,
 			"name": "sphere_chrome"
 		},
@@ -498,9 +511,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 8,
-			"instance": 17,
+			"instance": 34,
 			"name": "tv_medium_size"
 		},
 		{
@@ -512,9 +524,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 9,
-			"instance": 18,
+			"instance": 33,
 			"name": "monitor_cctv"
 		},
 		{
@@ -526,9 +537,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 10,
-			"instance": 7,
+			"instance": 44,
 			"name": "crt_tv"
 		},
 		{
@@ -540,9 +550,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 11,
-			"instance": 12,
+			"instance": 39,
 			"name": "Instance"
 		},
 		{
@@ -554,9 +563,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 12,
-			"instance": 13,
+			"instance": 38,
 			"name": "apple_2"
 		},
 		{
@@ -568,7 +576,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 13,
 			"name": "ground_light"
 		},
@@ -581,9 +588,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 14,
-			"instance": 14,
+			"instance": 37,
 			"name": "TRS-80"
 		},
 		{
@@ -595,9 +601,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 15,
-			"instance": 11,
+			"instance": 40,
 			"name": "SM_HomeComputer"
 		},
 		{
@@ -609,7 +614,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 16,
 			"name": "ground"
 		},
@@ -622,9 +626,8 @@
 				4294967295
 			],
 			"disabled": true,
-			"editor": false,
 			"idx": 17,
-			"instance": 6,
+			"instance": 45,
 			"name": "calendar"
 		},
 		{
@@ -636,7 +639,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 18,
 			"instance": 1,
 			"name": "Soviet_Chest_Of_Drawers_Variant2_LOD0"
@@ -650,9 +652,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 19,
-			"instance": 5,
+			"instance": 46,
 			"name": "Soviet_Table_Variant1_LOD0"
 		},
 		{
@@ -664,9 +665,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 20,
-			"instance": 4,
+			"instance": 47,
 			"name": "Soviet_Wardrobe_Variant1_LOD0"
 		},
 		{
@@ -678,9 +678,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 21,
-			"instance": 3,
+			"instance": 48,
 			"name": "Soviet_Wardrobe_Variant1_LOD0"
 		},
 		{
@@ -692,7 +691,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 22,
 			"name": "light_panel"
 		},
@@ -705,9 +703,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 23,
-			"instance": 2,
+			"instance": 0,
 			"name": "Soviet_armchair_Lisek_LOD0"
 		},
 		{
@@ -719,7 +716,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 24,
 			"name": "light_panel"
 		},
@@ -732,7 +728,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 25,
 			"name": "slide_screen"
 		},
@@ -745,7 +740,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 26,
 			"name": "ScreenLight0"
 		},
@@ -758,7 +752,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 27,
 			"name": "FPSCamera"
 		},
@@ -771,7 +764,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 28,
 			"name": "ScreenLight1"
 		},
@@ -784,7 +776,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 29,
 			"name": "ScreenLight2"
 		},
@@ -797,7 +788,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 30,
 			"name": "ScreenLight3"
 		},
@@ -810,7 +800,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 31,
 			"name": "crt_screen"
 		},
@@ -823,9 +812,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 32,
-			"instance": 0,
+			"instance": 2,
 			"name": "round_shadow"
 		},
 		{
@@ -837,9 +825,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 33,
-			"instance": 19,
+			"instance": 32,
 			"name": "tv_vintage_screen"
 		},
 		{
@@ -851,9 +838,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 34,
-			"instance": 20,
+			"instance": 31,
 			"name": "SlideProjector"
 		},
 		{
@@ -865,9 +851,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 35,
-			"instance": 21,
+			"instance": 30,
 			"name": "light_cone"
 		},
 		{
@@ -879,9 +864,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 36,
-			"instance": 22,
+			"instance": 29,
 			"name": "apple_vintage_screen"
 		},
 		{
@@ -893,7 +877,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 37,
 			"name": "SM_HomeComputer_screen"
 		},
@@ -906,9 +889,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 38,
-			"instance": 23,
+			"instance": 28,
 			"name": "8_inch_floppy_disk"
 		},
 		{
@@ -920,9 +902,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 39,
-			"instance": 24,
+			"instance": 27,
 			"name": "8_inch_floppy_disk"
 		},
 		{
@@ -934,9 +915,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 40,
-			"instance": 25,
+			"instance": 26,
 			"name": "8_inch_floppy_disk"
 		},
 		{
@@ -948,9 +928,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 41,
-			"instance": 26,
+			"instance": 25,
 			"name": "8_inch_floppy_disk"
 		},
 		{
@@ -962,9 +941,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 42,
-			"instance": 27,
+			"instance": 24,
 			"name": "8_inch_floppy_disk"
 		},
 		{
@@ -976,9 +954,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 43,
-			"instance": 28,
+			"instance": 23,
 			"name": "SM_FloppyBl"
 		},
 		{
@@ -990,9 +967,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 44,
-			"instance": 29,
+			"instance": 22,
 			"name": "SM_FloppyBl"
 		},
 		{
@@ -1004,7 +980,6 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 45,
 			"name": "SM_HomeComputer_noise"
 		},
@@ -1017,9 +992,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 46,
-			"instance": 31,
+			"instance": 20,
 			"name": "round_shadow"
 		},
 		{
@@ -1031,9 +1005,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 47,
-			"instance": 30,
+			"instance": 21,
 			"name": "round_shadow"
 		},
 		{
@@ -1045,9 +1018,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 48,
-			"instance": 32,
+			"instance": 19,
 			"name": "main_scene_cables"
 		},
 		{
@@ -1059,9 +1031,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 49,
-			"instance": 33,
+			"instance": 18,
 			"name": "tube"
 		},
 		{
@@ -1073,9 +1044,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 50,
-			"instance": 34,
+			"instance": 17,
 			"name": "tube"
 		},
 		{
@@ -1087,9 +1057,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 51,
-			"instance": 36,
+			"instance": 15,
 			"name": "tube"
 		},
 		{
@@ -1101,9 +1070,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
 			"idx": 52,
-			"instance": 35,
+			"instance": 16,
 			"name": "tube"
 		},
 		{
@@ -1115,9 +1083,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 234,
-			"instance": 37,
+			"idx": 53,
+			"instance": 14,
 			"name": "round_shadow"
 		},
 		{
@@ -1129,9 +1096,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 236,
-			"instance": 38,
+			"idx": 54,
+			"instance": 13,
 			"name": "round_shadow"
 		},
 		{
@@ -1143,9 +1109,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 238,
-			"instance": 39,
+			"idx": 55,
+			"instance": 12,
 			"name": "round_shadow"
 		},
 		{
@@ -1157,9 +1122,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 240,
-			"instance": 40,
+			"idx": 56,
+			"instance": 11,
 			"name": "round_shadow"
 		},
 		{
@@ -1171,9 +1135,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 242,
-			"instance": 41,
+			"idx": 57,
+			"instance": 10,
 			"name": "round_shadow"
 		},
 		{
@@ -1185,9 +1148,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 244,
-			"instance": 42,
+			"idx": 58,
+			"instance": 9,
 			"name": "round_shadow"
 		},
 		{
@@ -1199,9 +1161,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 246,
-			"instance": 43,
+			"idx": 59,
+			"instance": 8,
 			"name": "round_shadow"
 		},
 		{
@@ -1213,9 +1174,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 248,
-			"instance": 44,
+			"idx": 60,
+			"instance": 7,
 			"name": "round_shadow"
 		},
 		{
@@ -1227,9 +1187,8 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 250,
-			"instance": 45,
+			"idx": 61,
+			"instance": 6,
 			"name": "round_shadow"
 		},
 		{
@@ -1241,16 +1200,137 @@
 				4294967295
 			],
 			"disabled": false,
-			"editor": false,
-			"idx": 252,
-			"instance": 46,
+			"idx": 62,
+			"instance": 5,
 			"name": "round_shadow"
+		},
+		{
+			"components": [
+				63,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 63,
+			"instance": 4,
+			"name": "tube"
+		},
+		{
+			"components": [
+				64,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 64,
+			"instance": 3,
+			"name": "tube"
+		},
+		{
+			"components": [
+				70,
+				4294967295,
+				12,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 65,
+			"name": "round_halo_geo"
+		},
+		{
+			"components": [
+				72,
+				4294967295,
+				14,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 66,
+			"name": "round_halo_geo"
+		},
+		{
+			"components": [
+				69,
+				4294967295,
+				8,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 67,
+			"name": "round_halo_geo"
+		},
+		{
+			"components": [
+				71,
+				4294967295,
+				9,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 68,
+			"name": "round_halo_geo"
+		},
+		{
+			"components": [
+				68,
+				4294967295,
+				10,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 69,
+			"name": "round_halo_geo"
+		},
+		{
+			"components": [
+				65,
+				4294967295,
+				11,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 70,
+			"name": "round_halo_geo"
+		},
+		{
+			"components": [
+				66,
+				4294967295,
+				4294967295,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 264,
+			"instance": 49,
+			"name": "round_shadow"
+		},
+		{
+			"components": [
+				67,
+				4294967295,
+				13,
+				4294967295,
+				4294967295
+			],
+			"disabled": false,
+			"idx": 266,
+			"name": "round_halo_geo"
 		}
 	],
 	"objects": [
 		{
 			"bones": [],
-			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1313,12 +1393,10 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/ground.geo",
-			"shadow": ""
+			"name": "props/primitives/ground.geo"
 		},
 		{
 			"bones": [],
-			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1389,12 +1467,10 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/ground.geo",
-			"shadow": ""
+			"name": "props/primitives/ground.geo"
 		},
 		{
 			"bones": [],
-			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1460,12 +1536,10 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/ground.geo",
-			"shadow": ""
+			"name": "props/primitives/ground.geo"
 		},
 		{
 			"bones": [],
-			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1531,12 +1605,10 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/ground.geo",
-			"shadow": ""
+			"name": "props/primitives/ground.geo"
 		},
 		{
 			"bones": [],
-			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1590,12 +1662,10 @@
 					"write_z": false
 				}
 			],
-			"name": "props/primitives/ground.geo",
-			"shadow": ""
+			"name": "props/primitives/ground.geo"
 		},
 		{
 			"bones": [],
-			"flags": [],
 			"material_infos": [
 				{
 					"name": "screen"
@@ -1668,12 +1738,10 @@
 					"write_z": true
 				}
 			],
-			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo",
-			"shadow": ""
+			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo"
 		},
 		{
 			"bones": [],
-			"flags": [],
 			"material_infos": [
 				{
 					"name": "screen"
@@ -1767,12 +1835,10 @@
 					"write_z": false
 				}
 			],
-			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo",
-			"shadow": ""
+			"name": "props/old-home-computer/SM_HomeComputer_screen/SM_HomeComputer_screen_42.geo"
 		},
 		{
 			"bones": [],
-			"flags": [],
 			"material_infos": [
 				{
 					"name": "default"
@@ -1844,8 +1910,714 @@
 					"write_z": true
 				}
 			],
-			"name": "props/primitives/sphere.geo",
-			"shadow": ""
+			"name": "props/primitives/sphere.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						},
+						{
+							"name": "uSelfMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfMul",
+							"type": "vec4",
+							"value": [
+								0.08118359744548798,
+								0.09347205609083176,
+								0.20253169536590576,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/square_shadow/square_shadow.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						},
+						{
+							"name": "uSelfMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfMul",
+							"type": "vec4",
+							"value": [
+								0.004201624542474747,
+								0.012545384466648102,
+								0.016877710819244385,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/square_shadow/square_shadow.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						},
+						{
+							"name": "uSelfMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfMul",
+							"type": "vec4",
+							"value": [
+								0.058964937925338745,
+								0.06837599724531174,
+								0.1518988013267517,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/square_shadow/square_shadow.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						},
+						{
+							"name": "uSelfMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfMul",
+							"type": "vec4",
+							"value": [
+								0.37734338641166687,
+								0.4062148332595825,
+								0.6624472737312317,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/square_shadow/square_shadow.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						},
+						{
+							"name": "uSelfMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfMul",
+							"type": "vec4",
+							"value": [
+								0.05072193592786789,
+								0.07848639786243439,
+								0.3248945474624634,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/square_shadow/square_shadow.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						},
+						{
+							"name": "uSelfMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfMul",
+							"type": "vec4",
+							"value": [
+								0.03923873230814934,
+								0.11894936859607697,
+								0.16033756732940674,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/square_shadow/square_shadow.geo"
+		},
+		{
+			"bones": [],
+			"material_infos": [
+				{
+					"name": "square_shadow"
+				}
+			],
+			"materials": [
+				{
+					"blend_mode": "add",
+					"depth_test": "less",
+					"face_culling": "cw",
+					"flags": [],
+					"program": "core/shader/pbr.hps",
+					"textures": [
+						{
+							"name": "uBaseOpacityMap",
+							"stage": 0
+						},
+						{
+							"name": "uOpacityMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 5
+						},
+						{
+							"name": "uSelfMap",
+							"path": "props/square_shadow/round_shadow.png",
+							"stage": 4
+						}
+					],
+					"values": [
+						{
+							"name": "uBaseOpacityColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uDiffuseColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.10000000149011612
+							]
+						},
+						{
+							"name": "uOcclusionRoughnessMetalnessColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.5,
+								0.10000000149011612,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfColor",
+							"type": "vec4",
+							"value": [
+								0.0,
+								0.0,
+								0.0,
+								1.0
+							]
+						},
+						{
+							"name": "uSelfMul",
+							"type": "vec4",
+							"value": [
+								0.03923873230814934,
+								0.11894936859607697,
+								0.16033756732940674,
+								1.0
+							]
+						},
+						{
+							"name": "uSpecularColor",
+							"type": "vec4",
+							"value": [
+								9.999999974752427e-07,
+								9.999899930335232e-07,
+								9.999899930335232e-07,
+								0.25
+							]
+						}
+					],
+					"write_a": true,
+					"write_b": true,
+					"write_g": true,
+					"write_r": true,
+					"write_z": false
+				}
+			],
+			"name": "props/square_shadow/square_shadow.geo"
 		}
 	],
 	"transforms": [
@@ -2650,7 +3422,7 @@
 			],
 			"rot": [
 				-8.918557073615114e-16,
-				3.4150914416386513e-06,
+				3.415090759517625e-06,
 				-3.4234865207191222e-15
 			],
 			"scl": [
@@ -2685,7 +3457,7 @@
 				9.514562277829946e-16
 			],
 			"rot": [
-				-4.5498189098491316e-21,
+				-4.549818102055565e-21,
 				0.0,
 				0.0
 			],
@@ -2722,7 +3494,7 @@
 			],
 			"rot": [
 				-0.0,
-				4.999998569488525,
+				4.999998092651367,
 				0.0
 			],
 			"scl": [
@@ -2867,7 +3639,7 @@
 			"rot": [
 				-90.0,
 				0.0,
-				77.32935333251953
+				77.32933807373047
 			],
 			"scl": [
 				0.6999995112419128,
@@ -2885,7 +3657,7 @@
 			"rot": [
 				-90.0,
 				0.0,
-				77.32935333251953
+				77.32933807373047
 			],
 			"scl": [
 				0.6999993324279785,
@@ -2903,7 +3675,7 @@
 			"rot": [
 				-90.0,
 				0.0,
-				77.32935333251953
+				77.32933807373047
 			],
 			"scl": [
 				0.6999991536140442,
@@ -2981,6 +3753,186 @@
 				2.0,
 				2.0,
 				2.0
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				2.610712766647339,
+				0.0,
+				3.7506484985351563
+			],
+			"rot": [
+				-12.0,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.19999992847442627,
+				1.600000023841858,
+				0.1999998539686203
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-1.5609999895095825,
+				0.0,
+				3.7506484985351563
+			],
+			"rot": [
+				-11.999998092651367,
+				0.0,
+				0.0
+			],
+			"scl": [
+				0.1999998837709427,
+				1.600000023841858,
+				0.1999998539686203
+			]
+		},
+		{
+			"parent": 24,
+			"pos": [
+				3.129243850708008e-07,
+				0.13981962203979492,
+				0.0
+			],
+			"rot": [
+				2.276730356243206e-06,
+				-1.1383652235963382e-05,
+				5.549529305426404e-06
+			],
+			"scl": [
+				2.999999523162842,
+				2.9999990463256836,
+				2.9999990463256836
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				1.0139394998550415,
+				0.6097423434257507,
+				-0.13876396417617798
+			],
+			"rot": [
+				-90.0,
+				0.0,
+				77.32933044433594
+			],
+			"scl": [
+				0.6999989748001099,
+				0.6999993920326233,
+				0.6999990940093994
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				0.8756725192070007,
+				0.32658785581588745,
+				-2.231055974960327
+			],
+			"rot": [
+				3.0061548841331387e-06,
+				-133.99899291992188,
+				-63.0
+			],
+			"scl": [
+				0.4999992251396179,
+				0.49999940395355225,
+				0.49999937415122986
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				1.351626992225647,
+				1.0617786645889282,
+				-0.27189648151397705
+			],
+			"rot": [
+				-90.0,
+				0.0,
+				44.99997329711914
+			],
+			"scl": [
+				0.7499999403953552,
+				0.7499998211860657,
+				0.7499999403953552
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				1.2259255647659302,
+				1.1196680068969727,
+				-0.14619512856006622
+			],
+			"rot": [
+				-90.0,
+				0.0,
+				44.99998092651367
+			],
+			"scl": [
+				0.49999985098838806,
+				0.49999985098838806,
+				0.4999998211860657
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-0.5699422359466553,
+				3.3701634407043457,
+				2.993030071258545
+			],
+			"rot": [
+				-90.0,
+				0.0,
+				-0.0
+			],
+			"scl": [
+				2.999999761581421,
+				2.9999992847442627,
+				2.999999761581421
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-2.0853395462036133,
+				0.4278310537338257,
+				0.6710213422775269
+			],
+			"rot": [
+				-8.290691653201065e-07,
+				30.999982833862305,
+				-63.0
+			],
+			"scl": [
+				0.7499998807907104,
+				0.7499997615814209,
+				0.7499995827674866
+			]
+		},
+		{
+			"parent": null,
+			"pos": [
+				-2.098742961883545,
+				0.5103748440742493,
+				0.739284336566925
+			],
+			"rot": [
+				5.904997806283063e-07,
+				30.999990463256836,
+				-63.0
+			],
+			"scl": [
+				0.49999937415122986,
+				0.4999995529651642,
+				0.49999964237213135
 			]
 		}
 	]

@@ -60,7 +60,7 @@ local win = hg.NewWindow('COULOIR 14', res_x, res_y, 32, default_window_mode) --
 hg.RenderInit(win)
 hg.RenderReset(res_x, res_y, hg.RF_VSync | hg.RF_MSAA4X | hg.RF_MaxAnisotropy)
 
-local pipeline = hg.CreateForwardPipeline(2048, false)
+local pipeline = hg.CreateForwardPipeline(4096, false)
 local res = hg.PipelineResources()
 
 -- VR Stuff
@@ -236,6 +236,9 @@ local slide_screen_material = slide_screen_node:GetObject():GetMaterial(0)
 
 local light_cone_node = scene:GetNode("light_cone_merged")
 local light_cone_material = light_cone_node:GetObject():GetMaterial(0)
+
+-- scene:GetNode("Spotlight"):GetLight():SetShadowNear(6.0)
+-- scene:GetNode("Spotlight"):GetLight():SetShadowFar(15.0)
 
 -- fullscreen crt scene
 

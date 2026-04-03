@@ -8,6 +8,7 @@ uniform vec4 uBaseOpacityColor;
 uniform vec4 uOcclusionRoughnessMetalnessColor;
 uniform vec4 uSelfColor;
 uniform vec4 uCustom;
+uniform vec4 uSelfMul;
 
 // Texture slots
 SAMPLER2D(uBaseOpacityMap, 0);
@@ -175,6 +176,8 @@ void main() {
 #else // USE_SELF_MAP
 	vec4 self = uSelfColor;
 #endif // USE_SELF_MAP
+
+	self *= uSelfMul;
 
 	//
 	vec3 view = mul(u_view, vec4(vWorldPos, 1.0)).xyz;
