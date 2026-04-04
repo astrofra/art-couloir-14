@@ -60,7 +60,7 @@ local win = hg.NewWindow('COULOIR 14', res_x, res_y, 32, default_window_mode) --
 hg.RenderInit(win)
 hg.RenderReset(res_x, res_y, hg.RF_VSync | hg.RF_MSAA4X | hg.RF_MaxAnisotropy)
 
-local pipeline = hg.CreateForwardPipeline(4096, false)
+local pipeline = hg.CreateForwardPipeline(2048, false)
 local res = hg.PipelineResources()
 
 -- VR Stuff
