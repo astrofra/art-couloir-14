@@ -217,11 +217,20 @@ quad_uniform_set_value_list:push_back(hg.MakeUniformSetValue("color", hg.Vec4(1,
 
 local quad_uniform_set_texture_list = hg.UniformSetTextureList()
 
-local initial_head_pos = hg.GetTranslation(scene:GetNode("FPSCamera"):GetTransform():GetWorld())
+local fps_camera = scene:GetNode("FPSCamera")
+local fps_camera_transform = fps_camera:GetTransform()
+local fps_camera_rot = fps_camera_transform:GetRot()
+local fps_camera_base_rot = hg.Vec3(fps_camera_rot)
+local fps_camera_yaw_amplitude = 0.75
+local fps_camera_pitch_amplitude = 0.45
+local fps_camera_pitch_limit = math.pi * 0.45
+
+local initial_head_pos = hg.GetTranslation(fps_camera_transform:GetWorld())
 -- local head_pos_offset = hg.Vec3(0,0,0)
 initial_head_pos.y = 0.0
 
 local keyboard = hg.Keyboard('raw')
+local mouse = hg.Mouse()
 local switch_clock = hg.GetClock()
 
 -- Fetch scene's nodes
@@ -259,13 +268,12 @@ for idx = 0, 3 do
 end
 
 if not open_vr_enabled then
-	local _cam = scene:GetNode("FPSCamera")
-	local _rot = _cam:GetTransform():GetRot()
-	_rot.y = _rot.y + math.pi / 8.0
-	_rot.x = _rot.x + math.pi / 16.0
-	_cam:GetTransform():SetRot(_rot)
-	_cam:GetCamera():SetFov(math.pi / 2.0)
-	scene:SetCurrentCamera(_cam)
+	fps_camera_rot.y = fps_camera_rot.y + math.pi / 8.0
+	fps_camera_rot.x = fps_camera_rot.x + math.pi / 16.0
+	fps_camera_base_rot = hg.Vec3(fps_camera_rot)
+	fps_camera_transform:SetRot(fps_camera_rot)
+	fps_camera:GetCamera():SetFov(math.pi / 2.0)
+	scene:SetCurrentCamera(fps_camera)
 end
 
 -- Main loop
@@ -279,7 +287,20 @@ local prev_folder = -1
 
 while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	keyboard:Update()
+	mouse:Update()
 	dt = hg.TickClock()
+
+	if not open_vr_enabled then
+		local mouse_x = mouse:X()
+		local mouse_y = mouse:Y()
+		local aspect_ratio = hg.ComputeAspectRatioX(res_x, res_y)
+		local mouse_x_normd = (mouse_x / res_x - 0.5) * aspect_ratio.x
+		local mouse_y_normd = (mouse_y / res_y - 0.5) * aspect_ratio.y
+
+		fps_camera_rot.y = fps_camera_base_rot.y + mouse_x_normd * fps_camera_yaw_amplitude
+		fps_camera_rot.x = hg.Clamp(fps_camera_base_rot.x - mouse_y_normd * fps_camera_pitch_amplitude, -fps_camera_pitch_limit, fps_camera_pitch_limit)
+		fps_camera_transform:SetRot(fps_camera_rot)
+	end
 
 	-- photo_state.lock = false
 
@@ -537,5 +558,6 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 end
 
 hg.DestroyForwardPipeline(pipeline)
+hg.ShowCursor()
 hg.RenderShutdown()
 hg.DestroyWindow(win)
