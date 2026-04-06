@@ -220,9 +220,7 @@ local quad_uniform_set_texture_list = hg.UniformSetTextureList()
 local fps_camera = scene:GetNode("FPSCamera")
 local fps_camera_transform = fps_camera:GetTransform()
 local fps_camera_rot = fps_camera_transform:GetRot()
-local fps_camera_base_rot = hg.Vec3(fps_camera_rot)
-local fps_camera_yaw_amplitude = 0.75
-local fps_camera_pitch_amplitude = 0.45
+local fps_camera_mouse_sensitivity = 0.003
 local fps_camera_pitch_limit = math.pi * 0.45
 
 local initial_head_pos = hg.GetTranslation(fps_camera_transform:GetWorld())
@@ -270,7 +268,6 @@ end
 if not open_vr_enabled then
 	fps_camera_rot.y = fps_camera_rot.y + math.pi / 8.0
 	fps_camera_rot.x = fps_camera_rot.x + math.pi / 16.0
-	fps_camera_base_rot = hg.Vec3(fps_camera_rot)
 	fps_camera_transform:SetRot(fps_camera_rot)
 	fps_camera:GetCamera():SetFov(math.pi / 2.0)
 	scene:SetCurrentCamera(fps_camera)
@@ -291,15 +288,11 @@ while not keyboard:Pressed(hg.K_Escape) and hg.IsWindowOpen(win) do
 	dt = hg.TickClock()
 
 	if not open_vr_enabled then
-		local mouse_x = mouse:X()
-		local mouse_y = mouse:Y()
-		local aspect_ratio = hg.ComputeAspectRatioX(res_x, res_y)
-		local mouse_x_normd = (mouse_x / res_x - 0.5) * aspect_ratio.x
-		local mouse_y_normd = (mouse_y / res_y - 0.5) * aspect_ratio.y
-
-		fps_camera_rot.y = fps_camera_base_rot.y + mouse_x_normd * fps_camera_yaw_amplitude
-		fps_camera_rot.x = hg.Clamp(fps_camera_base_rot.x - mouse_y_normd * fps_camera_pitch_amplitude, -fps_camera_pitch_limit, fps_camera_pitch_limit)
-		fps_camera_transform:SetRot(fps_camera_rot)
+		if mouse:Down(hg.MB_0) then
+			fps_camera_rot.y = fps_camera_rot.y - mouse:DtX() * fps_camera_mouse_sensitivity
+			fps_camera_rot.x = hg.Clamp(fps_camera_rot.x + mouse:DtY() * fps_camera_mouse_sensitivity, -fps_camera_pitch_limit, fps_camera_pitch_limit)
+			fps_camera_transform:SetRot(fps_camera_rot)
+		end
 	end
 
 	-- photo_state.lock = false
